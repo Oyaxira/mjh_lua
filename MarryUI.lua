@@ -1,0 +1,184 @@
+MarryUI = class('MarryUI', BaseWindow)
+
+function MarryUI:Create()
+    local obj = LoadPrefabAndInit("Role/MarryUI",UI_UILayer,true)
+    if obj then
+        self:SetGameObject(obj)
+    end
+end
+
+function MarryUI:OnPressESCKey()
+    if self.close_btn then
+        self.close_btn.onClick:Invoke()
+    end
+end
+
+function MarryUI:Init()
+    self.confirm_btn = self:FindChildComponent(self._gameObject, "Button_submit", DRCSRef_Type.Button)
+    self.close_btn = self:FindChildComponent(self._gameObject, "Btn_exit", DRCSRef_Type.Button)
+    self.scrollRect = self:FindChildComponent(self._gameObject, "LoopScrollView","LoopVerticalScrollRect")
+
+    if self.confirm_btn then
+        self:AddButtonClickListener(self.confirm_btn,function()
+			if not self.choseid then
+                SystemUICall:GetInstance():Toast('请先选择一名角色进行誓约')
+                return
+            end
+            if self.netData and self.netData.iType then
+                SendClickDialogCMD(self.netData.iType, self.netData.iTask, self.netData.iRet, self.choseid)
+                RemoveWindowImmediately("MarryUI",false)
+            end
+		end)
+    end
+
+    if self.close_btn then
+        self:AddButtonClickListener(self.close_btn,function()
+            if self.netData and self.netData.iType then
+                SendClickDialogCMD(self.netData.iType, self.netData.iTask, self.netData.iRet, 0)
+            end
+            RemoveWindowImmediately("MarryUI",false)
+		end)        
+    end
+
+    --数据
+    self.list = {}
+    self.choseid = nil
+    self.netData = {}
+end
+
+function MarryUI:RefreshUI(info)
+    self.scrollRect:AddListener(function(...) self:UpdateItem(...) end)
+    self:InitList()
+    self.netData = info
+end
+
+function MarryUI:InitList(info)
+    local teammates = RoleDataManager:GetInstance():GetRoleTeammates()
+    self.list = {}
+    for i,v in pairs(teammates) do
+        if self:CanMarry(v) and (not self:IfChild(v)) and self:IfOppoSex(v) and not self:IsCloseSwornAndMarry() then
+            local roledata = RoleDataManager:GetInstance():GetRoleData(v)
+            if roledata then
+                table.insert(self.list, roledata)
+            end
+        end
+    end
+    self.listobj = {}
+    self:UpdateList()
+
+    if #self.list == 0 then
+        SystemUICall:GetInstance():Toast('队伍中无可誓约角色')
+    end
+end
+
+function MarryUI:UpdateList()
+    self.scrollRect.totalCount = #self.list
+	self.scrollRect:RefillCells()
+end
+
+function MarryUI:UpdateItem(transform,iIndex)
+    local roledata = self.list[iIndex +1]
+    if not roledata then
+        return
+    end
+    local iRoleID = roledata.uiID
+    local iTypeID = roledata.uiTypeID
+
+	local nameText = self:FindChildComponent(transform.gameObject,"Name_Text","Text")
+	local strName = RoleDataManager:GetInstance():GetRoleTitleAndName(iRoleID)
+	nameText.text = getRankBasedText(RoleDataManager:GetInstance():GetRoleRank(iRoleID), strName)
+
+    local LevelText = self:FindChildComponent(transform.gameObject,"Level_Text","Text")
+    local uiLevel = roledata.uiLevel or 0
+    LevelText.text = getRankBasedText(RoleDataManager:GetInstance():GetRoleRank(iRoleID),uiLevel.."级")
+    
+    local objshose = self:FindChild(transform.gameObject,'Choose_Image')
+    local headImage = self:FindChildComponent(transform.gameObject,"Head_Dispositions/head","Image")
+    if headImage then
+        local kPath = roledata:GetDBHead()
+        headImage.sprite = GetSprite(kPath)
+    end
+
+    local dragItem = self:FindChildComponent(transform.gameObject,"Head_Dispositions","DRButton")
+    self:AddButtonClickListener(dragItem,function() 
+        OpenWindowImmediately("ObserveUI", {['roleID'] = iRoleID})
+    end)
+    local WatchItem = self:FindChildComponent(transform.gameObject,"Button_Watch","DRButton")
+    self:AddButtonClickListener(WatchItem,function() 
+        self.choseid = iTypeID
+        self:RefreshChose()
+    end)
+    self.listobj[iTypeID] = transform
+    objshose:SetActive(iTypeID == self.choseid)
+end
+
+function MarryUI:RefreshChose()
+    for i,v in pairs(self.listobj) do
+        local objshose = self:FindChild(v.gameObject,'Choose_Image')
+        if objshose then 
+            objshose:SetActive(self.choseid == i)
+        end
+    end
+end
+
+-- 筛选机制：队伍中好感度100的未誓约角色
+function MarryUI:CanMarry(roleID)
+    if RoleDataManager:GetInstance():IsMarryed(roleID) or RoleDataManager:GetInstance():IsSwornedWithMainRole(roleID) then
+		return false
+	end
+    local dispoValue = RoleDataManager:GetInstance():GetDispotionValueToMainRole(roleID)
+	if (dispoValue and dispoValue >= 100) then
+		return true
+	end
+	return false
+end
+
+function MarryUI:IfChild(roleID)
+    -- 判断是否孩童，不单判断主角的徒弟
+	if RoleDataManager:GetInstance():IsBabyRoleType(roleID) then
+		return true
+	end
+    local status = RoleDataManager:GetInstance():GetRoleStatus(roleID, false)
+    if status == StatusType.STT_Haitong then 
+        return true 
+	end
+	return false 
+end
+
+-- 判断是否异性
+function MarryUI:IfOppoSex(roleID)
+    local roledata = RoleDataManager:GetInstance():GetRoleData(roleID)
+    if roledata then
+        local iSex = roledata.uiSex
+        if iSex ~= RoleDataManager:GetInstance():GetMainRoleSex() then
+            return true
+        end
+    end
+    return false
+end
+
+-- 判断结婚结义是否被关闭
+function MarryUI:IsCloseSwornAndMarry()
+	local commonConfig = TableDataManager:GetInstance():GetTableData("CommonConfig",1)
+	if not commonConfig then
+		return false
+	end
+	local tagID = commonConfig.CloseSwornAndMarryTag
+	if TaskTagManager:GetInstance():TagIsValue(tagID, 1) then
+		return true
+	end
+	return false
+end
+
+function MarryUI:OnEnable()
+    
+end
+
+function MarryUI:OnDisable()
+
+end
+
+function MarryUI:OnDestroy()
+end
+
+return MarryUI
