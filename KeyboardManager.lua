@@ -56,7 +56,9 @@ FuncType = {
     ChooseSkill6=56,
     ChooseSkill7=57,
     PreSkillPage=58,
-    NextSkillPage=59
+    NextSkillPage=59,
+    OpenMinMap=60,
+    CloseBattleEnd=61,
 }
 
 KeyCode = {
@@ -396,7 +398,7 @@ function KeyboardManager:IsWaittingPresskey()
     return self.isWaitting
 end
 
-KEYBOARD_DATA_VERSION = "0.0.0.6"
+KEYBOARD_DATA_VERSION = "0.0.0.9"
 
 local DefaultKeySettingsTable =
 {
@@ -618,6 +620,13 @@ local DefaultKeySettingsTable =
                 ["是否支持自定义"] = true,
                 keyCode = KeyCode.LeftShift
             },
+            {
+                ["功能"] = FuncType.CloseBattleEnd,
+                ["功能描述"] = "关闭战斗结算界面",
+                ["中文描述"] = "",
+                ["是否支持自定义"] = true,
+                keyCode = KeyCode.Space
+            },
         },
     },
     {
@@ -657,6 +666,13 @@ local DefaultKeySettingsTable =
                 ["中文描述"] = "",
                 ["是否支持自定义"] = true,
                 keyCode = KeyCode.LeftShift
+            },
+            {
+                ["功能"] = FuncType.OpenMinMap,
+                ["功能描述"] = "开/打开小地图",
+                ["中文描述"] = "",
+                ["是否支持自定义"] = true,
+                keyCode = KeyCode.M
             },
             {
                 ["功能"] = FuncType.MoveUp,
@@ -855,7 +871,7 @@ end
 function KeyboardManager:InitCondition()
     --TODO 将分散于各个UI update中快捷键的if逻辑统一至此维护
     self.OpenOrCloseQuestUIInvalidCondition = function()
-        return IsAnyWindowOpen({"PlayerSetUI","DialogChoiceUI","GeneralBoxUI","MarryUI","SelectUI","MapUnfoldUI","MazeEntryUI","TitleSelectUI","RandomRollUI"})
+        return IsAnyWindowOpen({"PlayerSetUI","DialogChoiceUI","GeneralBoxUI","MarryUI","SelectUI","MazeEntryUI","TitleSelectUI","RandomRollUI"})
     end
     --暂时都和任务面板的条件相同
     self.OpenOrCloseTeamUIInvalidCondition = function()
@@ -893,6 +909,7 @@ function KeyboardManager:InitCondition()
         [FuncType.OpenOrCloseBackpackUI] = self.OpenOrCloseBackpackUIInvalidCondition,
         [FuncType.OpenOrCloseEvolutionUI] = self.OpenOrCloseEvolutionUIInvalidCondition,
         [FuncType.OpenOrCloseCityRoleListUI] = self.OpenOrCloseCityRoleListUIInvalidCondition,
+        [FuncType.OpenMinMap] = self.OpenOrCloseCityRoleListUIInvalidCondition,
         [FuncType.MoveUp] = self.MoveUpInvalidCondition,
         [FuncType.MoveDown] = self.MoveDownInvalidCondition,
         [FuncType.MoveLeft] = self.MoveLeftInvalidCondition,

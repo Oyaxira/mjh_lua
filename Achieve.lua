@@ -250,6 +250,7 @@ local Achieve= {
   [802]={BaseID=802,NameID=1810029,DesID=1820029,Order=29,Rank=RankType.RT_White,AchievePoint=2,ScriptOwner={2,6,7,},},
   [827]={BaseID=827,NameID=1810058,DesID=1820058,Order=57,Rank=RankType.RT_Green,AchieveType="剧情",AchievePoint=5,ScriptOwner={2,6,7,},},
   [1000]={BaseID=1000,NameID=1810240,DesID=1820240,Order=239,Rank=RankType.RT_Golden,AchieveType="探索",AchievePoint=80,ScriptOwner={2,6,7,},},
+  [1001]={BaseID=1001,NameID=1810241,DesID=1820241,Order=240,Rank=RankType.RT_DarkGolden,AchieveType="探索",AchievePoint=200,ScriptOwner={2,6,7,},},
 }
 for k,v in pairs(Achieve) do
     setmetatable(v, {['__index'] = AchieveDefault})

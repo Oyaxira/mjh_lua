@@ -58,6 +58,8 @@ local AchieveReward= {
   [60]={BaseID=60,NameID=2610016,DescID=2620016,Rank=RankType.RT_Purple,RewardNavType=AchieveRewardNavType.ARNT_GrowSpeed,RewardValueA="130047",AutoEffective=TBoolean.BOOL_NO,Sequence=16,},
   [61]={BaseID=61,NameID=2610037,AchievePointCost=1500,DescID=2620037,Rank=RankType.RT_Orange,RewardValueA="130048",RewardValueC=1,AutoEffective=TBoolean.BOOL_NO,Sequence=37,},
   [62]={BaseID=62,NameID=2610038,AchievePointCost=1500,DescID=2620038,Rank=RankType.RT_Golden,RewardValueA="130048",RewardValueB=2,RewardValueC=2,AutoEffective=TBoolean.BOOL_NO,Condition=61,Sequence=38,},
+  [63]={BaseID=63,NameID=2610049,AchievePointCost=100,DescID=2620049,Rank=RankType.RT_Purple,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardType=AchieveRewardType.ARD_StartDisposition,RewardValueB=10,Condition=37,Sequence=63,},
+  [64]={BaseID=64,NameID=2610050,AchievePointCost=500,DescID=2620050,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardType=AchieveRewardType.ARD_StartDisposition,RewardValueB=20,Condition=63,Sequence=64,},
 }
 for k,v in pairs(AchieveReward) do
     setmetatable(v, {['__index'] = AchieveRewardDefault})

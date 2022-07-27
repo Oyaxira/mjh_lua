@@ -376,12 +376,12 @@ function WindowsManager:Update(deltaTime)
                     taskCompleteUI:Onclick_Continue()
                 end
             end
-            if IsWindowOpen('BattleGameEndUI') then
-                local battleGameEndUI = GetUIWindow('BattleGameEndUI')
-                if battleGameEndUI then
-                    battleGameEndUI:OnClick_Win()
-                end
-            end
+            -- if IsWindowOpen('BattleGameEndUI') then
+            --     local battleGameEndUI = GetUIWindow('BattleGameEndUI')
+            --     if battleGameEndUI then
+            --         battleGameEndUI:OnClick_Win()
+            --     end
+            -- end
 
         elseif l_GetKeyDown(CS.UnityEngine.KeyCode.BackQuote) then
             local FPSUI = GetUIWindow("FPSUI")

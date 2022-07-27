@@ -306,6 +306,10 @@ function SelectUI:InitEventListener()
 		self.uiInteractType = uiType
 	end)
 
+	self:AddEventListener("UPDATE_TASKTAG_DATA", function()
+		self.updateFlag = SetFlag(self.updateFlag, UPDATE_TYPE.UPDATE_INTERACT)
+	end)
+
 	--邀请后, npc id 会变化, 需要使用inst roll
 	self:AddEventListener("UPDATE_MAIN_ROLE_INFO", function()
 		self.updateFlag = SetFlag(self.updateFlag, UPDATE_TYPE.UPDATE_ROLE_DATA)

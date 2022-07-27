@@ -23,7 +23,7 @@ function BlackBackgroundUI:OnDestroy()
 end
 
 function BlackBackgroundUI:RefreshUI(actionInfo)
-    self.isShow = actionInfo.isShow
+    local isShow = actionInfo.isShow
     local duration = actionInfo.duration
     local waitAnimEnd = actionInfo.waitAnimEnd
     self:PlayAnim(isShow, duration, waitAnimEnd)

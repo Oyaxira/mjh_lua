@@ -857,6 +857,9 @@ local Embattle= {
   [1550]={BaseID=1550,RoleData={{ID=1030201008,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3607,Count=3,MaxCount=3,},},},
   [1551]={BaseID=1551,EmbattleType=EmbattleType.EBT_Battle_RandomGenerateEmbattleEX,MinLMonster=1,MaxLMonster=1,LittleMonster={1230113003,},},
   [1552]={BaseID=1552,RoleData={{ID=0,Type=0,FargID=3608,Count=3,MaxCount=3,},},},
+  [1553]={BaseID=1553,RoleData={{ID=1000114009,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114015,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114013,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114016,Type=0,FargID=0,Count=1,MaxCount=2,},{ID=1000114011,Type=0,FargID=0,Count=1,MaxCount=2,},},},
+  [1554]={BaseID=1554,RoleData={{ID=1000114010,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114015,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114016,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114011,Type=0,FargID=0,Count=1,MaxCount=2,},},},
+  [1555]={BaseID=1555,RoleData={{ID=1000114011,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114015,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114016,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114013,Type=0,FargID=0,Count=1,MaxCount=1,},},},
 }
 for k,v in pairs(Embattle) do
     setmetatable(v, {['__index'] = EmbattleDefault})

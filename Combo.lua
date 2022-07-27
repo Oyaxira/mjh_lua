@@ -63,7 +63,7 @@ local Combo= {
   [68]={BaseID=68,MartialList={10424,10422,10421,},TrigMartial=10421,},
   [69]={BaseID=69,MartialList={10424,10422,},TrigMartial=10422,},
   [70]={BaseID=70,MartialList={10111,10112,},TrigMartial=10112,},
-  [71]={BaseID=71,MartialList={10112,10112,},TrigMartial=10124,},
+  [71]={BaseID=71,MartialList={10112,10112,10124,},TrigMartial=10124,},
   [74]={BaseID=74,MartialList={11320,11321,},TrigMartial=11321,},
 }
 

@@ -536,7 +536,7 @@ function CreateRoleUI:_RefreshUI_help(info)
 			if info.akRoles and info.akRoles[i] then
 				local tbData = TableDataManager:GetInstance():GetTableData("CreateRole", info.akRoles[i].uiTypeID);
 				if tbData and tbData.ClientHide == TBoolean.BOOL_NO then					
-					if tbData.OwnDLC == 0 or DRCSRef.LogicMgr:GetInfo("dlc", 1) == 1 then					
+					if tbData.OwnDLC == TBoolean.BOOL_NO or DRCSRef.LogicMgr:GetInfo("dlc", 1) == 1 then					
 						table.insert(tempTable, info.akRoles[i]);
 					end
 				end
@@ -599,7 +599,7 @@ function CreateRoleUI:_RefreshUI(info)
 			if info.akRoles and info.akRoles[i] then
 				local tbData = TableDataManager:GetInstance():GetTableData("CreateRole", info.akRoles[i].uiTypeID);
 				if tbData and tbData.ClientHide == TBoolean.BOOL_NO then
-					if tbData.OwnDLC == 0 or (DRCSRef.LogicMgr.GetInfo and DRCSRef.LogicMgr:GetInfo("dlc", 1) == 1) then
+					if tbData.OwnDLC == TBoolean.BOOL_NO or (DRCSRef.LogicMgr.GetInfo and DRCSRef.LogicMgr:GetInfo("dlc", 1) == 1) then
 						table.insert(tempTable, info.akRoles[i])
 					end
 				end
@@ -1362,7 +1362,6 @@ end
 
 -- 刷新右下角天赋
 function CreateRoleUI:RefreshGiftPool(index)
-	self.giftIDArray = {};
 	local info = RoleDataManager:GetInstance():GetCreateRoleData(index, self.createInfo)
 	if not (info and info['uiGifts']) then
 		dprint("Error，数据中没有 uiGifts".. index)
@@ -1440,14 +1439,20 @@ function CreateRoleUI:OnScrollChangedGift(transform, index)
 				RemoveWindowImmediately("TipsPopUI")
 			end)
 		end
-
-		table.insert(self.giftIDArray, giftID);
+	
 	end		
 end
 
 
 function CreateRoleUI:OnClick_SpecialBtn()
-	local tips = TipsDataManager:GetInstance():GetRoleGiftTips(self.giftIDArray)
+	local aiGift = {}
+	for key, giftID in pairs(self.aiCurGift) do
+		local _Gift = TableDataManager:GetInstance():GetTableData("Gift", giftID)
+		if giftID and giftID ~= 794 and giftID ~= 616 and giftID ~= 77 and _Gift  then
+			table.insert(aiGift, giftID);
+		end
+	end
+	local tips = TipsDataManager:GetInstance():GetRoleGiftTips(aiGift)
 	local spGift = string.match(tips.content, '(<.-color>)');
 	tips.content = string.gsub(tips.content, spGift, spGift .. '<color=#FF0000> (角色独有)</color>');
 	OpenWindowImmediately("TipsPopUI", tips)	

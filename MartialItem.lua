@@ -2899,7 +2899,7 @@ local MartialItem= {
   [100001644]={BaseID=100001644,ItemType=MartialItemType.MIT_Move,EffectEnum1=MartialItemEffect.MTT_ZHAOSHIJINENG,SkillID1=1170,},
   [100001645]={BaseID=100001645,ItemType=MartialItemType.MIT_Move,EffectEnum1=MartialItemEffect.MTT_ZHAOSHIJINENG,SkillID1=1427,},
   [100001646]={BaseID=100001646,SkillID1=1428,},
-  [100001647]={BaseID=100001647,ItemType=MartialItemType.MIT_Move,EffectEnum1=MartialItemEffect.MTT_ZHAOSHIJINENG,SkillID1=223,},
+  [100001647]={BaseID=100001647,ItemType=MartialItemType.MIT_Move,EffectEnum1=MartialItemEffect.MTT_ZHAOSHIJINENG,SkillID1=252,},
   [100001648]={BaseID=100001648,ItemType=MartialItemType.MIT_Move,EffectEnum1=MartialItemEffect.MTT_ZHAOSHIJINENG,SkillID1=1484,},
   [100001649]={BaseID=100001649,SkillID1=229,},
   [100001650]={BaseID=100001650,SkillID1=34,},

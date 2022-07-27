@@ -305,8 +305,17 @@ function CityUI:Update(deltaTime)
 	for _, cityBuildingUI in ipairs(self.cityBuildingUIList) do
 		cityBuildingUI:Update(deltaTime)
 	end
-
 	self.advlootRayCheck:Update()
+	if IsNotInGuide() then
+		if not IsAnyWindowOpen(NavigationHotKeyInvalidWindows) then
+			if g_mazeGridAdvLootUpdateTimer and globalTimer:GetTimer(g_mazeGridAdvLootUpdateTimer) then 
+				return
+			end
+			if GetKeyDownByFuncType(FuncType.MazePick) then 
+				self:OnClickGetAllLoot()
+			end
+		end
+	end
 end
 
 function CityUI:UpdateAdvLoot(uiCurMap)
@@ -339,6 +348,22 @@ function CityUI:UpdateAdvLoot(uiCurMap)
 			if tempData.uiSiteType == ADVLOOT_SITE.ADV_CITY then
 				local buildAdvLootBaseID = tempData.uiAdvLootID
 				adv_loot:UpdateMapAdvLoot(uiID, buildAdvLootBaseID, uiCurMap, deleteFunc) 
+			end
+		end
+	end
+end
+
+function CityUI:OnClickGetAllLoot()
+	for key, value in pairs(self.AdvlootList or {}) do
+		value:PickUp()
+	end
+	if g_mazeGridAdvLootUpdateTimer and globalTimer:GetTimer(g_mazeGridAdvLootUpdateTimer) then 
+        return
+    end
+	for _, value in pairs(self.cityBuildingUIList or {}) do
+		if next(value.AdvlootList or {}) then
+			for _, AdvlootItem in pairs(value.AdvlootList) do
+				AdvlootItem:PickUp()
 			end
 		end
 	end

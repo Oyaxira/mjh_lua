@@ -19,7 +19,7 @@ local RoleFaceDefault= {
   [9013]={BaseID=12,PositionType=CreateFacePositionType.CFPT_FACIALADORNMENT,RoleFaceBaseID=9001,SexLimit=SexType.ST_Female,},
   [10016]={BaseID=15,PositionType=CreateFacePositionType.CFPT_BACK,RoleFaceBaseID=10001,SexLimit=SexType.ST_Male,},
   [11017]={BaseID=16,PositionType=CreateFacePositionType.CFPT_BACK,RoleFaceBaseID=11001,SexLimit=SexType.ST_Female,},
-  [12015]={BaseID=13,PositionType=CreateFacePositionType.CFPT_BODY,RoleFaceBaseID=12002,SexLimit=SexType.ST_Male,},
+  [12018]={BaseID=13,PositionType=CreateFacePositionType.CFPT_BODY,RoleFaceBaseID=12005,SexLimit=SexType.ST_Male,},
   [15016]={BaseID=14,PositionType=CreateFacePositionType.CFPT_BODY,RoleFaceBaseID=15002,SexLimit=SexType.ST_Female,},
   [18018]={BaseID=7,PositionType=CreateFacePositionType.CFPT_FACE,RoleFaceBaseID=18011,SexLimit=SexType.ST_Male,},
   [18119]={BaseID=8,PositionType=CreateFacePositionType.CFPT_FACE,RoleFaceBaseID=18111,SexLimit=SexType.ST_Female,},

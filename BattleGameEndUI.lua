@@ -30,6 +30,14 @@ function BattleGameEndUI:Init()
     self.hasClick = false
 end
 
+function BattleGameEndUI:Update()
+    if GetKeyDownByFuncType(FuncType.CloseBattleEnd) then
+        if HasValue(self.eState, SE_VICTORY) then
+            self:OnClick_Win()
+        end
+    end 
+end
+
 function BattleGameEndUI:RefreshCallHelpButton()
     self.iCost = 0
     if TaskTagManager:GetInstance():IsNewVillageState() then
@@ -120,6 +128,7 @@ function BattleGameEndUI:RefreshUI(retStream)
     local iTypeID = scoreInfo.iTypeID
     local iEndScore = scoreInfo.iEndScore   --评价总分
     local eFlag = scoreInfo.eFlag
+    self.eState = scoreInfo.eFlag
     local iScoreNum = scoreInfo.iScoreNum
     local uiTeamExp = scoreInfo.uiTeamExp   --队伍经验
     local uiMartialExp = scoreInfo.uiMartialExp --武学经验
@@ -200,6 +209,10 @@ function BattleGameEndUI:RefreshUI(retStream)
 
     --
     self:RefPrivilegeUI();
+end
+
+function BattleGameEndUI:ReturnBattleState()
+    return self.eState or SE_DEFEAT
 end
 
 function BattleGameEndUI:RefPrivilegeUI()

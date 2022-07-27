@@ -6,6 +6,18 @@ require("common");
 
 
 local SkillEffect= {
+  [451402014]={BaseID=451402014,Name=SkillEffectDescription.SED_SkillCondition_SelfSameMaritalSkill,},
+  [451402015]={BaseID=451402015,Name=SkillEffectDescription.SED_SkillLogic_ZuiZhongZhiLiaoJiaChengQunTi,EventArg1={0,451402016,},EventArg2={0,451402017,},},
+  [451402016]={BaseID=451402016,Name=SkillEffectDescription.SED_Battle_GetEventEffectiveTarget,},
+  [451402017]={BaseID=451402017,Name=SkillEffectDescription.SED_BasicDataOperation,EventArg1={3,0,},EventArg2={10000000,0,},EventArg3={0,451402018,},},
+  [451402018]={BaseID=451402018,Name=SkillEffectDescription.SED_Role_MartialLv_Index,EventArg1={0,451402019,},EventArg2={0,451402020,},},
+  [451402019]={BaseID=451402019,},
+  [451402020]={BaseID=451402020,Name=SkillEffectDescription.SED_System_GetCurrentEffectMartial,},
+  [451403001]={BaseID=451403001,Name=SkillEffectDescription.SED_SkillCondition_CommonInitiativeUseSkill,},
+  [451403002]={BaseID=451403002,Name=SkillEffectDescription.SED_SkillLogic_CommonInitiativeSkill,EventArg1={451403003,0,},},
+  [451403003]={BaseID=451403003,Name=SkillEffectDescription.SED_LogicOperation_ActionList,EventArg1={0,451403004,},},
+  [451403004]={BaseID=451403004,Name=SkillEffectDescription.SED_Null,EventArg1={0,451403005,},EventArg2={0,451403006,},EventArg3={0,451403016,},},
+  [451403005]={BaseID=451403005,Name=SkillEffectDescription.SED_SkillEffect_PlaySpecialEffect,},
   [451403006]={BaseID=451403006,Name=SkillEffectDescription.SED_SkillEffect_ModifyShield,EventArg1={0,451403007,},EventArg2={0,451403008,},},
   [451403007]={BaseID=451403007,},
   [451403008]={BaseID=451403008,Name=SkillEffectDescription.SED_BasicDataOperation,EventArg1={1,0,},EventArg2={0,451403009,},EventArg3={0,451403013,},},

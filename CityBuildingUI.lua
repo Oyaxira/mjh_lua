@@ -630,7 +630,7 @@ function CityBuildingUI:UpdateDynacMapLoot()
 				if not AdvLootManager:GetInstance():IsMapDynamicAdvLootFirstUpdate(uiID) then 
 					func_update()
 				else
-					globalTimer:AddTimer(delayTimer, func_update)
+					g_mazeGridAdvLootUpdateTimer = globalTimer:AddTimer(delayTimer, func_update)
 					delayTimer = delayTimer + math.random(50, 100)
 				end
 			end

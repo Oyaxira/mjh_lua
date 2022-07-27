@@ -53,7 +53,9 @@ function MiniMapUI:Init()
 end
 
 function MiniMapUI:SetActorPos(x,y)
-    self.pos_Text.text = x..","..y
+    if x and y then
+        self.pos_Text.text = math.floor(x)..","..math.floor(y)
+    end
 end
 
 function MiniMapUI:RefreshUI()
@@ -80,6 +82,18 @@ function MiniMapUI:Update()
         self:UpdateEvent()
         self:UpdateCity()
     end
+    if IsNotInGuide() then
+		if not IsAnyWindowOpen(NavigationHotKeyInvalidWindows) then
+			if GetKeyDownByFuncType(FuncType.OpenMinMap) then 
+                local MapUnfoldUI = GetUIWindow("MapUnfoldUI")
+                if MapUnfoldUI and MapUnfoldUI:IsOpen() then
+                    MapUnfoldUI:OnClickChangeSize()
+                else
+                    self.unfold_btn.onClick:Invoke()	
+                end
+			end
+		end
+	end
 end
 
 function MiniMapUI:CalImg(px,py)
