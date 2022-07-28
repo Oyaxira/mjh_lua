@@ -4,9 +4,11 @@ local aoyi = require("AoYi")
 local item = require("Item")
 local gift = require("Gift")
 local skill = require("Skill")
+local zhaoshiitem = require("MartialItem")
 require("common");
 
 local wenben = require("Language161")
+local roles = require("Role")
 
 function tableMerge(t1, t2)
     for k,v in pairs(t2) do
@@ -32,6 +34,10 @@ tableMerge(wenben, require("Language111"))
 tableMerge(wenben, require("Language0"))
 tableMerge(wenben, require("Language113"))
 tableMerge(wenben, require("Language118"))
+tableMerge(wenben, require("Language171"))
+tableMerge(roles, require("Role1"))
+tableMerge(roles, require("Role2"))
+tableMerge(roles, require("Role3"))
 
 local csv_str = "秘奥义"
 csv_str = csv_str .. "秘奥义名称,秘奥义需求1,秘奥义需求2,秘奥义需求3"
@@ -84,20 +90,48 @@ io.output(file)
 io.write(csv_str)
 io.close(file)
 
-csv_str = "技能id;技能名称;描述;稀有度"
+csv_str = "技能id;技能名称;描述;稀有度;等级效果"
 
-for key,value in pairs(skill) do
+for key,value in pairs(zhaoshi) do
   if value.NameID == 0 then
     break
   end
-  name = wenben[value.NameID]
   id = value.BaseID
   rank = value.Rank
   rank_wenben = rank and wenben[RankType_Lang[rank]] or ""
-  desc_wenben = wenben[value.DescID]
-  desc = desc_wenben and string.gsub(wenben[value.DescID], "\n", "") or ""
+  name = wenben[value.NameID]
+  desc_wenben = wenben[value.DesID]
+  desc = desc_wenben and string.gsub(wenben[value.DesID], "\n", "") or ""
   name2 = "\n" .. id .. ";" .. name .. ";" .. desc .. ";" .. rank_wenben
-  csv_str = csv_str .. name2
+  level_skill = "\n;技能效果;"
+  UnlockLvls = value.UnlockLvls
+  numb = 1
+  if UnlockLvls then
+    for k,v in ipairs(UnlockLvls) do
+      zhaoshiitem_id = value.UnlockClauses[k]
+      if zhaoshiitem_id == 0 then
+      else
+        skill_id = zhaoshiitem[zhaoshiitem_id].SkillID1
+        if skill_id == 0 then
+        else
+          skill_wenben_id = skill[skill_id].DescID
+          if skill_wenben_id == 0 then
+            skill_wenben_id = skill[skill_id].NameID
+          end
+          wenben_text = wenben[skill_wenben_id] and string.gsub(wenben[skill_wenben_id], "\n", "") or ""
+          wenben_text = string.gsub(wenben_text, ";", "、")
+          tmp = v .. "级: " .. wenben_text .. "\n"
+          if numb == 1 then
+            level_skill = level_skill .. tmp
+          else
+            level_skill = level_skill .. ";;" .. tmp
+          end
+          numb = numb + 1
+        end
+      end
+    end
+  end
+  csv_str = csv_str .. name2 .. level_skill
 end
 
 file = io.open("../技能列表.csv", "w")
@@ -122,6 +156,85 @@ for key,value in pairs(gift) do
 end
 
 file = io.open("../天赋列表.csv", "w")
+io.output(file)
+io.write(csv_str)
+io.close(file)
+
+
+
+
+
+
+csv_str = "技能名称;特效名;特效描述;需求等级;"
+
+for key,value in pairs(zhaoshi) do
+  if value.NameID == 0 then
+    break
+  end
+  id = value.BaseID
+  rank = value.Rank
+  name = wenben[value.NameID]
+  result = ""
+  UnlockLvls = value.UnlockLvls
+  if UnlockLvls then
+    for k,v in ipairs(UnlockLvls) do
+      zhaoshiitem_id = value.UnlockClauses[k]
+      if zhaoshiitem_id == 0 then
+      else
+        skill_id = zhaoshiitem[zhaoshiitem_id].SkillID1
+        if skill_id == 0 then
+        else
+          skill_wenben_id = skill[skill_id].DescID
+          if skill_wenben_id == 0 then
+            skill_wenben_id = skill[skill_id].NameID
+          end
+          skill_name_id = skill[skill_id].NameID
+          wenben_text = wenben[skill_wenben_id] and string.gsub(wenben[skill_wenben_id], "\n", "") or ""
+          wenben_text = string.gsub(wenben_text, ";", "、")
+          name_text = wenben[skill_name_id] and string.gsub(wenben[skill_name_id], "\n", "") or ""
+          tmp = "\r\n" .. name .. ";" .. name_text .. ";" .. wenben_text .. ";" .. v .. "级;"
+          result = result .. tmp
+        end
+      end
+    end
+  end
+  csv_str = csv_str .. result
+end
+
+file = io.open("../技能筛选.csv", "w")
+io.output(file)
+io.write(csv_str)
+io.close(file)
+
+
+
+
+csv_str = "人物名;专属技能名称;专属技能稀有度;特效描述\r\n"
+
+for key,value in pairs(zhaoshi) do
+  if value.NameID == 0 then
+    break
+  end
+  id = value.BaseID
+  rank = value.Rank
+  rank_wenben = rank and wenben[RankType_Lang[rank]] or ""
+  name = wenben[value.NameID]
+  desc_wenben = wenben[value.DesID]
+  desc = desc_wenben and string.gsub(wenben[value.DesID], "\n", "") or ""
+  result = ""
+  if value.Exclusive then
+    renname = ""
+    for k,v in pairs(roles) do
+      if v.RoleID == value.Exclusive[1] then
+        renname = wenben[v.NameID]
+      end
+    end
+    result = result .. renname .. ";" .. name .. ";" .. rank_wenben .. ";" .. desc .. "\r\n"
+  end
+  csv_str = csv_str .. result
+end
+
+file = io.open("../专属技能.csv", "w")
 io.output(file)
 io.write(csv_str)
 io.close(file)
