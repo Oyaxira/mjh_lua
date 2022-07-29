@@ -380,14 +380,35 @@ function CreateFaceUI:GetDefaultFaceDataList()
                 index_female[roleFaceData.PositionType] = 1
             end
             if roleFaceData.SexLimit == SexType.ST_Female then
+
                 self.faceDataPartRange_Female[roleFaceData.PositionType][index_female[roleFaceData.PositionType]] = index
-                self.faceDataPartBaseid2Index_Female[roleFaceData.PositionType][index] = index_female[roleFaceData.PositionType]
+                --self.faceDataPartBaseid2Index_Female[roleFaceData.PositionType][index] = index_female[roleFaceData.PositionType]
                 index_female[roleFaceData.PositionType] = index_female[roleFaceData.PositionType] + 1
             else
                 self.faceDataPartRange_Male[roleFaceData.PositionType][index_male[roleFaceData.PositionType]] = index
-                self.faceDataPartBaseid2Index_Male[roleFaceData.PositionType][index] = index_male[roleFaceData.PositionType]
+                --self.faceDataPartBaseid2Index_Male[roleFaceData.PositionType][index] = index_male[roleFaceData.PositionType]
                 index_male[roleFaceData.PositionType] = index_male[roleFaceData.PositionType] + 1
             end
+        end
+    end
+    local fun = function (a ,b)
+        return a < b
+    end
+    local index = 1
+    for key, value in pairs(self.faceDataPartRange_Female) do
+        table.sort(value, fun)
+        index = 1
+        for _, data in pairs(value) do
+            self.faceDataPartBaseid2Index_Female[key][data] = index
+            index = index + 1
+        end
+    end
+    for key, value in pairs(self.faceDataPartRange_Male) do
+        table.sort(value, fun)
+        index = 1
+        for _, data in pairs(value) do
+            self.faceDataPartBaseid2Index_Male[key][data] = index
+            index = index + 1
         end
     end
 end

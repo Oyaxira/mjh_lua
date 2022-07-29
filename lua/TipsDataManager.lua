@@ -1013,15 +1013,16 @@ function TipsDataManager:GetSkillTips(martialData,skillid,martialTypeID)
     if martialBaseData.EffectEnum1 ~= MartialItemEffect.MTT_BEIDONGJINENG then
         local costMpPercent, costMpValue = MartialDataManager:GetInstance():GetSkillMPCost(tbl_skill1, martialLevel, roleData)
         local str_con --= getUIBasedText('blue', string.format("消耗真气：%.2f%%最大真气（%d）", costMpPercent, costMpValue))
+        costMpPercent = math.floor(costMpPercent)
         if costMpValue == 0 then
             if not roleData then
-                str_con = getUIBasedText('blue', string.format("消耗真气：%.2f%%最大真气", costMpPercent))
+                str_con = getUIBasedText('blue', string.format("消耗真气：%d%%最大真气", costMpPercent))
             else
                 str_con = getUIBasedText('blue', "消耗真气：无")--string.format("消耗真气：%.2f%%最大真气", costMpPercent))
             end
             
         else
-            str_con = getUIBasedText('blue', string.format("消耗真气：%.2f%%最大真气（%d）", costMpPercent, costMpValue))
+            str_con = getUIBasedText('blue', string.format("消耗真气：%d%%最大真气（%d）", costMpPercent, costMpValue))
         end
         content[#content + 1] = str_con .. "\n"
     end
@@ -1611,10 +1612,11 @@ function TipsDataManager:GetBattleSkillTips(martialDataList, index)
     if martialBaseData.EffectEnum1 ~= MartialItemEffect.MTT_BEIDONGJINENG then
         local costMpPercent, _ = MartialDataManager:GetInstance():GetSkillMPCost(tbl_skill1, martialData.iMartialLevel)
         local str_con
+        costMpPercent = math.floor(costMpPercent)
         if costMpPercent == 0 then
             str_con = getUIBasedText('blue', "消耗真气：无")
         else
-            str_con = getUIBasedText('blue', string.format("消耗真气：%.2f%%最大真气（%d）", costMpPercent, martialData.iCostMP or 0))
+            str_con = getUIBasedText('blue', string.format("消耗真气：%d%%最大真气（%d）", costMpPercent, martialData.iCostMP or 0))
         end
         content[#content + 1] = str_con .. "\n"
     end

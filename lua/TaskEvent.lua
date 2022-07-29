@@ -8142,6 +8142,8 @@ local TaskEvent= {
   [4441044]={BaseID=4441044,EventArg1="1104441259",EventArg4="False",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [4441045]={BaseID=4441045,Event=Event.Event_BattleWin,},
   [4441046]={BaseID=4441046,Event=Event.Event_BattleWin,},
+  [4441047]={BaseID=4441047,Event=Event.Event_MapSelect,EventArg1="1803",IsCoverSystemFunction=TBoolean.BOOL_NO,},
+  [4441048]={BaseID=4441048,Event=Event.Event_RoleInteractive,EventArg1="1104441286",EventArg2="1070112002",EventArg3="1502",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [4442001]={BaseID=4442001,Event=Event.Event_RoleInteractive,EventArg1="1104442002",EventArg2="1070101010",EventArg3="129",},
   [4442002]={BaseID=4442002,Event=Event.Event_NULL,EventArg2="1070101010",EventGroup="274793224_276302169_2",},
   [4442003]={BaseID=4442003,Event=Event.Event_BattleWin,},
@@ -10007,8 +10009,6 @@ local TaskEvent= {
   [5024016]={BaseID=5024016,EventArg1="1105024015",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [5024017]={BaseID=5024017,EventArg1="1105024017",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [5024018]={BaseID=5024018,EventArg1="1105024019",IsCoverSystemFunction=TBoolean.BOOL_NO,},
-  [5024019]={BaseID=5024019,EventArg1="1105024021",IsCoverSystemFunction=TBoolean.BOOL_NO,},
-  [5024020]={BaseID=5024020,EventArg1="1105024023",IsCoverSystemFunction=TBoolean.BOOL_NO,},
 }
 for k,v in pairs(TaskEvent) do
     setmetatable(v, {['__index'] = TaskEventDefault})

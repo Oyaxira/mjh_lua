@@ -7,6 +7,8 @@ require("common");
 
 
 local TaskEvent= {
+  [5024019]={BaseID=5024019,EventArg1="1105024021",IsCoverSystemFunction=TBoolean.BOOL_NO,},
+  [5024020]={BaseID=5024020,EventArg1="1105024023",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [5024021]={BaseID=5024021,EventArg1="1105024025",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [5024022]={BaseID=5024022,EventArg1="1105024027",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [5024023]={BaseID=5024023,EventArg1="1105024029",IsCoverSystemFunction=TBoolean.BOOL_NO,},

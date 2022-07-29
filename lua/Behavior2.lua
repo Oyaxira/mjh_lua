@@ -6,6 +6,8 @@ require("common");
 
 
 local Behavior= {
+  [6118022]={BaseID=6118022,Type=BehaviorType.BET_GET_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="战斗ID",},
+  [6118023]={BaseID=6118023,Type=BehaviorType.BET_ADD_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="战斗ID",Arg3="224",},
   [6118024]={BaseID=6118024,Type=BehaviorType.BET_NEXTBATTLE_ADDBUFF,Arg1="386",Arg2="1",},
   [6118025]={BaseID=6118025,Type=BehaviorType.BET_CLEAR_INTERACT_INFO,},
   [6270001]={BaseID=6270001,Type=BehaviorType.BET_GEN_RANDOM_INT,Arg1="1",Arg2="20",},

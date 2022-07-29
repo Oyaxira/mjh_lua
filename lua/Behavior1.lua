@@ -1287,6 +1287,8 @@ local Behavior= {
   [4441107]={BaseID=4441107,Arg1="1950",Arg2="=",Arg3="1",},
   [4441108]={BaseID=4441108,Arg1="1950",Arg2="=",Arg3="1",},
   [4441109]={BaseID=4441109,Arg1="2215",Arg2="=",Arg3="1",},
+  [4441111]={BaseID=4441111,Type=BehaviorType.BET_MOVE_ROLE,Arg1="1804",},
+  [4441112]={BaseID=4441112,Type=BehaviorType.BET_MOVE_ROLE,Arg1="1804",},
   [4442001]={BaseID=4442001,Type=BehaviorType.BET_START_BATTLE,Arg2="1656",},
   [4442002]={BaseID=4442002,Arg1="1260",Arg2="=",Arg3="1",},
   [4442003]={BaseID=4442003,Type=BehaviorType.BET_START_BATTLE,Arg2="1725",},
@@ -9980,7 +9982,7 @@ local Behavior= {
   [5972001]={BaseID=5972001,Type=BehaviorType.BET_GET_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="卡片",},
   [5972002]={BaseID=5972002,Type=BehaviorType.BET_FIRE_CUSTOM_EVENT,Arg1="30758",},
   [5972003]={BaseID=5972003,Arg1="2208",Arg2="+=",Arg3="1",},
-  [5972004]={BaseID=5972004,Arg1="2068",Arg2="=",Arg3="0",},
+  [5972004]={BaseID=5972004,Arg1="2208",Arg2="=",Arg3="0",},
   [5972005]={BaseID=5972005,Type=BehaviorType.BET_MAZE_MOVE_TO_CLICK,},
   [5972006]={BaseID=5972006,Type=BehaviorType.BET_MAZE_MOVE_TO_CLICK,},
   [6118001]={BaseID=6118001,Type=BehaviorType.BET_GET_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="目标角色",},
@@ -10004,8 +10006,6 @@ local Behavior= {
   [6118019]={BaseID=6118019,Type=BehaviorType.BET_ADD_PUNISH_LEVEL,Arg1="10",},
   [6118020]={BaseID=6118020,Type=BehaviorType.BET_CLEAR_INTERACT_INFO,},
   [6118021]={BaseID=6118021,Type=BehaviorType.BET_GET_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="商店条件",},
-  [6118022]={BaseID=6118022,Type=BehaviorType.BET_GET_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="战斗ID",},
-  [6118023]={BaseID=6118023,Type=BehaviorType.BET_ADD_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="战斗ID",Arg3="224",},
 }
 
 -- export table: Behavior
