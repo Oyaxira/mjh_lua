@@ -307,7 +307,7 @@ function NavigationUI:Init()
 	end
 	self:RefreshLimitShopBtn()
 
-	self.objHouse:SetActive(self.bReturnHouseState)
+	self.objHouse:SetActive(false)
 	self.objHouseNotice = self:FindChild(self.objHouse, 'Image_notice')
 	self.textHouseNotice = self:FindChildComponent(self.objHouseNotice, "Text", "Text")
 	self.canvasGroupHouseNotice = self.objHouseNotice:GetComponent("CanvasGroup")
@@ -519,11 +519,11 @@ function NavigationUI:RefreshButtonZm(process)
 end
 
 function NavigationUI:RefreshBtn_House(info)
-	local bRetHouseState = PlayerSetDataManager:GetInstance():GetUnlockHouseState()
-	if bRetHouseState ~= self.bReturnHouseState then
-		self.bReturnHouseState = bRetHouseState
-		self.objHouse:SetActive(bRetHouseState)
-	end
+	-- local bRetHouseState = PlayerSetDataManager:GetInstance():GetUnlockHouseState()
+	-- if bRetHouseState ~= self.bReturnHouseState then
+	-- 	self.bReturnHouseState = bRetHouseState
+	-- 	self.objHouse:SetActive(bRetHouseState)
+	-- end
 end
 function NavigationUI:CheckGuideMode()
 	if (self.bIsGuideMode == true) and (self.bInTown == true) then
@@ -739,6 +739,8 @@ function NavigationUI:Update()
 				end
 			elseif GetKeyDownByFuncType(FuncType.OpenOrCloseQuestUI) and not IsWindowOpen("TaskTipsUI") then
 				self.Button_quest.onClick:Invoke()
+			elseif GetKeyDownByFuncType(FuncType.OpenSaveFileUI) then
+				OpenWindowImmediately("SaveFileUI")
 			end
 		end
 	end

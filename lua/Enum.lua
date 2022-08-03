@@ -727,6 +727,8 @@ WINDOW_ORDER_INFO =
     -- 迷宫进入提示
     ["MazeEntryUI"] = { order = 140 },
 
+    ["SaveFileUI"] = { order = 140 },
+
 }
 
 CUSTOM_ACTIONEND_UI_NAME =
@@ -1582,3 +1584,7 @@ SYSTEM_ANNOUNCEMENT_TYPE = {
     Thank = 2,
 }
 
+MOVE_TYPE = {
+    Manual = 1,--手动
+    Automatic = 2, --自动
+}

@@ -315,8 +315,9 @@ function UnitMgr:CreateAssistUint(kParent,kUnitAssistData,iIndex)
     local camp = kUnitAssistData['eCamp']
     local bpet = kUnitAssistData['bPet']
     local uiLevel = kUnitAssistData['uiLevel']
+    local uiModel = kUnitAssistData['uiMoedlID']
     local UnitAssist = UnitAssist.new()
-    UnitAssist:Init(kParent, uiTypeID, bpet, camp, AssitPos[iIndex],uiLevel,depth[iIndex])
+    UnitAssist:Init(kParent, uiTypeID, bpet, camp, AssitPos[iIndex],uiLevel,depth[iIndex],uiModel)
     self.akAllAssistUnit[iIndex] = UnitAssist
 end
 

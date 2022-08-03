@@ -124,6 +124,7 @@ CMD_GAC_QUERYHOODLEPRIVACYRESULTRET = 32931
 CMD_GAC_QUERYSTORYWEEKLIMITRET = 32939
 CMD_GAC_UPDATESYSTEMMODULEENABLESTATE = 32954
 CMD_GAC_ALLROLEFACERET = 32874
+CMD_GAC_QUERYSAVEFILERET = 32895
 --------------------------------------------------------------
 function registerGASToCLCommand()
 	CmdGASToCLDecodeTable[CMD_GAC_GAMECMDRET] = Decode_SeGAC_GameCmdRet
@@ -248,6 +249,7 @@ function registerGASToCLCommand()
 	CmdGASToCLDecodeTable[CMD_GAC_QUERYSTORYWEEKLIMITRET] = Decode_SeGAC_QueryStoryWeekLimitRet
 	CmdGASToCLDecodeTable[CMD_GAC_UPDATESYSTEMMODULEENABLESTATE] = Decode_SeGAC_UpdateSystemModuleEnableState
 	CmdGASToCLDecodeTable[CMD_GAC_ALLROLEFACERET] = Decode_SeGAC_AllRoleFaceRet
+	CmdGASToCLDecodeTable[CMD_GAC_QUERYSAVEFILERET] = Decode_SeGAC_QuerySaveFileRet
 end
 
 function GetGASToCLDecodeFuncByCmd(iCmd)
@@ -3378,6 +3380,15 @@ function Decode_SeGAC_AllRoleFaceRet(netStreamValue)
 		tempakRoleFaceData["uiRoleID"] = netStreamValue:ReadInt()
 		result["akRoleFaceData"][i] = tempakRoleFaceData
 	end
+	return result
+end
+
+function Decode_SeGAC_QuerySaveFileRet(netStreamValue)
+	local result = { ["bSuccess"] = 1,["eOptType"] = SSFRT_NEW_FILE,["acFilePath"] = nil,} 
+	result["dwSeqNum"] = netStreamValue:ReadInt()
+	result["bSuccess"] = netStreamValue:ReadByte()
+	result["eOptType"] = netStreamValue:ReadInt()
+	result["acFilePath"] = netStreamValue:ReadString()
 	return result
 end
 

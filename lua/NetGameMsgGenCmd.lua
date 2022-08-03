@@ -1304,3 +1304,8 @@ function KillClanBranch(clanID)
     local iSize = sendData:GetCurPos()
     NetGameCmdSend(SGC_KILL_CLANBRANCH, iSize, sendData)        
 end
+
+function SendSaveFileOpt(eOptType, acFileName, bOpenSaveFile)
+    local binData, iCmd = EncodeSendSeCGA_RequestSaveFileOpt(eOptType, acFileName, bOpenSaveFile)
+    SendPackageToNet(CS.GameApp.E_NETTYPE.NET_TOWNSERVER, iCmd, binData);     
+end

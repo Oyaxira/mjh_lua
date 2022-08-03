@@ -25,11 +25,11 @@ function UnitAssist:Clear()
     end
 end
 
-function UnitAssist:Init(kParent,uiTypeID,bpet,camp,pos,uiLevel,depth)
+function UnitAssist:Init(kParent,uiTypeID,bpet,camp,pos,uiLevel,depth,model)
     self.kParent = kParent
     self.uiTypeID = uiTypeID
     self.bpet = bpet
-    self.uiModleID = 1
+    self.uiModleID = model
     self.iCamp = camp
     self.uiLevel = uiLevel or 0
     if self.bpet > 0 then
@@ -38,9 +38,11 @@ function UnitAssist:Init(kParent,uiTypeID,bpet,camp,pos,uiLevel,depth)
             self.uiModleID = petData.ArtID
         end
     else
-        local roleData = TB_Role[uiTypeID]
-        if roleData then
-            self.uiModleID = roleData.ArtID
+        if model == 0 then
+            local roleData = TB_Role[uiTypeID]
+            if roleData then
+                self.uiModleID = roleData.ArtID
+            end
         end
     end
     self:LoadSpineCharacter(pos[1],pos[2])

@@ -135,6 +135,8 @@ function TileBigMap:Init()
 	--self.__forceUpdate = 1
 
 	self.objAnimation = self._gameObject:GetComponent(DRCSRef_Type.Animation)
+
+	self.objEffect = self:FindChild(self.objMap, "PointEffect")
 end
 
 function TileBigMap:RefreshUI(info)
@@ -160,10 +162,13 @@ function TileBigMap:OnEnable()
 	self.wait_event = nil
 	self.click_tile = nil
 	CityDataManager:GetInstance():UpdateCityWeatherEffect()
-	
+
+	self.comTileMap = self.objMap:FindChildComponent("Tilemap", "Tilemap")
+
 	local comMap = self.objMap:FindChildComponent("Tilemap", "Tilemap")
 	local tagMap = self.objMap:FindChildComponent("tag", "Tilemap")
 	TDM:GetInstance():LoadFromComponent(comMap, tagMap, GetCurScriptID())
+	TileFindPathManager:GetInstance():InitMapData(comMap, GetCurScriptID())
 end
 
 function TileBigMap:InitPos()
@@ -298,6 +303,19 @@ local funcType={
 local clickAreaConvert = {up=1,down=2,left=3,right=4}
 local keys = {'w', 's', 'a', 'd'}
 local mv = {0,1, 0,-1, -1,0 ,1,0}
+
+function TileBigMap:GetDirFind(x, y ,x1, y1)
+	if x < x1 then
+		return keys[4]
+	elseif x > x1 then
+		return keys[3]
+	elseif y < y1 then
+		return keys[1]
+	elseif y > y1 then
+		return keys[2]
+	end
+end
+
 function TileBigMap:Update(deltaTime)	
 	if self.init_pos == nil then
 		if not self:InitPos() then
@@ -305,18 +323,6 @@ function TileBigMap:Update(deltaTime)
 		end
 	end
 	local tdm = TDM:GetInstance()
-	-- if CS.UnityEngine.Input.GetKeyDown(CS.UnityEngine.KeyCode.F6) then
-
-	-- 	self.ofx = 13
-	-- 	self.ofy = 14
-	-- 	MyDOTween(self._gameObject.transform,'DOLocalMove', DRCSRef.Vec3(-self.ofx * 128, -self.ofy * 128, 0), 1.5)
-		
-	-- 	tdm.ev_dirty = true
-	-- 	self.bg_dirty = true
-	-- end
-	--if CS.UnityEngine.Input.GetKeyDown(CS.UnityEngine.KeyCode.F7) then
-	--	OpenWindowImmediately("SetNicknameUI")
-	--end
 	tdm:CheckCache()
 	self:UpdatePlayer(deltaTime)
 	self:UpdateCloud(deltaTime)
@@ -331,7 +337,21 @@ function TileBigMap:Update(deltaTime)
 	if self.server_mvTime or self.cam_dirty then
 		return
 	end
-	if self.wait_event or self.wait > 0 or self.mvTime < MOVE_TIME then		
+	local bStop = false
+	if CS.UnityEngine.Input.GetMouseButtonDown(0) then
+		local dir = self:CheckClickScreenDir()	
+		if dir and GetConfig('confg_Move') == 2 then
+			bStop = true
+		end
+	end
+	if KeyboardManager:GetInstance().MoveUpInvalidCondition() then
+		self.isClickMap = false
+		self.sendClick = false
+		self.objEffect:SetActive(false)
+		self.akNode = {}
+		return 
+	end
+	if (self.wait_event or self.wait > 0 or self.mvTime < MOVE_TIME) and not bStop then		
 		self.wait = self.wait - 1
 		return
 	end
@@ -359,8 +379,11 @@ function TileBigMap:Update(deltaTime)
 		end
 	end
 	if not keyPressed then
-		local dir = self:CheckClickScreenDir()
-		if dir then			
+		local dir = self:CheckClickScreenDir()	
+		if dir and GetConfig('confg_Move') == 2 then
+			self.akNode = {}
+			self.akNode = TileFindPathManager:GetInstance():AStarFind(x, y, dir.x, dir.y)
+		elseif dir then
 			if dir == "midle" and self.sendClick then
 				self.sendClick = false
 				local evs = tdm:QueryEvents(x, y)
@@ -372,6 +395,17 @@ function TileBigMap:Update(deltaTime)
 				d = keys[k]
 			end
 		end
+	end
+	if next(self.akNode or {}) then
+		if self.akNode[1] and not self.bStartMove then
+			self.bStartMove = true
+			d = self:GetDirFind(x, y, self.akNode[1].x, self.akNode[1].y)
+			x = self.akNode[1].x
+			y = self.akNode[1].y
+			table.remove(self.akNode, 1)
+		end
+	else
+		self.objEffect:SetActive(false)
 	end
 	if d then
 		self.last_key = d
@@ -404,6 +438,8 @@ end
 
 function TileBigMap:OpenCityAnimation(func_Complete)
 	self.wait_event = 0
+	self.akNode = {}
+	self.objEffect:SetActive(false)
 	MyDOTween(self._gameObject.transform,'DOScale',DRCSRef.Vec3(1.3, 1.3, 1),0.4)
 	self:AddTimer(350, function()
 		if func_Complete then
@@ -420,7 +456,7 @@ function TileBigMap:SendEventReq(evs, mv)
 	for _, v in pairs(evs) do
 		local pid, pos, role, evType, tag, ex, task = table.unpack(v)
 		if role == 0 and evType ~= 15 then
-			SendClickMap(CMT_TILE, pid)
+			SendClickMap(CMT_TILE, pid, task)
 		else
 			if evType == 1 then
 				-- local RM = RoleDataManager:GetInstance()
@@ -591,6 +627,7 @@ function TileBigMap:SetEventSprite(sp, pid, role, evType, x, y, tag, ex, task, i
 end
 
 function TileBigMap:MapMove(src, dest, p1, p2, p3)	
+	local p2 = p2 / 2 
 	local commonConfig = TableDataManager:GetInstance():GetTable("CommonConfig")[1]
 	local edm = EvolutionDataManager:GetInstance()
 	edm.rivakeTime = edm.rivakeTime + (p1 or 0)
@@ -672,6 +709,7 @@ function TileBigMap:UpdatePlayer(deltaTime)
 			self.server_mvTime = nil
 			self.mvTime = MOVE_TIME
 			DisplayUpdateScene(true)
+			
 			DisplayActionEnd()
 		end
 		return
@@ -682,6 +720,7 @@ function TileBigMap:UpdatePlayer(deltaTime)
 			self.x = tdm.x
 			self.y = tdm.y
 			self:SetPlayerPos(self.x, self.y)
+			self.bStartMove = false
 		end
 		if self.mvTime > (MOVE_TIME * 2) then
 			if self.pd == 'left/z' then
@@ -823,19 +862,41 @@ end
 local l_GetButtonUp= CS.UnityEngine.Input.GetButtonUp
 local l_GetButtonDown = CS.UnityEngine.Input.GetButtonDown
 local l_GetButton = CS.UnityEngine.Input.GetButton
+
 function TileBigMap:CheckClickScreenDir()
-	if KeyboardManager:GetInstance().MoveUpInvalidCondition() then
-		self.isClickMap = false
-		self.sendClick = false
-		return nil
-	end
 	if self.isClickMap then
 		local mousePos = CS.UnityEngine.Input.mousePosition
-		local dir = self:GetDir(mousePos.x,mousePos.y)
+		local dir = nil
+		if GetConfig('confg_Move') == 2 then
+			local worldPos = GetTouchWorldUIPos() *5
+			dir = self.comTileMap:WorldToCell(worldPos)
+			local comTile = self.comTileMap:GetTile(DRCSRef.Vec3Int(dir.x,dir.y,0))
+			if comTile and comTile.name == 'notpass' then
+				if self.tipTime == nil then
+					self.tipTime = self:AddTimer(200, function()
+						SystemUICall:GetInstance():Toast('前有障碍，无法移动', false)
+						local TileBigMap = GetUIWindow("TileBigMap")
+						if TileBigMap then
+							TileBigMap:RemoveTimer(TileBigMap.tipTime)
+							TileBigMap.tipTime = nil
+						end				
+					end)
+				end
+                return nil
+			else
+				if self.objEffect then
+					self.objEffect.transform.position = self.comTileMap:CellToWorld(DRCSRef.Vec3Int(dir.x,dir.y,0)) + DRCSRef.Vec3(2,2,0)
+					self.objEffect:SetActive(true)
+				end
+			end
+		else
+			dir = self:GetDir(mousePos.x,mousePos.y)
+		end
 		return dir
 	end
 	return nil
 end
+
 local clickArea = {
 	"down",
 	"right",

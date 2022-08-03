@@ -103,10 +103,13 @@ function PlayerSetDataManager:InitPlayerInfo(kRetData)
             OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COSTITEM_TIP, showContent, nil})
         end
         
-        CS.DHTackHelper.login(str_id, "",jsonStr)
+        local SaveFileUI = GetUIWindow("SaveFileUI") 
+        if not SaveFileUI then
+            CS.DHTackHelper.login(str_id, "",jsonStr)
+        end
     end
-    local serverAndUIDUI = GetUIWindow('ServerAndUIDUI');
-    serverAndUIDUI:RefreshUI()
+    local bIsSaveShootOn = GetConfig("confg_Save") ~= 2
+    SendSaveFileOpt(SSFRT_OPEN_SAVE_FILE, "", bIsSaveShootOn)
     self:SetPlayerID(2)
     self:SetReNameNum(kRetData["dwReNameNum"])
     self:SetLuckyValue(kRetData["dwLuckyValue"])

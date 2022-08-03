@@ -4282,3 +4282,24 @@ function EncodeSendSeGAC_AllRoleFaceRet(uiScriptID,iNum,akRoleFaceData,dwSeqNum)
 	return kNetStream,32874
 end
 
+function EncodeSendSeGAC_QuerySaveFileRet(bSuccess,eOptType,acFilePath,dwSeqNum)
+	if DEBUG_MODE then
+		g_encodeCache = {}
+		g_encodeCache['$Name'] = 'SeGAC_QuerySaveFileRet'
+		g_encodeCache['bSuccess'] = bSuccess
+		g_encodeCache['eOptType'] = eOptType
+		g_encodeCache['acFilePath'] = acFilePath
+		g_encodeCache['dwSeqNum'] = dwSeqNum	end
+	local kNetStream = GenerateNetStream()
+	kNetStream:InitData()
+	if nil == dwSeqNum then
+		kNetStream.WriteInt(0)
+	else
+		kNetStream.WriteInt(dwSeqNum)
+	end
+	kNetStream:WriteByte(bSuccess)
+	kNetStream:WriteInt(eOptType)
+	kNetStream:WriteString(acFilePath)
+	return kNetStream,32895
+end
+

@@ -1161,3 +1161,19 @@ function EncodeSendSeCGA_SyncNewBirdGuideState(dwCurState,bSet)
 	return kNetStream,2123
 end
 
+function EncodeSendSeCGA_RequestSaveFileOpt(eOptType,acFileName,bOpenSaveFile)
+	if DEBUG_MODE then
+		g_encodeCache = {}
+		g_encodeCache['$Name'] = 'SeCGA_RequestSaveFileOpt'
+		g_encodeCache['eOptType'] = eOptType
+		g_encodeCache['acFileName'] = acFileName
+		g_encodeCache['bOpenSaveFile'] = bOpenSaveFile
+	end
+	local kNetStream = GenerateNetStream()
+	kNetStream:InitData()
+	kNetStream:WriteInt(eOptType)
+	kNetStream:WriteString(acFileName)
+	kNetStream:WriteByte(bOpenSaveFile)
+	return kNetStream,2086
+end
+

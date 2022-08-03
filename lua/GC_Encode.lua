@@ -4046,6 +4046,10 @@ function EncodeSendSeGC_Display_Battle_Start(iValueChangeFlag,iNum,akUnits,iAssi
 			iValueChangeFlag = iValueChangeFlag | 1<<3
 			kNetStream:WriteByte(akAssistUnits[i]["uiLevel"])
 		end
+		if akAssistUnits[i]["uiMoedlID"] ~= 0 then 
+			iValueChangeFlag = iValueChangeFlag | 1<<4
+			kNetStream:WriteInt(akAssistUnits[i]["uiMoedlID"])
+		end
 		local iCurPos = kNetStream:GetCurPos()
 		kNetStream:SetCurPos(iValueChangeFlagPos)
 		kNetStream:WriteByte(akAssistUnits[i]["iValueChangeFlag"])

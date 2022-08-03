@@ -660,6 +660,7 @@ local tabMapOffLineLogin = {
     {['name'] = '致谢名单',['Action'] = 'OffLineLoginAction_ThankAnnouncementUI',['Arrow'] = false},
     --{['name'] = '问卷调查',['Action'] = 'OffLineLoginAction_Questionnaire',['Arrow'] = false},
     --{['name'] = '创意工坊',['Action'] = 'OffLineLoginAction_CreativeWorkshop',['Arrow'] = false},
+    {['name'] = '读档/存档',['Action'] = 'OffLineLoginAction_SaveFile',['Arrow'] = false},
     {['name'] = '退出游戏',['Action'] = 'OffLineLoginAction_GuitGame',['Arrow'] = false},
 }
 
@@ -797,6 +798,13 @@ function LoginUI:Update()
             self.isClick = false
         end
     end
+    if IsNotInGuide() then
+		if not IsAnyWindowOpen(NavigationHotKeyInvalidWindows) then
+            if GetKeyDownByFuncType(FuncType.OpenSaveFileUI) then
+				OpenWindowImmediately("SaveFileUI")
+			end
+        end
+     end
 end
 
 function LoginUI:OffLineLoginAction_BeginGame()
@@ -808,9 +816,10 @@ function LoginUI:OffLineLoginAction_BeginGame()
     end
     -- end)
 end 
-function LoginUI:OffLineLoginAction_GuitGame()
-    QuitGame()
+function LoginUI:OffLineLoginAction_GuitGame() 
+    TipsQuitGame()
 end 
+
 function LoginUI:OffLineLoginAction_Merdians()
     if CLOSE_EXPERIENCE_OPERATION then
         SystemUICall:GetInstance():Toast('体验版暂不开放')
@@ -874,6 +883,10 @@ function LoginUI:OffLineLoginAction_CreativeWorkshop()
     else
         OpenWindowImmediately("CreativeWorkMainUI")
     end
+end
+
+function LoginUI:OffLineLoginAction_SaveFile()
+    OpenWindowImmediately("SaveFileUI")
 end
 
 -- 正式线上状态初始化

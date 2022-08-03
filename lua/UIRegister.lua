@@ -307,4 +307,9 @@ function RegisterUIWindows()
 	WindowsManager:GetInstance():RegisterWindowCreate("MiniMapUI",require "UI/MiniMapUI/MiniMapUI")
 	WindowsManager:GetInstance():RegisterWindowCreate("MapUnfoldUI",require "UI/MiniMapUI/MapUnfoldUI")
 
+	-- WindowsManager:GetInstance():RegisterWindowCreate("CreativeWorkAgreementUI",require "UI/LoginUI/CreativeWorkAgreementUI")
+	-- WindowsManager:GetInstance():RegisterWindowCreate("CreativeWorkMainUI",require "UI/LoginUI/CreativeWorkMainUI")
+
+	WindowsManager:GetInstance():RegisterWindowCreate("SaveFileUI",require "UI/CommonUI/SaveFileUI")
+
 end

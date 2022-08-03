@@ -275,7 +275,7 @@ SSD_MAX_UPDATE_MAZE_AREA_COUNT = 16     --单次更新迷宫区域最大数量
 SSD_MAX_UPDATE_MAZE_GRID_COUNT = 512    --单次更新迷宫格最大数量
 SSD_MAX_UPDATE_MAZE_CARD_COUNT = 256    --单次更新迷宫卡片最大数量
 SSD_MAX_OPR_PLAT_ITEM_NUM = 100         --一次性操作平台物品的的最大数量
-SSD_MAX_SELECT_SUBMIT_ITEM_NUM = 10     --一次性提交物品的的最大数量
+SSD_MAX_SELECT_SUBMIT_ITEM_NUM = 20     --一次性提交物品的的最大数量
 SSD_MAX_SHOP_ITEM_NUMS = 100            --商店最大下行物品数量
 SSD_MAX_ADVLOOT_ITEM_NUMS = 1000        --最大冒险掉落下行数量
 SSD_MAX_PLAT_ITEM_CHOOSEGIFT_NUM = 5    --平台物品最大选择礼包数量
@@ -3098,6 +3098,14 @@ SM_ROLEFACE = 7                         --捏脸功能
 SM_END = 8
 --to C++ enum [SystemModule] Define END
 
+--to C++ enum [SeSaveFileReqType] Define BEGIN
+SSFRT_NEW_FILE = 0                      --新建存档
+SSFRT_SAVE_FILE = 1                     --覆盖存档
+SSFRT_LOAD_FILE = 2                     --加载存档
+SSFRT_DELETE_FILE = 3                   --删除存档
+SSFRT_OPEN_SAVE_FILE = 4                --自动存档开关
+--to C++ enum [SeSaveFileReqType] Define END
+
 
 -- 物品
 CommonTable_SeSimpleItem =
@@ -4475,6 +4483,7 @@ CommonTable_SeGameCmd_BattleAssistUnit =
 ['eCamp'] = SE_INVALID,
 ['bPet'] = 0,
 ['uiLevel'] = 0,
+['uiMoedlID'] = 0,
 }
 
 CommonTable_SeBattle_TreasureBox =

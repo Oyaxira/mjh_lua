@@ -142,6 +142,8 @@ function reloadGameModules()
 
     -- PK
     reloadModule('UI/PKUI/PKManager')
+
+    reloadModule('UI/TileMap/TileFindPathManager')
     --
     PlayerSetDataManager:GetInstance():InitPlayerInfoData();
     MartialDataManager:GetInstance():InitAoYiTable();
@@ -178,6 +180,8 @@ function reloadManagerModule()
     reloadSingleManagerModule('UI/Story/StoryDataManager', 'StoryDataManager')
 
     reloadSingleManagerModule('UI/Game/DialogRecordDataManager', 'DialogRecordDataManager')
+
+    reloadSingleManagerModule('UI/CommonUI/SaveFileDataManager', 'SaveFileDataManager')
 end
 
 function reloadSingleManagerModule(path, managerName)

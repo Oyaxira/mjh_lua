@@ -59,6 +59,7 @@ FuncType = {
     NextSkillPage=59,
     OpenMinMap=60,
     CloseBattleEnd=61,
+    OpenSaveFileUI=62,
 }
 
 KeyCode = {
@@ -398,7 +399,7 @@ function KeyboardManager:IsWaittingPresskey()
     return self.isWaitting
 end
 
-KEYBOARD_DATA_VERSION = "0.0.0.9"
+KEYBOARD_DATA_VERSION = "0.0.0.10"
 
 local DefaultKeySettingsTable =
 {
@@ -675,6 +676,13 @@ local DefaultKeySettingsTable =
                 keyCode = KeyCode.M
             },
             {
+                ["功能"] = FuncType.OpenSaveFileUI,
+                ["功能描述"] = "开/打开存档窗",
+                ["中文描述"] = "",
+                ["是否支持自定义"] = true,
+                keyCode = KeyCode.L
+            },
+            {
                 ["功能"] = FuncType.MoveUp,
                 ["功能描述"] = "向上移动",
                 ["中文描述"] = "",
@@ -910,6 +918,7 @@ function KeyboardManager:InitCondition()
         [FuncType.OpenOrCloseEvolutionUI] = self.OpenOrCloseEvolutionUIInvalidCondition,
         [FuncType.OpenOrCloseCityRoleListUI] = self.OpenOrCloseCityRoleListUIInvalidCondition,
         [FuncType.OpenMinMap] = self.OpenOrCloseCityRoleListUIInvalidCondition,
+        [FuncType.OpenSaveFileUI] = self.OpenOrCloseCityRoleListUIInvalidCondition,
         [FuncType.MoveUp] = self.MoveUpInvalidCondition,
         [FuncType.MoveDown] = self.MoveDownInvalidCondition,
         [FuncType.MoveLeft] = self.MoveLeftInvalidCondition,

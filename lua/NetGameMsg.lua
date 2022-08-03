@@ -95,6 +95,8 @@ function InitGameMsg()
     -- -- 捏脸
     -- registerGameCommand(CMD_GAC_ROLEFACEOPRRET, OnRecv_CMD_GAC_ROLEFACEOPRRET)
     registerGameCommand(CMD_GAC_ALLROLEFACERET, OnRecv_CMD_GAC_ALLROLEFACERET)
+
+    registerGameCommand(CMD_GAC_QUERYSAVEFILERET, OnRecv_CMD_GAC_SAVE_FILE)
     
     -- shop
     registerGameCommand(CMD_GAC_PLATSHOPMALLREWARDRET, OnRecv_CMD_GAC_PlatShopMallRewardRet)
@@ -449,13 +451,13 @@ function OnGameNetConnected(bReconnect)
     
     -- 网络连接成功后立刻连接
     local session = 0
-    local playerid = 2
+    local playerid = GetConfig("index")
     local bReconnect = false
     -- if DEBUG_MODE then 
         --playerid = 280680332
     -- end
     local msangoMagic = SERVER_MAGIC_VALUE
-    local gameservertoken = G_UID or ""
+    local gameservertoken = G_UID and tostring(G_UID) or ""
     local openid = "pc"
 
     local deviceName = "pc"
@@ -3549,6 +3551,7 @@ function OnRecv_CMD_GAC_CHECKTENCENTANTIADDICTIONRET(kRetData)
         ['leftBtnText'] = '关闭',
     }
     if msgType == STAAIT_LOGOUT then 
+        DRCSRef.LuaBehaviour.RemoveQuit()
         ForceQuitGame(10000, title, info.text .. '\n<color=#913E2B>10 秒后自动退出游戏</color>')
     else
         OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, info, nil, {cancel = true}})
@@ -3964,4 +3967,8 @@ function ShowDialog(kRetData)
     elseif type == 6 then -- 结义
         OpenWindowImmediately("SwornUI",{iType = type, iTask = task, iRet = ret})
     end
+end
+
+function OnRecv_CMD_GAC_SAVE_FILE(kRetData)
+    SaveFileDataManager:GetInstance():SetSaveFileRet(kRetData)
 end

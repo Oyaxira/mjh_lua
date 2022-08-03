@@ -1596,6 +1596,7 @@ function ResetGame(bClearCache)
         ChatBoxUIDataManager:GetInstance():Init()
         ShoppingDataManager:GetInstance():Init()
         GuideDataManager:GetInstance():Init()
+        SaveFileDataManager:GetInstance():Init()
         local chatBoxUI = GetUIWindow("ChatBoxUI")
         if chatBoxUI then
             if chatBoxUI:GetPrivateOpen() then
@@ -1659,6 +1660,13 @@ function GetTouchUIPos()
         end
     end
     return DRCSRef.Vec3Zero
+end
+
+function GetTouchWorldUIPos()
+    local ray = DRCSRef.Camera.main:ScreenPointToRay(CS.UnityEngine.Input.mousePosition);
+    local worldPoint = ray:GetPoint(-ray.origin.z / ray.direction.z);
+    return worldPoint;
+    --return DRCSRef.Vec3Zero
 end
 
 -- 跳过所有无用动画 包括 对话, 引导, 进入城市动画, 黑屏等
@@ -2444,7 +2452,7 @@ function ForceQuitGame(delay, title, text)
         ['leftBtnText'] = '退出游戏',
         ['leftBtnFunc'] = QuitGame,
         ['text'] = text or '',
-    }
+    }   
     g_forceQuit = true
     ResetGame()
     OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, info, nil, {cancel = true}})
@@ -2703,4 +2711,35 @@ function TipsQuitGame()
         end
         OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, content, callback})  
     end
+end
+
+
+function StartScreenShot(strPath)
+    CS.UnityEngine.ScreenCapture.CaptureScreenshot(strPath.."/Image.png");
+end
+
+function DicToLuaTable(Dic)
+    --将C#的Dic转成Lua的Table
+    local dic = {}
+    if Dic then
+        local iter = Dic:GetEnumerator()
+        while iter:MoveNext() do
+            local k = iter.Current.Key
+            local v = iter.Current.Value
+            dic[k] = v
+        end
+    end
+    return dic
+end
+
+function LoadByIo(path)
+    local t = nil
+    local gameobject = DRCSRef.FindGameObj("UIBase")
+    if gameobject then 
+        local comTouchUIPos = gameobject:GetComponent("TouchUIPos")
+        if comTouchUIPos then 
+             t = comTouchUIPos:LoadByIo(path)
+        end
+    end
+    return t
 end

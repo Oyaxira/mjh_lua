@@ -204,6 +204,58 @@ function SystemSettingUI:Init()
     end
     self:AddButtonClickListener(clickImg,fun)
 
+    
+    local pingballToggle = {}
+    self.objTogMoveSetting = self:FindChild(self.objSystemPage, "Content/SettingItem_Move")
+    self.togMoveSettingOn = self:FindChildComponent(self.objTogMoveSetting, "Toggle_Move/On", DRCSRef_Type.Toggle)
+    self.togMoveSettingOff = self:FindChildComponent(self.objTogMoveSetting, "Toggle_Move/Off", DRCSRef_Type.Toggle)
+    local bIsMoveShootOn = GetConfig("confg_Move") == 2
+    self.togMoveSettingOn.isOn = not bIsMoveShootOn
+    self.togMoveSettingOff.isOn = bIsMoveShootOn
+    self:AddToggleClickListener(self.togMoveSettingOn, function(bIsOn)
+        if bIsOn then
+            ROLE_MOVE_TYPE = 1
+            SetConfig("confg_Move", 1 ,true)
+        else
+            ROLE_MOVE_TYPE = 2
+            SetConfig("confg_Move", 2 ,true)
+        end
+    end)
+    pingballToggle[1] = self.togMoveSettingOn
+    pingballToggle[2] = self.togMoveSettingOff
+    local clickImg = self:FindChildComponent(self._gameObject,"Panel_system/Content/SettingItem_Move/Toggle_Move/clickImg","Button")
+    local fun = function()
+        bIsMoveShootOn = not bIsMoveShootOn
+        self.togMoveSettingOn.isOn = bIsMoveShootOn
+        self.togMoveSettingOff.isOn = not bIsMoveShootOn
+    end
+    self:AddButtonClickListener(clickImg,fun)
+
+    -- local pingballToggle = {}
+    -- self.objTogSaveSetting = self:FindChild(self.objSystemPage, "Content/SettingItem_Save")
+    -- self.togSaveSettingOn = self:FindChildComponent(self.objTogSaveSetting, "Toggle_Save/On", DRCSRef_Type.Toggle)
+    -- self.togSaveSettingOff = self:FindChildComponent(self.objTogSaveSetting, "Toggle_Save/Off", DRCSRef_Type.Toggle)
+    -- local bIsSaveShootOn = GetConfig("confg_Save") == 2
+    -- self.togSaveSettingOn.isOn = not bIsSaveShootOn
+    -- self.togSaveSettingOff.isOn = bIsSaveShootOn
+    -- self:AddToggleClickListener(self.togSaveSettingOn, function(bIsOn)
+    --     if bIsOn then
+    --         SetConfig("confg_Save", 1 ,true)
+    --         SendSaveFileOpt(SSFRT_OPEN_SAVE_FILE, "", true)
+    --     else
+    --         SetConfig("confg_Save", 2 ,true)
+    --         SendSaveFileOpt(SSFRT_OPEN_SAVE_FILE, "", false)
+    --     end
+    -- end)
+    -- pingballToggle[1] = self.togSaveSettingOn
+    -- pingballToggle[2] = self.togSaveSettingOff
+    -- local clickImg = self:FindChildComponent(self._gameObject,"Panel_system/Content/SettingItem_Save/Toggle_Save/clickImg","Button")
+    -- local fun = function()
+    --     bIsSaveShootOn = not bIsSaveShootOn
+    --     self.togSaveSettingOn.isOn = bIsSaveShootOn
+    --     self.togSaveSettingOff.isOn = not bIsSaveShootOn
+    -- end
+    -- self:AddButtonClickListener(clickImg,fun)
 
     self:InitVoicettings()
     self:InitStorySettings()

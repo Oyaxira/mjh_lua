@@ -246,6 +246,7 @@ function MeridiansUI:RefreshUI(info)
     self.unlockStage = self.MeridiansDataManager:GetUnlockStage();
     self.TabBoxToggle2:GetComponent('Toggle').isOn = true;
     self:InitTab(true);
+    self:RefreshMeridians()
     self:UpdateTab();
 end
 

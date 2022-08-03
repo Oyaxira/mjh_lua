@@ -76,6 +76,7 @@ CMD_CGA_ACTIVITYEVENT = 2072
 CMD_CGA_QUERYSTORYWEEKLIMIT = 2104
 CMD_CGA_STOPENTERSTORY = 2145
 CMD_CGA_SYNCNEWBIRDGUIDESTATE = 2123
+CMD_CGA_REQUESTSAVEFILEOPT = 2086
 --------------------------------------------------------------
 function registerCLToGASCommand()
 	CmdCLToGASDecodeTable[CMD_CGA_PLAYERVALIDATE] = Decode_SeCGA_PlayerValidate
@@ -152,6 +153,7 @@ function registerCLToGASCommand()
 	CmdCLToGASDecodeTable[CMD_CGA_QUERYSTORYWEEKLIMIT] = Decode_SeCGA_QueryStoryWeekLimit
 	CmdCLToGASDecodeTable[CMD_CGA_STOPENTERSTORY] = Decode_SeCGA_StopEnterStory
 	CmdCLToGASDecodeTable[CMD_CGA_SYNCNEWBIRDGUIDESTATE] = Decode_SeCGA_SyncNewBirdGuideState
+	CmdCLToGASDecodeTable[CMD_CGA_REQUESTSAVEFILEOPT] = Decode_SeCGA_RequestSaveFileOpt
 end
 
 function GetCLToGASDecodeFuncByCmd(iCmd)
@@ -844,6 +846,14 @@ function Decode_SeCGA_SyncNewBirdGuideState(netStreamValue)
 	local result = { ["dwCurState"] = 0,["bSet"] = true,} 
 	result["dwCurState"] = netStreamValue:ReadInt()
 	result["bSet"] = netStreamValue:ReadByte()
+	return result
+end
+
+function Decode_SeCGA_RequestSaveFileOpt(netStreamValue)
+	local result = { ["eOptType"] = SSFRT_NEW_FILE,["acFileName"] = nil,["bOpenSaveFile"] = true,} 
+	result["eOptType"] = netStreamValue:ReadInt()
+	result["acFileName"] = netStreamValue:ReadString()
+	result["bOpenSaveFile"] = netStreamValue:ReadByte()
 	return result
 end
 

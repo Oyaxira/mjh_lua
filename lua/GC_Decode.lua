@@ -3344,7 +3344,7 @@ function Decode_SeGC_Display_Battle_Start(netStreamValue)
 		if i >= iAssistNum then
 			break
 		end
-		local tempakAssistUnits = { ["iValueChangeFlag"] = 0,["uiTypeID"] = 0,["eCamp"] = SE_INVALID,["bPet"] = 0,["uiLevel"] = 0,} 
+		local tempakAssistUnits = { ["iValueChangeFlag"] = 0,["uiTypeID"] = 0,["eCamp"] = SE_INVALID,["bPet"] = 0,["uiLevel"] = 0,["uiMoedlID"] = 0,} 
 		local iValueChangeFlag = netStreamValue:ReadByte()
 		tempakAssistUnits["iValueChangeFlag"] = iValueChangeFlag
 		if (iValueChangeFlag & 1 << 0) == ( 1 << 0) then
@@ -3358,6 +3358,9 @@ function Decode_SeGC_Display_Battle_Start(netStreamValue)
 		end
 		if (iValueChangeFlag & 1 << 3) == ( 1 << 3) then
 			tempakAssistUnits["uiLevel"] = netStreamValue:ReadByte()
+		end
+		if (iValueChangeFlag & 1 << 4) == ( 1 << 4) then
+			tempakAssistUnits["uiMoedlID"] = netStreamValue:ReadInt()
 		end
 		result["akAssistUnits"][i] = tempakAssistUnits
 	end

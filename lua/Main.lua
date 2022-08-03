@@ -136,6 +136,7 @@ function start()
     if str == 'tchinese' then
         CS.UnityEngine.PlayerPrefs.SetInt("lang", 1)
     end
+    SetConfig("index", 2, true)
     local window = OpenWindowImmediately("LoginUI")
     window:OnclickVisitorLogin()
 
