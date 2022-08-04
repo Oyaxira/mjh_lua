@@ -6,13 +6,13 @@ require("common");
 
 
 local MartialMpDamageConfig= {
-  [1]={BaseID=1,MartialRank=RankType.RT_White,CostMpDamageFactor=0.1,},
-  [2]={BaseID=2,MartialRank=RankType.RT_Green,CostMpDamageFactor=0.2,},
-  [3]={BaseID=3,MartialRank=RankType.RT_Blue,CostMpDamageFactor=0.3,},
-  [4]={BaseID=4,MartialRank=RankType.RT_Purple,CostMpDamageFactor=0.4,},
-  [5]={BaseID=5,MartialRank=RankType.RT_Orange,CostMpDamageFactor=0.5,},
-  [6]={BaseID=6,MartialRank=RankType.RT_Golden,CostMpDamageFactor=0.6,},
-  [7]={BaseID=7,MartialRank=RankType.RT_DarkGolden,CostMpDamageFactor=0.7,},
+  [1]={BaseID=1,MartialRank=RankType.RT_White,CostMpDamageFactor=0.2,},
+  [2]={BaseID=2,MartialRank=RankType.RT_Green,CostMpDamageFactor=0.3,},
+  [3]={BaseID=3,MartialRank=RankType.RT_Blue,CostMpDamageFactor=0.4,},
+  [4]={BaseID=4,MartialRank=RankType.RT_Purple,CostMpDamageFactor=0.6,},
+  [5]={BaseID=5,MartialRank=RankType.RT_Orange,CostMpDamageFactor=0.8,},
+  [6]={BaseID=6,MartialRank=RankType.RT_Golden,CostMpDamageFactor=1,},
+  [7]={BaseID=7,MartialRank=RankType.RT_DarkGolden,CostMpDamageFactor=1.3,},
 }
 
 -- export table: MartialMpDamageConfig

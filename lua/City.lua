@@ -38,7 +38,7 @@ local City= {
   [40]={BaseID=40,NameID=1410028,CityIconImage="icon_city_wu2ming2dao3",BigmapPosX=26,BigmapPosY=-46,NameUIOffsetY=-28,EnterMapID=485,NearbyCityIDList={37,26,},DefaultChatIDList={1420054,},TileID=40,TileImage="city/ev39",},
   [41]={BaseID=41,NameID=1410029,CityIconImage="icon_city_wu2jian1mi4jing4",BigmapPosX=-1,BigmapPosY=-1,NameUIOffsetX=2,NameUIOffsetY=-8,EnterMapID=11,NearbyCityIDList={13,30,36,},ScriptID={7,10,},DefaultChatIDList={1420055,},TileID=41,TileImage="city/ev43",},
   [42]={BaseID=42,NameID=1410021,CityIconImage="icon_city_da4li3",BigmapPosX=-69,BigmapPosY=-56,NameUIOffsetX=25,NameUIOffsetY=-6,EnterMapID=102,NearbyCityIDList={31,32,},ScriptID={1,},DefaultChatIDList={1420045,1420046,1420047,},TileID=28,TileImage="city/ev21",},
-  [43]={BaseID=43,NameID=1410030,CityIconImage="icon_city_yu3wen2zhuang1",BigmapPosX=-1,BigmapPosY=-1,NameUIOffsetX=-5,EnterMapID=1987,NearbyCityIDList={28,},ScriptID={10,},TileID=43,TileImage="city/ev43",},
+  [43]={BaseID=43,NameID=1410030,CityIconImage="icon_city_yu3wen2zhuang1",BigmapPosX=-74,BigmapPosY=-47,NameUIOffsetX=-5,EnterMapID=2113,NearbyCityIDList={28,},ScriptID={10,},TileID=43,TileImage="city/ev38",},
 }
 for k,v in pairs(City) do
     setmetatable(v, {['__index'] = CityDefault})

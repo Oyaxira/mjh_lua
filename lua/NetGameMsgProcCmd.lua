@@ -1923,7 +1923,7 @@ function DisplayUpdateCustomAdvLoot(kRetData)
     AdvLootManager:GetInstance():UpdateCustomAdvLoot(kRetData.uiTaskEventID, dnull(kRetData.bEnable))
 end
 
---更新易容界面
+-- 更新自定义冒险掉落
 function OnRecv_CMD_GC_DISPLAY_DISGUISE(kRetData)
    if kRetData.bRefresh then
         local DisguiseUI = GetUIWindow("DisguiseUI")

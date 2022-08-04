@@ -108,7 +108,6 @@ end
 --新建存档Start
 function SaveFileDataManager:SendNewSaveFile(strFileName)
     --向服务器发送新建存档请求，再回调成果时候截图，放入同一个文件下
-    OpenWindowImmediately("LoadingUI")
     SendSaveFileOpt(SSFRT_NEW_FILE, strFileName,false)
     globalTimer:AddTimer(2000, function ()
         self:HideLoading()
@@ -119,7 +118,6 @@ end
 
 --覆盖存档Start
 function SaveFileDataManager:SendSaveFile(strFileName)
-    OpenWindowImmediately("LoadingUI")
     SendSaveFileOpt(SSFRT_SAVE_FILE, strFileName)
 end
 

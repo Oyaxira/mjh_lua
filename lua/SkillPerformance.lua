@@ -1814,7 +1814,7 @@ local t = {
 			{
 				["actionInfo"] = {
 					["oldActionName"] = "attack_g_001",
-					["delay"] = 0x1,
+					["delay"] = 0x0,
 					["action"] = "attack",
 					["type"] = 0x5,
 					["num"] = 0x3,

@@ -87,7 +87,7 @@ function InstRole:AnqiIsCure(MartialTypeData)
         if ANQI_IS_CURE_MARTIAL and ANQI_IS_CURE_MARTIAL[MartialTypeData.BaseID] and ANQI_IS_CURE_MARTIAL[MartialTypeData.BaseID] <= Level then 
             return true
         end
-    end 
+    end
     return false
 end
 

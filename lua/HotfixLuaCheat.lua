@@ -382,3 +382,10 @@ function SendFakeSelectSubmitItem(...)
     SendSelectSubmitItem(taskID, taskEdgeID, count, finalSubmit)
 end
 
+
+function ChangeResolution(x,y,ifull)
+    x = tonumber(x)
+    y = tonumber(y)
+    ifull = tonumber(ifull)
+    CS.UnityEngine.Screen.SetResolution(x, y, ifull == 1)
+end

@@ -106,19 +106,20 @@ end
 --合击的逻辑
 function BattleSceneAnimation:setHejiEnd()
     TimeLineHelper:GetInstance():Reset()
-    for i=1,#self.hejiEffectList do
-        local SeBattle_HurtInfo = self.hejiEffectList[i]
-        TimeLineHelper:GetInstance():GenTrackInfo(SeBattle_HurtInfo)
-    end
+    -- for i=1,#self.hejiEffectList do
+    --     local SeBattle_HurtInfo = self.hejiEffectList[i]
+    --     TimeLineHelper:GetInstance():GenTrackInfo(SeBattle_HurtInfo)
+    -- end
+    TimeLineHelper:GetInstance():GenTrackInfo(self.hejiEffectList[#self.hejiEffectList])
     local delayTime = 500   --不能太小
-    local startTime = TimeLineHelper:GetInstance():GetAllTime() + delayTime
-
-    AddTrackLambda(startTime,function()
+    local maxTime = TimeLineHelper:GetInstance():GetAllTime() + delayTime
+    --local maxTime = TimeLineHelper:GetInstance():GetMaxTime()
+    AddTrackLambda(maxTime,function()
         for i=1,#self.hejiEffectList do
             local SeBattle_HurtInfo = self.hejiEffectList[i]
             local attackerUnit = UnitMgr:GetInstance():GetUnit(SeBattle_HurtInfo.iOwnerUnitIndex)
             if attackerUnit then
-                attackerUnit:SetPos(attackerUnit.iOldGridX,attackerUnit.iOldGridY,nil,false,true,startTime,false)
+                attackerUnit:SetPos(attackerUnit.iOldGridX,attackerUnit.iOldGridY,nil,false,true,maxTime,false)
             end
         end
         self.hejiEffectList = nil
@@ -133,7 +134,8 @@ function BattleSceneAnimation:processHurtInfo(SeBattle_HurtInfo)
             if #self.hejiEffectList == self.iHeJiTargetNum then 
                 self:setHejiEnd()
             else
-                ProcessBattleMsg()
+                TimeLineHelper:GetInstance():Reset()
+                TimeLineHelper:GetInstance():GenTrackInfo(SeBattle_HurtInfo)
             end
             return 
         else

@@ -1185,6 +1185,9 @@ function HttpHelper:RequestNotice(bInHouse, bUserClick, eType)
         --     DoEmptyEnd("HttpHelper:RequestNotice => zero return data")
         --     return
         -- end
+
+
+        --settingData = dkJson.decode(kRet.data)
         local settingData = dkJson.decode(kRet.data)
         if not settingData and not settingData.Notice then
             return
@@ -1204,7 +1207,7 @@ function HttpHelper:RequestNotice(bInHouse, bUserClick, eType)
                     return controlSortA > controlSortB
                 end
             else
-                return tonumber(a.IsTop)  > tonumber(b.IsTop)
+                return a.IsTop > b.IsTop
             end
         end)
         -- 打开或刷新ui

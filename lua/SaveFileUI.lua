@@ -98,7 +98,7 @@ function SaveFileUI:Init()
 end
 
 function SaveFileUI:CheckName(string_name)
-	string_name = string_name or ''
+	string_name = string.gsub(string_name, "^%s*(.-)%s*$", "%1") or ''
 	if string.len(string_name) == 0 then
 		self.err_log = "存档名不可为空"
 		SystemUICall:GetInstance():Toast(self.err_log)

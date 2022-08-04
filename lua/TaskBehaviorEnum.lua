@@ -826,6 +826,7 @@ local TaskBehaviorEnum= {
   [986]={BaseID=986,BehaviorName=BehaviorType.BET_OPEN_SET_NICKNAME,},
   [987]={BaseID=987,BehaviorName=BehaviorType.BET_GET_TABLE_DATA_INT,Arg1Type="int",Arg1Name="0数据ID",Arg2Type="int",Arg2Name="1列号(0为baseID那一列)",Arg3Type="string",Arg3Name="2动态数据",},
   [988]={BaseID=988,BehaviorName=BehaviorType.BET_SET_CREATE_CLANBRANCH,Arg1Type="TBoolean",Arg1Name="0是否演化npc建立小门派",},
+  [989]={BaseID=989,BehaviorName=BehaviorType.BET_REFRESH_REFRESH_DISGUISE,},
 }
 for k,v in pairs(TaskBehaviorEnum) do
     setmetatable(v, {['__index'] = TaskBehaviorEnumDefault})

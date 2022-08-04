@@ -397,23 +397,12 @@ function ClanMartialUI:GenDes(condTypeList, condValueList)
     end
     local clanType = clandata.Type
         -- 邪教
-        if clanType ==  ClanType.CLT_BaDao then
-        des = des .. (des_HaoGan or "") 
-        if des_RenYiZhi then
-            if string.len(des) > 0 then
-                des = des .. "或" ..  (des_RenYiZhi or "") 
-            else
-                des = des_RenYiZhi or ""
-            end
-        end
-    else
-        des = des .. (des_HaoGan or "") 
-        if des_RenYiZhi then
-            if string.len(des) > 0 then
-                des = des .. "且" ..  (des_RenYiZhi or "") 
-            else
-                des = des_RenYiZhi or ""
-            end
+    des = des .. (des_HaoGan or "") 
+    if des_RenYiZhi then
+        if string.len(des) > 0 then
+            des = des .. "且" ..  (des_RenYiZhi or "") 
+        else
+            des = des_RenYiZhi or ""
         end
     end
 

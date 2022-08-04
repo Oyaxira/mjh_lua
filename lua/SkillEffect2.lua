@@ -6,6 +6,14 @@ require("common");
 
 
 local SkillEffect= {
+  [300128003]={BaseID=300128003,Name=SkillEffectDescription.SED_buffxiao4guo3_da2dao4ceng2shu4chu4fa1,EventArg1={490,0,},EventArg2={10000,0,},},
+  [300129001]={BaseID=300129001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrLinear,EventArg1={0,300129002,},EventArg2={65,0,},EventArg3={20000,0,},},
+  [300129002]={BaseID=300129002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
+  [300129003]={BaseID=300129003,Name=SkillEffectDescription.SED_buffxiao4guo3_da2dao4ceng2shu4chu4fa1,EventArg1={491,0,},EventArg2={10000,0,},},
+  [300130001]={BaseID=300130001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrLinear,EventArg1={0,300130002,},EventArg2={54,0,},EventArg3={200000,0,},},
+  [300130002]={BaseID=300130002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
+  [300130003]={BaseID=300130003,Name=SkillEffectDescription.SED_buffxiao4guo3_da2dao4ceng2shu4chu4fa1,EventArg1={492,0,},EventArg2={10000,0,},},
+  [300131001]={BaseID=300131001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrSegmentation,EventArg1={0,300131002,},EventArg2={41,0,},EventArg3={5000,0,},},
   [300131002]={BaseID=300131002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
   [300132001]={BaseID=300132001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrSegmentation,EventArg1={0,300132002,},EventArg2={48,0,},EventArg3={5000,0,},},
   [300132002]={BaseID=300132002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
@@ -301,9 +309,9 @@ local SkillEffect= {
   [300182003]={BaseID=300182003,Name=SkillEffectDescription.SED_Null,},
   [300183001]={BaseID=300183001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrLinear,EventArg1={0,300183002,},EventArg2={145,0,},EventArg3={6000000,0,},EventArg5={40000,0,},},
   [300183002]={BaseID=300183002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
-  [300184001]={BaseID=300184001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrSegmentation,EventArg1={0,300184002,},EventArg2={70,0,},EventArg3={10000,0,},EventArg4={0,300184003,},},
-  [300184002]={BaseID=300184002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
-  [300184003]={BaseID=300184003,Name=SkillEffectDescription.SED_Null,},
+  [300184001]={BaseID=300184001,Name=SkillEffectDescription.SED_buffsheng1xiao4tiao2jian4_zi4shen1tong2buff,},
+  [300184002]={BaseID=300184002,Name=SkillEffectDescription.SED_buffxiao4guo3_zeng1jia1zhi3ding4wu3xue2shu3xing4fen1duan4,EventArg1={0,300184003,},EventArg2={11802,0,},EventArg3={70,0,},EventArg4={10000,0,},},
+  [300184003]={BaseID=300184003,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
   [300184004]={BaseID=300184004,Name=SkillEffectDescription.SED_Logic_Sum,EventArg1={0,300184005,},},
   [300184005]={BaseID=300184005,Name=SkillEffectDescription.SED_Null,EventArg1={0,300184006,},EventArg2={0,300184009,},},
   [300184006]={BaseID=300184006,Name=SkillEffectDescription.SED_Logic_StringEqual,EventArg1={1,0,},EventArg2={0,300184007,},EventArg3={2,0,},},
@@ -9998,14 +10006,6 @@ local SkillEffect= {
   [400506003]={BaseID=400506003,Name=SkillEffectDescription.SED_Logic_Sum,EventArg1={0,400506004,},},
   [400506004]={BaseID=400506004,Name=SkillEffectDescription.SED_Null,EventArg1={0,400506005,},EventArg2={0,400506006,},},
   [400506005]={BaseID=400506005,Name=SkillEffectDescription.SED_SkillCondition_SelfSameSkill,},
-  [400506006]={BaseID=400506006,Name=SkillEffectDescription.SED_Condition_Ture,EventArg1={3500,0,},},
-  [400506007]={BaseID=400506007,Name=SkillEffectDescription.SED_SkillEffect_AddBuffGroup,EventArg1={0,400506008,},EventArg2={140,0,},EventArg3={200000,0,},},
-  [400506008]={BaseID=400506008,Name=SkillEffectDescription.SED_Battle_GetEventEffectiveTarget,},
-  [400507001]={BaseID=400507001,Name=SkillEffectDescription.SED_SkillCondition_CommonInitiativeUseSkill,},
-  [400507002]={BaseID=400507002,Name=SkillEffectDescription.SED_SkillLogic_CommonAttackSkill,EventArg1={0,0,},EventArg2={7500,0,},},
-  [400507003]={BaseID=400507003,Name=SkillEffectDescription.SED_SkillCondition_SelfSameSkill,},
-  [400507004]={BaseID=400507004,Name=SkillEffectDescription.SED_SkillEffect_AddBuffGroup,EventArg1={0,400507005,},EventArg2={140,0,},EventArg3={300000,0,},},
-  [400507005]={BaseID=400507005,Name=SkillEffectDescription.SED_Battle_GetEventEffectiveTarget,},
 }
 
 -- export table: SkillEffect

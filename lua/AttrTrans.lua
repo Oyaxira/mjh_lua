@@ -5,8 +5,20 @@
 require("common");
 
 
+local AttrTransDefault = {Value=10000,ConvertAttr1=AttrType.ATTR_MARTIAL_ATK,ConvertValue1=1000,ConvertValue2=15000,ConvertAttr3=AttrType.ATTR_NULL,ConvertValue3=0,ConvertAttr4=AttrType.ATTR_NULL,ConvertValue4=0,ConvertAttr5=AttrType.ATTR_NULL,ConvertValue5=0,}
 local AttrTrans= {
+  [1]={BaseID=1,OriAttr=AttrType.ATTR_QUANZHANGJINGTONG,ConvertAttr2=AttrType.ATTR_FANJIZHI,},
+  [2]={BaseID=2,OriAttr=AttrType.ATTR_DAOFAJINGTONG,ConvertAttr2=AttrType.ATTR_NULL,},
+  [3]={BaseID=3,OriAttr=AttrType.ATTR_TUIFAJINGTONG,ConvertAttr2=AttrType.ATTR_HITATK,},
+  [4]={BaseID=4,OriAttr=AttrType.ATTR_JIANFAJINGTONG,ConvertAttr2=AttrType.ATTR_POZHAOVALUE,},
+  [5]={BaseID=5,OriAttr=AttrType.ATTR_NEIGONGJINGTONG,ConvertAttr2=AttrType.ATTR_ROUNDMP,ConvertValue2=20000,},
+  [6]={BaseID=6,OriAttr=AttrType.ATTR_YISHUJINGTONG,ConvertAttr2=AttrType.ATTR_ROUNDHP,ConvertValue2=20000,},
+  [7]={BaseID=7,OriAttr=AttrType.ATTR_QIMENJINGTONG,ConvertAttr2=AttrType.ATTR_CONTINUATK,},
+  [8]={BaseID=8,OriAttr=AttrType.ATTR_ANQIJINGTONG,ConvertAttr2=AttrType.ATTR_CRITATK,},
 }
+for k,v in pairs(AttrTrans) do
+    setmetatable(v, {['__index'] = AttrTransDefault})
+end
 
 -- export table: AttrTrans
 return AttrTrans

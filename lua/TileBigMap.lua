@@ -193,7 +193,9 @@ function TileBigMap:OnDisable()
 	RemoveWindowImmediately("MiniMapUI", true)
 	TDM:GetInstance().ev_dirty = true
 	TDM:GetInstance().need_init = nil
-	self.click_tile = nil
+	self.objEffect:SetActive(false)
+	self.akNode = {}
+	self.bStartMove = false	
 end
 
 function TileBigMap:SetPos(px, py, now, t1, t2)
@@ -349,6 +351,7 @@ function TileBigMap:Update(deltaTime)
 		self.sendClick = false
 		self.objEffect:SetActive(false)
 		self.akNode = {}
+		self.bStartMove = false
 		return 
 	end
 	if (self.wait_event or self.wait > 0 or self.mvTime < MOVE_TIME) and not bStop then		
@@ -383,6 +386,11 @@ function TileBigMap:Update(deltaTime)
 		if dir and GetConfig('confg_Move') == 2 then
 			self.akNode = {}
 			self.akNode = TileFindPathManager:GetInstance():AStarFind(x, y, dir.x, dir.y)
+			if not next(self.akNode or {}) and self.sendClick then
+				self.sendClick = false
+				local evs = tdm:QueryEvents(x, y)
+				self:SendEventReq(evs)
+			end
 		elseif dir then
 			if dir == "midle" and self.sendClick then
 				self.sendClick = false
@@ -439,6 +447,7 @@ end
 function TileBigMap:OpenCityAnimation(func_Complete)
 	self.wait_event = 0
 	self.akNode = {}
+	self.bStartMove = false
 	self.objEffect:SetActive(false)
 	MyDOTween(self._gameObject.transform,'DOScale',DRCSRef.Vec3(1.3, 1.3, 1),0.4)
 	self:AddTimer(350, function()
