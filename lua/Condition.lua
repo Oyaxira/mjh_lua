@@ -2373,6 +2373,10 @@ local Condition= {
   [3423020]={BaseID=3423020,CondArg1="516",CondArg3="1",},
   [3423022]={BaseID=3423022,CondArg1="432",CondArg3="1",},
   [3423023]={BaseID=3423023,CondArg1="514",CondArg3="0",},
+  [3423024]={BaseID=3423024,CondType=ConditionType.CT_AND,CondArg1="3423025",CondArg2="",},
+  [3423025]={BaseID=3423025,CondType=ConditionType.CT_ITEM_COUNT_CMP,CondArg1="80711",CondArg2=">=",CondArg3="1",},
+  [3423026]={BaseID=3423026,CondType=ConditionType.CT_AND,CondArg1="3423027",CondArg2="",},
+  [3423027]={BaseID=3423027,CondType=ConditionType.CT_ITEM_COUNT_CMP,CondArg1="80711",CondArg2=">=",CondArg3="1",},
   [3425002]={BaseID=3425002,CondArg1="564",CondArg3="1",},
   [3425004]={BaseID=3425004,CondArg1="564",CondArg3="2",},
   [3425006]={BaseID=3425006,CondArg1="565",CondArg3="1",},
@@ -10004,10 +10008,6 @@ local Condition= {
   [5139302]={BaseID=5139302,CondType=ConditionType.CT_INT_VALUE_COMPARE,CondArg1="$5139431",CondArg3="10",},
   [5139303]={BaseID=5139303,CondType=ConditionType.CT_AND,CondArg1="5139304",CondArg2="",},
   [5139304]={BaseID=5139304,CondType=ConditionType.CT_INT_VALUE_COMPARE,CondArg1="$5139431",CondArg3="20",},
-  [5139305]={BaseID=5139305,CondType=ConditionType.CT_AND,CondArg1="5139306",CondArg2="",},
-  [5139306]={BaseID=5139306,CondType=ConditionType.CT_INT_VALUE_COMPARE,CondArg1="$5139431",CondArg3="30",},
-  [5139307]={BaseID=5139307,CondType=ConditionType.CT_AND,CondArg1="5139308",CondArg2="",},
-  [5139308]={BaseID=5139308,CondType=ConditionType.CT_INT_VALUE_COMPARE,CondArg1="$5139431",CondArg3="40",},
 }
 for k,v in pairs(Condition) do
     setmetatable(v, {['__index'] = ConditionDefault})

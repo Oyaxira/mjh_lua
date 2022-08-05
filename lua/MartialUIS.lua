@@ -1075,7 +1075,7 @@ end
 
 function MartialUIS:UpdateBtnEquipMartial(dynData, typeData)
 
-	if self.objEquipMartial and self.objUnEquipMartial and dynData == nil or typeData == nil then
+	if (self.objEquipMartial and self.objUnEquipMartial and dynData == nil or typeData == nil) or typeData.KFFeature == KFFeatureType.KFFT_AustrianMartialArts then
 		self.objEquipMartial:SetActive(false)
 		self.objUnEquipMartial:SetActive(false)
 		return

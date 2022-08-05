@@ -1940,6 +1940,8 @@ local Behavior= {
   [3159002]={BaseID=3159002,Type=BehaviorType.BET_LOG,Arg1="修改门派状态 3",},
   [3159003]={BaseID=3159003,Arg1="149",Arg2="=",Arg3="1",},
   [3159004]={BaseID=3159004,Type=BehaviorType.BET_LOG,Arg1="达成自定义事件成就 346",},
+  [3159005]={BaseID=3159005,Type=BehaviorType.BET_CHANGE_CLANSTATE,Arg1="3",},
+  [3159006]={BaseID=3159006,Type=BehaviorType.BET_CUSTOM_ACHIEVE_MADE,Arg1="346",},
   [3160001]={BaseID=3160001,Type=BehaviorType.BET_ADD_CLAN_DISPOSITION,Arg1="48",Arg2="10",Arg3="True",},
   [3160002]={BaseID=3160002,Type=BehaviorType.BET_GET_CLAN_ELIMINATE_ACITON_TIMES,Arg1="征服",},
   [3160003]={BaseID=3160003,Arg1="637",Arg2="=",Arg3="$3160002",},
@@ -4940,7 +4942,7 @@ local Behavior= {
   [3422020]={BaseID=3422020,Arg1="289",Arg2="=",Arg3="1",},
   [3422021]={BaseID=3422021,Type=BehaviorType.BET_CLOSE_TASK,Arg1="4647",},
   [3422022]={BaseID=3422022,Arg1="289",Arg2="=",Arg3="1",},
-  [3423002]={BaseID=3423002,Type=BehaviorType.BET_START_BATTLE,Arg2="447",},
+  [3423002]={BaseID=3423002,Type=BehaviorType.BET_START_BATTLE,Arg2="447",Arg3="False",},
   [3423003]={BaseID=3423003,Type=BehaviorType.BET_NEXTBATTLE_ADDBUFF,Arg1="499",Arg2="1",},
   [3423004]={BaseID=3423004,Type=BehaviorType.BET_START_BATTLE,Arg2="1612",},
   [3423005]={BaseID=3423005,Type=BehaviorType.BET_MOVE_ROLE,Arg1="989",},
@@ -4988,6 +4990,8 @@ local Behavior= {
   [3423055]={BaseID=3423055,Type=BehaviorType.BET_MOVE_ROLE,Arg1="220",},
   [3423056]={BaseID=3423056,Type=BehaviorType.BET_XIU_GAI_REN_YI_ZHI,Arg1="1",Arg2="-5",Arg3="通用",Arg4="True",},
   [3423057]={BaseID=3423057,Type=BehaviorType.BET_MAZE_MOVE_TO_CLICK,},
+  [3423058]={BaseID=3423058,Type=BehaviorType.BET_EXECUTE_DROP,Arg1="3423005",Arg2="MAINROLE",},
+  [3423059]={BaseID=3423059,Type=BehaviorType.BET_EXECUTE_DROP,Arg1="3423005",Arg2="MAINROLE",},
   [3424001]={BaseID=3424001,Type=BehaviorType.BET_NULL,},
   [3425001]={BaseID=3425001,Type=BehaviorType.BET_FIRE_CUSTOM_EVENT,Arg1="30154",},
   [3425002]={BaseID=3425002,Type=BehaviorType.BET_FIRE_CUSTOM_EVENT,Arg1="30154",},
@@ -10004,10 +10008,6 @@ local Behavior= {
   [4042001]={BaseID=4042001,Arg1="1150",Arg2="=",Arg3="1",},
   [4042002]={BaseID=4042002,Arg1="1324",Arg2="=",Arg3="1",},
   [4042003]={BaseID=4042003,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_chan2tiao1zhan4dou3,Arg1="任务_峨嵋学艺-孤绝授艺_请教武学_战斗监听函数",Arg2="1170301005",Arg3="True",},
-  [4042004]={BaseID=4042004,Arg1="1324",Arg2="=",Arg3="2",},
-  [4042005]={BaseID=4042005,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_chan2tiao1zhan4dou3,Arg1="任务_峨嵋学艺-孤绝授艺_请教武学_战斗监听函数",Arg2="1170301005",Arg3="True",},
-  [4042006]={BaseID=4042006,Arg1="1324",Arg2="=",Arg3="3",},
-  [4042007]={BaseID=4042007,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_chan2tiao1zhan4dou3,Arg1="任务_峨嵋学艺-孤绝授艺_请教武学_战斗监听函数",Arg2="1170301005",Arg3="True",},
 }
 for k,v in pairs(Behavior) do
     setmetatable(v, {['__index'] = BehaviorDefault})

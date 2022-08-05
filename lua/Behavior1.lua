@@ -6,6 +6,10 @@ require("common");
 
 
 local Behavior= {
+  [4042004]={BaseID=4042004,Arg1="1324",Arg2="=",Arg3="2",},
+  [4042005]={BaseID=4042005,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_chan2tiao1zhan4dou3,Arg1="任务_峨嵋学艺-孤绝授艺_请教武学_战斗监听函数",Arg2="1170301005",Arg3="True",},
+  [4042006]={BaseID=4042006,Arg1="1324",Arg2="=",Arg3="3",},
+  [4042007]={BaseID=4042007,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_chan2tiao1zhan4dou3,Arg1="任务_峨嵋学艺-孤绝授艺_请教武学_战斗监听函数",Arg2="1170301005",Arg3="True",},
   [4042008]={BaseID=4042008,Arg1="1324",Arg2="=",Arg3="4",},
   [4042009]={BaseID=4042009,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_chan2tiao1zhan4dou3,Arg1="任务_峨嵋学艺-孤绝授艺_请教武学_战斗监听函数",Arg2="1170301005",Arg3="True",},
   [4042010]={BaseID=4042010,Arg1="1324",Arg2="=",Arg3="5",},
@@ -8579,6 +8583,7 @@ local Behavior= {
   [5394001]={BaseID=5394001,Type=BehaviorType.BET_EXECUTE_DROP,Arg1="5394002",Arg2="MAINROLE",},
   [5394002]={BaseID=5394002,Type=BehaviorType.BET_EXECUTE_DROP,Arg1="5394003",Arg2="MAINROLE",},
   [5394003]={BaseID=5394003,Type=BehaviorType.BET_EXECUTE_DROP,Arg1="5394001",Arg2="MAINROLE",},
+  [5394004]={BaseID=5394004,Type=BehaviorType.BET_EXECUTE_DROP,Arg1="5394004",Arg2="MAINROLE",},
   [5395001]={BaseID=5395001,Type=BehaviorType.BET_EXECUTE_DROP,Arg1="5395001",Arg2="1",Arg3="True",},
   [5395002]={BaseID=5395002,Type=BehaviorType.BET_EXECUTE_DROP,Arg2="1",Arg3="True",},
   [5395003]={BaseID=5395003,Type=BehaviorType.BET_EXECUTE_DROP,Arg2="1",Arg3="True",},
@@ -10001,11 +10006,6 @@ local Behavior= {
   [5437066]={BaseID=5437066,Type=BehaviorType.BET_LOG,Arg1="【int数值1】当前驿站",},
   [5437067]={BaseID=5437067,Type=BehaviorType.BET_NEWMAP_MOVE,Arg1="-17",Arg2="17",Arg3="7000",Arg4="500",},
   [5437068]={BaseID=5437068,Type=BehaviorType.BET_MOVE_ROLE,Arg1="1334",},
-  [5437069]={BaseID=5437069,Type=BehaviorType.BET_ZENG_JIA_JIANG_HU_SHI_JIAN,Arg4="400",},
-  [5437070]={BaseID=5437070,Type=BehaviorType.BET_NEWMAP_MOVE,Arg1="-69",Arg2="-55",Arg3="7000",Arg4="500",},
-  [5437071]={BaseID=5437071,Type=BehaviorType.BET_MOVE_ROLE,Arg1="1096",},
-  [5437072]={BaseID=5437072,Type=BehaviorType.BET_ZENG_JIA_JIANG_HU_SHI_JIAN,Arg4="400",},
-  [5437073]={BaseID=5437073,Type=BehaviorType.BET_NEWMAP_MOVE,Arg1="10",Arg2="-21",Arg3="7000",Arg4="500",},
 }
 
 -- export table: Behavior

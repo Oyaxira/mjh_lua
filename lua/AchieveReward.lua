@@ -60,6 +60,7 @@ local AchieveReward= {
   [62]={BaseID=62,NameID=2610038,AchievePointCost=1500,DescID=2620038,Rank=RankType.RT_Golden,RewardValueA="130048",RewardValueB=2,RewardValueC=2,AutoEffective=TBoolean.BOOL_NO,Condition=61,Sequence=38,},
   [63]={BaseID=63,NameID=2610049,AchievePointCost=100,DescID=2620049,Rank=RankType.RT_Purple,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardType=AchieveRewardType.ARD_StartDisposition,RewardValueB=10,Condition=37,Sequence=63,},
   [64]={BaseID=64,NameID=2610050,AchievePointCost=500,DescID=2620050,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardType=AchieveRewardType.ARD_StartDisposition,RewardValueB=20,Condition=63,Sequence=64,},
+  [65]={BaseID=65,NameID=2610051,AchievePointCost=500,DescID=2620051,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardValueA="130049",AutoEffective=TBoolean.BOOL_NO,Sequence=65,},
 }
 for k,v in pairs(AchieveReward) do
     setmetatable(v, {['__index'] = AchieveRewardDefault})

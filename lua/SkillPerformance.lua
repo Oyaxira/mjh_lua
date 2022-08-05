@@ -30058,8 +30058,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x677] = {
-		["id"] = 0x677,
+	[0x647] = {
+		["id"] = 0x647,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30178,8 +30178,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x679] = {
-		["id"] = 0x679,
+	[0x649] = {
+		["id"] = 0x649,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30298,8 +30298,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x675] = {
-		["id"] = 0x675,
+	[0x646] = {
+		["id"] = 0x646,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30418,8 +30418,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x673] = {
-		["id"] = 0x673,
+	[0x644] = {
+		["id"] = 0x644,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30519,8 +30519,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x678] = {
-		["id"] = 0x678,
+	[0x648] = {
+		["id"] = 0x648,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30620,8 +30620,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x674] = {
-		["id"] = 0x674,
+	[0x645] = {
+		["id"] = 0x645,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30721,8 +30721,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x672] = {
-		["id"] = 0x672,
+	[0x643] = {
+		["id"] = 0x643,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30822,8 +30822,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x671] = {
-		["id"] = 0x671,
+	[0x642] = {
+		["id"] = 0x642,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -30923,8 +30923,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x670] = {
-		["id"] = 0x670,
+	[0x641] = {
+		["id"] = 0x641,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -31024,8 +31024,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x66f] = {
-		["id"] = 0x66f,
+	[0x640] = {
+		["id"] = 0x640,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {

@@ -6,6 +6,11 @@ require("common");
 
 
 local Behavior= {
+  [5437069]={BaseID=5437069,Type=BehaviorType.BET_ZENG_JIA_JIANG_HU_SHI_JIAN,Arg4="400",},
+  [5437070]={BaseID=5437070,Type=BehaviorType.BET_NEWMAP_MOVE,Arg1="-69",Arg2="-55",Arg3="7000",Arg4="500",},
+  [5437071]={BaseID=5437071,Type=BehaviorType.BET_MOVE_ROLE,Arg1="1096",},
+  [5437072]={BaseID=5437072,Type=BehaviorType.BET_ZENG_JIA_JIANG_HU_SHI_JIAN,Arg4="400",},
+  [5437073]={BaseID=5437073,Type=BehaviorType.BET_NEWMAP_MOVE,Arg1="10",Arg2="-21",Arg3="7000",Arg4="500",},
   [5437074]={BaseID=5437074,Type=BehaviorType.BET_MOVE_ROLE,Arg1="995",},
   [5437075]={BaseID=5437075,Type=BehaviorType.BET_ZENG_JIA_JIANG_HU_SHI_JIAN,Arg4="400",},
   [5437076]={BaseID=5437076,Type=BehaviorType.BET_NEWMAP_MOVE,Arg1="-13",Arg2="-49",Arg3="7000",Arg4="500",},

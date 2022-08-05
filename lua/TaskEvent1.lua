@@ -7,6 +7,7 @@ require("common");
 
 
 local TaskEvent= {
+  [4510017]={BaseID=4510017,Event=Event.Event_auto_wu2fa3da2cheng2de0shi4jian4,},
   [4511001]={BaseID=4511001,Event=Event.Event_RoleSelect,EventArg1="1150301006",EventArg2="738",},
   [4511002]={BaseID=4511002,Event=Event.Event_RoleInteractive,EventArg1="1104511002",EventArg2="1150301006",EventArg3="738",},
   [4511003]={BaseID=4511003,Event=Event.Event_auto_qie1cuo1jiao3se4,EventArg1="1150301006",EventArg2="738",EventPriority=100,EventGroup="系统监听",},

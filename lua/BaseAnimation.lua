@@ -404,6 +404,8 @@ function BaseAnimation:ProcessAttackAnim(attackerUnit,skillEffectInfo,startTime)
     if skillEffectInfo.actionInfo then 
         actionInfo = skillEffectInfo.actionInfo
         startTime = startTime + (actionInfo.delay or 0)
+    else
+        return startTime
     end
     self.actionDelay = startTime
     local attackName = getAttackAction(attackerModleID,actionInfo)

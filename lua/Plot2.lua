@@ -6,7 +6,6 @@ require("common");
 
 
 local Plot= {
-  [352400610]={BaseID=352400610,Param1="1040101013",Param2="1003524018",Param7="0",},
   [352400801]={BaseID=352400801,Param1="",Param2="1003524019",NextPlotIDList={352400802,},Param7="0",},
   [352400802]={BaseID=352400802,Param1="1050114006",Param2="1003524020",NextPlotIDList={352400803,},Param7="0",},
   [352400803]={BaseID=352400803,Param1="1030113001",Param2="1003524021",NextPlotIDList={352400804,},Param7="0",},
@@ -10006,6 +10005,7 @@ local Plot= {
   [433600136]={BaseID=433600136,Param1="1060101017",Param2="1104336146",},
   [433900001]={BaseID=433900001,Param1="心愿角色",Param2="1104339002",NextPlotIDList={433900002,},},
   [433900002]={BaseID=433900002,Param2="1104339003",NextPlotIDList={433900003,},},
+  [433900003]={BaseID=433900003,Param1="心愿角色",Param2="1104339004",NextPlotIDList={433900004,},},
 }
 
 -- export table: Plot

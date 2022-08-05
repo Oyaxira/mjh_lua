@@ -10,6 +10,10 @@ require("common");
 
 
 local TaskEdge= {
+  [5420101]={BaseID=5420101,StateID=542027,ConditionID=5420110,ConditonSatisfyJumpStateID=542028,EdgeOrder=71,},
+  [5420102]={BaseID=5420102,StateID=542027,ConditionID=5420112,ConditonSatisfyJumpStateID=542028,EdgeOrder=72,},
+  [5420103]={BaseID=5420103,StateID=542033,ConditionID=5420114,ConditonSatisfyJumpStateID=542050,EdgeOrder=74,},
+  [5420104]={BaseID=5420104,StateID=542029,ConditionID=5420118,ConditonSatisfyJumpStateID=542055,EdgeOrder=80,},
   [5420105]={BaseID=5420105,StateID=542029,ConditionID=5420120,ConditonSatisfyJumpStateID=542055,EdgeOrder=81,},
   [5420127]={BaseID=5420127,StateID=542037,TaskEventID=5420050,EdgeOrder=75,},
   [5420128]={BaseID=5420128,StateID=542038,ConditionID=5420184,ConditonSatisfyJumpStateID=542040,EdgeOrder=29,},

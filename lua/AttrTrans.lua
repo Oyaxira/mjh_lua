@@ -5,7 +5,7 @@
 require("common");
 
 
-local AttrTransDefault = {Value=10000,ConvertAttr1=AttrType.ATTR_MARTIAL_ATK,ConvertValue1=1000,ConvertValue2=15000,ConvertAttr3=AttrType.ATTR_NULL,ConvertValue3=0,ConvertAttr4=AttrType.ATTR_NULL,ConvertValue4=0,ConvertAttr5=AttrType.ATTR_NULL,ConvertValue5=0,}
+local AttrTransDefault = {Value=10000,ConvertAttr1=AttrType.ATTR_MARTIAL_ATK,ConvertValue1=20000,ConvertValue2=15000,ConvertAttr3=AttrType.ATTR_NULL,ConvertValue3=0,ConvertAttr4=AttrType.ATTR_NULL,ConvertValue4=0,ConvertAttr5=AttrType.ATTR_NULL,ConvertValue5=0,}
 local AttrTrans= {
   [1]={BaseID=1,OriAttr=AttrType.ATTR_QUANZHANGJINGTONG,ConvertAttr2=AttrType.ATTR_FANJIZHI,},
   [2]={BaseID=2,OriAttr=AttrType.ATTR_DAOFAJINGTONG,ConvertAttr2=AttrType.ATTR_NULL,},

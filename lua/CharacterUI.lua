@@ -1917,11 +1917,10 @@ function CharacterUI:RefreshCG()
             self.left_nickedit.gameObject:SetActive(false)
         end
     end
-
+    self.objShowImage:SetActive(false)
     -- 主角不显示交互直接return
     if self.selectRole == self.iMainRoleID then
         self.objInteractGroup2:SetActive(false)
-        self.objShowImage:SetActive(false)
         return
     end
     self.objInteractGroup2:SetActive(true)

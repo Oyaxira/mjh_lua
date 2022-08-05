@@ -6,6 +6,10 @@ require("common");
 
 
 local Condition= {
+  [5139305]={BaseID=5139305,CondType=ConditionType.CT_AND,CondArg1="5139306",CondArg2="",},
+  [5139306]={BaseID=5139306,CondType=ConditionType.CT_INT_VALUE_COMPARE,CondArg1="$5139431",CondArg3="30",},
+  [5139307]={BaseID=5139307,CondType=ConditionType.CT_AND,CondArg1="5139308",CondArg2="",},
+  [5139308]={BaseID=5139308,CondType=ConditionType.CT_INT_VALUE_COMPARE,CondArg1="$5139431",CondArg3="40",},
   [5139311]={BaseID=5139311,CondType=ConditionType.CT_NOT,CondArg1="5139312",CondArg2="",},
   [5139312]={BaseID=5139312,CondType=ConditionType.CT_CHECK_CLAN_STATE,CondArg1="征服门派",CondArg2="驱逐",},
   [5139313]={BaseID=5139313,CondType=ConditionType.CT_OR,CondArg1="5139314",CondArg2="5139316",},
@@ -1740,6 +1744,7 @@ local Condition= {
   [5394001]={BaseID=5394001,CondArg1="130046",CondArg3="1",},
   [5394002]={BaseID=5394002,CondArg1="130047",CondArg3="1",},
   [5394003]={BaseID=5394003,CondArg1="120016",CondArg3="1",},
+  [5394004]={BaseID=5394004,CondArg1="130049",CondArg3="1",},
   [5395001]={BaseID=5395001,CondType=ConditionType.CT_AND,CondArg1="5395002",CondArg2="",},
   [5395002]={BaseID=5395002,CondType=ConditionType.CT_INT_VALUE_COMPARE,CondArg1="ID数值1",CondArg3="1",},
   [5395003]={BaseID=5395003,CondType=ConditionType.CT_AND,CondArg1="5395004",CondArg2="",},

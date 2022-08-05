@@ -3821,7 +3821,7 @@ local TaskEvent= {
   [3422014]={BaseID=3422014,Event=Event.Event_BattleWin,EventPriority=999,EventGroup="274793056_275122414_1",},
   [3422015]={BaseID=3422015,Event=Event.Event_BattleWin,EventPriority=999,EventGroup="274793056_275122414_1",},
   [3423001]={BaseID=3423001,Event=Event.Event_RoleSelect,EventArg1="1040012001",EventArg2="1743",},
-  [3423002]={BaseID=3423002,Event=Event.Event_UI_tijiao_teding_wupin,EventArg1="80711",EventArg3="1",EventArg4="True",EventArg5="True",},
+  [3423002]={BaseID=3423002,Event=Event.Event_UI_tijiao_teding_wupin,EventArg1="80711",EventArg3="1",EventArg4="False",EventArg5="True",},
   [3423003]={BaseID=3423003,Event=Event.Event_ItemSubmitSucceed,},
   [3423004]={BaseID=3423004,Event=Event.Event_ItemSubmitFailed,},
   [3423005]={BaseID=3423005,Event=Event.Event_BattleWin,},
@@ -4432,6 +4432,7 @@ local TaskEvent= {
   [3472047]={BaseID=3472047,Event=Event.Event_ShowChooseText,EventArg1="1003472219",EventArg2="MAINROLE",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [3472048]={BaseID=3472048,Event=Event.Event_ShowChooseText,EventArg1="1003472116",EventArg2="MAINROLE",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [3472052]={BaseID=3472052,Event=Event.Event_RoleInteractive,EventArg1="1103472077",EventArg2="1170314001",EventArg3="791",},
+  [3472053]={BaseID=3472053,EventArg1="1103472093",},
   [3474001]={BaseID=3474001,Event=Event.Event_ClickMazeCard,EventArg1="21",EventArg2="2",EventArg3="446",},
   [3474002]={BaseID=3474002,Event=Event.Event_MapSelect,EventArg1="1438",},
   [3474003]={BaseID=3474003,Event=Event.Event_BattleWin,},
@@ -10008,7 +10009,6 @@ local TaskEvent= {
   [4510014]={BaseID=4510014,Event=Event.Event_ShowChooseText,EventArg1="1004510014",EventArg2="MAINROLE",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [4510015]={BaseID=4510015,Event=Event.Event_auto_wu2fa3da2cheng2de0shi4jian4,},
   [4510016]={BaseID=4510016,EventArg1="1004510017",EventArg2="1004510018",EventArg3="4510004",},
-  [4510017]={BaseID=4510017,Event=Event.Event_auto_wu2fa3da2cheng2de0shi4jian4,},
 }
 for k,v in pairs(TaskEvent) do
     setmetatable(v, {['__index'] = TaskEventDefault})
