@@ -58,7 +58,7 @@ io.write(csv_str)
 io.close(file)
 
 csv_str = "组合技"
-csv_str = csv_str .. "组合技招式1,组合技招式2,组合技招式3"
+csv_str = csv_str .. ",组合技招式1,组合技招式2,组合技招式3"
 for key,value in pairs(combo) do
   name2 = "\n"
   for k,v in ipairs(value.MartialList) do
