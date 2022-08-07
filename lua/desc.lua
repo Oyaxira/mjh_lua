@@ -238,3 +238,29 @@ file = io.open("../专属技能.csv", "w")
 io.output(file)
 io.write(csv_str)
 io.close(file)
+mytable = {}
+csv_str = "人物id;人物名;Rank\r\n"
+for key,value in pairs(roles) do
+  if value.RoleID == 0 then
+    break
+  end
+  if value.NameID == 0 then
+    break
+  end
+  id = value.RoleID
+  rank = value.Rank
+  rank_wenben = rank and wenben[RankType_Lang[rank]] or ""
+  name = wenben[value.NameID]
+  mytable[value.RoleID] = {Rank= rank_wenben,Name=name,ID=id}
+end
+table.sort(mytable,function(a,b) return a.ID<b.ID end )
+for key,value in pairs(mytable) do
+  id = key
+  result = ""
+  result = result .. id .. ";" .. value.Name .. ";" .. value.Rank .. "\r\n"
+  csv_str = csv_str .. result
+end
+file = io.open("../人物ID.csv", "w")
+io.output(file)
+io.write(csv_str)
+io.close(file)
