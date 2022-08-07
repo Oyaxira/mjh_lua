@@ -78,7 +78,6 @@ io.write(csv_str)
 io.close(file)
 
 csv_str = "道具id;道具名称;描述;稀有度"
-
 for key,value in pairs(item) do
   name = value.ItemName
   id = value.BaseID
@@ -243,8 +242,11 @@ file = io.open("../专属技能.csv", "w")
 io.output(file)
 io.write(csv_str)
 io.close(file)
+
+
+
 mytable = {}
-csv_str = "人物id;人物名;Rank\r\n"
+csv_str = "人物id;人物名;Rank;介绍\r\n"
 for key,value in pairs(roles) do
   if value.RoleID == 0 then
   else
@@ -254,8 +256,14 @@ for key,value in pairs(roles) do
       rank = value.Rank
       rank_wenben = rank and wenben[RankType_Lang[rank]] or ""
       name = wenben[value.NameID]
-      result = result .. id .. ";" .. name .. ";" .. rank_wenben .. "\r\n"
-      mytable[value.RoleID] = {Rank= rank_wenben,Name=name,ID=id}
+      desc = "空"
+      if value.IntroduceID == 0 then
+      else
+        desc = wenben[value.IntroduceID]
+      end
+      result = result .. id .. ";" .. name .. ";" .. rank_wenben .. ";" .. desc .. "\r\n"
+
+      mytable[value.RoleID] = {Rank= rank_wenben,Name=name,ID=id,Desc=desc}
     end
   end
 
@@ -264,7 +272,7 @@ table.sort(mytable,function(a,b) return a.ID<b.ID end )
 for key,value in pairs(mytable) do
   id = key
   result = ""
-  result = result .. id .. ";" .. value.Name .. ";" .. value.Rank .. "\r\n"
+  result = result .. id .. ";" .. value.Name .. ";" .. value.Rank .. ";" .. value.Desc .. "\r\n"
   csv_str = csv_str .. result
 end
 file = io.open("../人物ID.csv", "w")
