@@ -3250,6 +3250,8 @@ local TaskEdge= {
   [5696003]={BaseID=5696003,StateID=569601,Type=TaskEdgeType.TET_Succeed,ConditionID=5696002,EdgeOrder=2,},
   [5696004]={BaseID=5696004,StateID=569601,Type=TaskEdgeType.TET_Succeed,ConditionID=5696004,EdgeOrder=3,},
   [5696005]={BaseID=5696005,StateID=569601,Type=TaskEdgeType.TET_Succeed,EdgeOrder=4,},
+  [5699001]={BaseID=5699001,StateID=569901,ConditonSatisfyJumpStateID=569902,EdgeOrder=1,},
+  [5699002]={BaseID=5699002,StateID=569902,Type=TaskEdgeType.TET_Succeed,EdgeOrder=2,},
   [5706002]={BaseID=5706002,StateID=570601,Type=TaskEdgeType.TET_Normal,ConditionID=5706001,ConditonSatisfyJumpStateID=570603,EdgeOrder=1,},
   [5706003]={BaseID=5706003,StateID=570601,Type=TaskEdgeType.TET_Normal,ConditionID=5706003,ConditonSatisfyJumpStateID=570602,EdgeOrder=2,},
   [5706004]={BaseID=5706004,StateID=570601,Type=TaskEdgeType.TET_Normal,ConditionID=5706005,ConditonSatisfyJumpStateID=570603,EdgeOrder=3,},

@@ -2023,6 +2023,7 @@ local Task= {
   [5694]={BaseID=5694,NameID=1105694001,},
   [5695]={BaseID=5695,NameID=1105695001,},
   [5696]={BaseID=5696,NameID=1105696001,},
+  [5699]={BaseID=5699,NameID=1105699001,},
   [5706]={BaseID=5706,},
   [5709]={BaseID=5709,NameID=1105709001,SpecialFlag={TaskFlag.TF_BattleTask,},},
   [5718]={BaseID=5718,NameID=1105718001,Type=TaskType.TT_liliang,SpecialFlag={TaskFlag.TF_mianban,},Level=15,Difficulty=1,TaskNormalRewards={TaskNormalRewardType.TNRT_jingyan,TaskNormalRewardType.TNRT_tongbi,},TaskRewards={571801,},RoleDispositionRewardList={{Role=1210301011,Value=20,},},TaskDescID=571801,},

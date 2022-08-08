@@ -3576,6 +3576,7 @@ function CharacterUI:GetEquipedItemIDByItemType(itemType)
             [ItemTypeDetail.ItemType_Whip] = 5, -- 鞭
             [ItemTypeDetail.ItemType_NeedleBox] = 5,  -- 针匣
             [ItemTypeDetail.ItemType_Cane] = 5,  -- 手杖/护腿
+            [ItemTypeDetail.ItemType_Fan] = 5,  -- 扇
             [ItemTypeDetail.ItemType_Artifact] = 6, -- 神器
             [ItemTypeDetail.ItemType_SecretBook] = 7, -- 秘籍
             [ItemTypeDetail.ItemType_HiddenWeapon] = 8, -- 暗器
