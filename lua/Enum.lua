@@ -1588,3 +1588,9 @@ MOVE_TYPE = {
     Manual = 1,--手动
     Automatic = 2, --自动
 }
+
+BATCH_CHOOSE_TYPE = {
+    CHOOSE = 1, -- 选中物品
+    LOCK = 2,   -- 锁定物品
+    UNLOCK = 3, -- 解锁物品
+}

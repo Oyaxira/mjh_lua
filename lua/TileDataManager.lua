@@ -16,7 +16,7 @@ end
 
 function TileDataManager:Init()
     self.events = {}
-    self.cityCache = {}
+	self.cityCache = {}
     self.x = 0
     self.y = 0
 end
@@ -180,7 +180,7 @@ function TileDataManager:CalcPos(pos, role)
                 end
             end
         else
-            if self:QueryScreenEvents(nx, ny, 0, 0) then
+            if self:QueryScreenEvents(nx, ny, 0, 0, pos& 0xff) then
                 return newpos
             end
         end
@@ -243,7 +243,7 @@ function TileDataManager:CalcMysteryShopPos(cityID,seed, pos)
                 end
             end
         else
-            if self:QueryScreenEvents(nx, ny, 0, 0) then
+            if self:QueryScreenEvents(nx, ny, 0, 0,cityID) then
                 return newpos
             end
         end
@@ -262,7 +262,11 @@ function TileDataManager:AddTileEvent(role, pos, type, tag, ex, task, icon)
         local cityID,seed = self:DecodeData2CityIdSeed(pos)
         local newpos = self:CalcMysteryShopPos(cityID,seed, pos)
         if newpos == nil then
-            return false
+            if role == 1000114001 or role == 1000114002 then
+                self.cityCache = self.cityCache or {}
+                table.insert(self.cityCache, {role, pos, type, tag, ex, task, icon})
+            end
+            return nil
         end
         pos = newpos
         type = type == 15 and 15 or 1
@@ -313,7 +317,7 @@ function TileDataManager:AddTileEvent(role, pos, type, tag, ex, task, icon)
             end
             if role > 0 then
                 self.aiPid[pos] = self.aiPid[pos] or {}
-                self.aiPid[pos][role] = pid
+                self.aiPid[pos][role] = evkey
             end
         end
     end
@@ -358,7 +362,7 @@ function TileDataManager:ContainPos(ev, x, y, _x, _y)
     return true
 end
 
-function TileDataManager:QueryScreenEvents(x, y, w, h)
+function TileDataManager:QueryScreenEvents(x, y, w, h, cityID)
     local ret = {}
     w = w or 0
     h = h or 0
@@ -366,13 +370,16 @@ function TileDataManager:QueryScreenEvents(x, y, w, h)
     local x2 = (x + w) // RW
     local y1 = (y) // RH
     local y2 = (y + h) // RH
+    local cityData = TableDataManager:GetInstance():GetTableData("City", cityID)
+    local cityX = cityData.BigmapPosX
+    local cityY = cityData.BigmapPosY
     for _x = x1, x2 do
         for _y = y1, y2 do
             local idx =  ToIndex(_x, _y)
             local tab = self.events[idx]
             if tab then
                 for k, v in pairs(tab) do
-                    if self:ContainNewPos(v, x, y, x + w, y + h) then
+                    if self:ContainNewPos(v, x, y, x + w, y + h) or self:ContainCityPos(x, y, cityX, cityY) then
                         return false
                     end
                 end
@@ -390,6 +397,16 @@ function TileDataManager:ContainNewPos(ev, x, y, _x, _y)
         return true
     end
     if math.abs(y1 - _y) <= ex - w * 10 then
+        return true
+    end
+    return false
+end
+
+function TileDataManager:ContainCityPos(x, y, _x, _y)
+    if math.abs(x - _x) <= 1 then
+        return true
+    end
+    if math.abs(y - _y) <= 1 then
         return true
     end
     return false

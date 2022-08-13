@@ -1004,6 +1004,7 @@ function StoreUI:UpdateItemLockState(itemID, bLock)
     if bLock then
         if node then
             self.ItemInfoUI:UpdateLockState(node, bLock)
+            ItemDataManager:GetInstance():SetItemLockState(itemID, bLock)
         end
         if self.shopPickList[itemID] then
             self:UnPickItem(itemID)
@@ -1013,6 +1014,7 @@ function StoreUI:UpdateItemLockState(itemID, bLock)
     elseif bHasLockFrature ~= true then
         if node then
             self.ItemInfoUI:UpdateLockState(node, bLock)
+            ItemDataManager:GetInstance():SetItemLockState(itemID, bLock)
         end
     end
 end
@@ -1086,7 +1088,7 @@ function StoreUI:UnPickAllItem()
 end
 
 -- 批量选中回调
-function StoreUI:OnBatchChooseOver(res)
+function StoreUI:OnBatchChooseOver(res, eBatchType)
     if not (res and self.auiItemIDList) then return end
     -- 先取消选中所有物品
     self:UnPickAllItem()
@@ -1108,24 +1110,37 @@ function StoreUI:OnBatchChooseOver(res)
             or (enumItemType == ItemTypeDetail.ItemType_Leechcraft) then
                 enumItemType = ItemTypeDetail.ItemType_Equipment
             end
-            -- 传家宝不会被多选选中
-            bIsTreasure = false
-            if (itemTypeData.PersonalTreasure ~= 0 )
-            or (itemTypeData.ClanTreasure ~= 0)
-            or (itemTypeData.NoneTreasure == TBoolean.BOOL_YES) then
-                bIsTreasure = true
-            end
-            if (bIsTreasure ~= true) and res[enumItemType] and (res[enumItemType][rank] == true) then
+            -- -- 传家宝不会被多选选中
+            -- bIsTreasure = false
+            -- if (itemTypeData.PersonalTreasure ~= 0 )
+            -- or (itemTypeData.ClanTreasure ~= 0)
+            -- or (itemTypeData.NoneTreasure == TBoolean.BOOL_YES) then
+            --     bIsTreasure = true
+            -- end
+            if res[enumItemType] and (res[enumItemType][rank] == true) then
                 list[#list + 1] = itemID
             end
         end
     end
-    for i = 1, #list - 1 do
-        -- 选中物品
-        self:PickItem(list[i])
+    for i = 1, #list do
+        if eBatchType == BATCH_CHOOSE_TYPE.CHOOSE then
+            if not ItemDataManager:GetInstance():GetItemLockState(list[i]) then
+                self:PickItem(list[i])
+            end
+        elseif eBatchType == BATCH_CHOOSE_TYPE.LOCK then
+            self:UpdateItemLockState(list[i], true)
+        elseif eBatchType == BATCH_CHOOSE_TYPE.UNLOCK then
+            self:UpdateItemLockState(list[i], false)
+        end
     end
-    -- 最后一个显示信息
-    self:OnClick_Info(list[#list])
+    self.curItemID = list[#list] 
+    self.objDetailTitle:SetActive(self.curItemID)
+    self.objDetailTips:SetActive(self.curItemID)
+    self.objDetailHave:SetActive(self.curItemID)
+    if self.curItemID then
+        self:RefreshTips()
+        self:RefreshNums()
+    end 
 end
 
 -- 选中物品节点
@@ -1588,13 +1603,13 @@ function StoreUI:OpenBatchChoose()
     -- end
     -- 打开多选
     OpenWindowByQueue("BatchChooseUI", {
-        ['callback'] = function(res)
+        ['callback'] = function(res, eBatchType)
             local win = GetUIWindow("StoreUI")
             if not win then
                 return
             end
-            win:OnBatchChooseOver(res)
-        end,
+            win:OnBatchChooseOver(res, eBatchType)
+		end,
         ['onClose'] = function()
             -- -- 重新打开状态栏返回键
             -- local windowBarUI = GetUIWindow("WindowBarUI")

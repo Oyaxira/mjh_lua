@@ -622,12 +622,15 @@ function ItemRecycleUI:OnClickItemRecBtn()
 				['uiItemNum'] = aiCount[index] or 0,
 			}
 		end
+		SystemUICall:GetInstance():Toast("回收中",false)
 		-- 分批发送
 		for index, list in ipairs(akItemList) do
 			local iCount = #list
 			list[0] = list[iCount]
 			list[iCount] = nil
-			SendStorageRecycle(iCount, list)
+			globalTimer:AddTimer(100*math.random(1,#akItemList),function()
+				SendStorageRecycle(iCount, list)
+			end)
 		end
 		self.comBackpackUINew:UnPickAllItems()
 		self.curItemID = nil
@@ -682,12 +685,12 @@ function ItemRecycleUI:OpenBatchChoose()
     end
     -- 打开多选
     OpenWindowByQueue("BatchChooseUI", {
-        ['callback'] = function(res)
+        ['callback'] = function(res, eBatchType)
             local win = GetUIWindow("ItemRecycleUI")
             if not win then
                 return
             end
-            win:OnBatchChooseOver(res)
+            win:OnBatchChooseOver(res, eBatchType)
 		end,
 		['onClose'] = function()
 			-- 重新打开状态栏返回键
@@ -701,7 +704,7 @@ function ItemRecycleUI:OpenBatchChoose()
 end
 
 -- 批量选中回调
-function ItemRecycleUI:OnBatchChooseOver(res)
+function ItemRecycleUI:OnBatchChooseOver(res, eBatchType)
     -- 先取消选中所有物品
 	self.comBackpackUINew:UnPickAllItems()
 	local akCurShowItems = self.comBackpackUINew:GetCurShowItemsArray()
@@ -717,7 +720,7 @@ function ItemRecycleUI:OnBatchChooseOver(res)
 	-- 多选时只操纵当前页签下的数据
 	for index, kInstItem in ipairs(akCurShowItems) do
 		local itemID = kInstItem.uiID or 0
-		if (itemID > 0) and (not self.kItemMgr:GetItemLockState(itemID) )then
+		if (itemID > 0) and ((not self.kItemMgr:GetItemLockState(itemID)) or eBatchType == BATCH_CHOOSE_TYPE.UNLOCK )then
 			itemTypeData = self.kItemMgr:GetItemTypeData(itemID)
 			rank = itemTypeData.Rank
 			-- 精良暗金、优秀暗金 跟暗金一起被多选选中
@@ -730,17 +733,23 @@ function ItemRecycleUI:OnBatchChooseOver(res)
 			or (enumItemType == ItemTypeDetail.ItemType_Leechcraft) then
 				enumItemType = ItemTypeDetail.ItemType_Equipment
 			end
-			-- 传家宝不会被多选选中
-			bIsTreasure = false
-			if (itemTypeData.PersonalTreasure ~= 0 )
-			or (itemTypeData.ClanTreasure ~= 0)
-			or (itemTypeData.NoneTreasure == TBoolean.BOOL_YES) then
-				bIsTreasure = true
-			end
-			if (bIsTreasure ~= true) and res[enumItemType] and (res[enumItemType][rank] == true) then
+			if res[enumItemType] and (res[enumItemType][rank] == true) then
 				-- 选中物品
-				self.comBackpackUINew:PickItemByID(itemID, self:GetItemNum(itemID), false)
-				iLastPickedItemID = itemID
+				if eBatchType == BATCH_CHOOSE_TYPE.CHOOSE then
+					self.comBackpackUINew:PickItemByID(itemID, self:GetItemNum(itemID), false)
+					iLastPickedItemID = itemID
+				elseif eBatchType == BATCH_CHOOSE_TYPE.LOCK then
+					if self.comBackpackUINew:IsItemPicked(itemID) then
+						self.comBackpackUINew:UnPickItemByID(itemID)
+					end
+					self.kItemMgr:SetItemLockState(itemID, true)
+					iLastPickedItemID = itemID
+				elseif eBatchType == BATCH_CHOOSE_TYPE.UNLOCK then
+					if self.kItemMgr:GetItemLockState(itemID) then
+						self.kItemMgr:SetItemLockState(itemID, false)
+					end
+					iLastPickedItemID = itemID
+				end
 			end
 		end
 	end

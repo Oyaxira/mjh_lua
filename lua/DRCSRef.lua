@@ -108,7 +108,7 @@ DRCSRef.MidasMain = CS.GameApp.MidasMain.Instance
 -- DRCSRef.PathMode = CS.DG.Tweening.PathMode
 DRCSRef.LineEffect = CS.GameApp.LineEffect
 DRCSRef.LuaBehaviour = CS.GameApp.LuaBehaviour
-
+DRCSRef.Dict = CS.GameApp.Dict
 ------- type类型-------
 
 DRCSRef_Type = 

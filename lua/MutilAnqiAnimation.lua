@@ -17,6 +17,7 @@ function MutilAnqiAnimation:GenTrackInfo(SeBattle_HurtInfo)
     end
     if self.cacheHurtInfo == nil or SeBattle_HurtInfo.iMutilTag == MutilAnqiTag.MT_START then 
         self.cacheHurtInfo = {}
+        table.insert(self.cacheHurtInfo,SeBattle_HurtInfo)
         return
     end
     table.insert(self.cacheHurtInfo,SeBattle_HurtInfo)

@@ -522,6 +522,7 @@ local BattlePos= {
   [1535]={name=1535,showname={1060101010,},x={6,},y={3,},Camp={50000,},CampType={20000,},},
   [1536]={name=1536,showname={1230113002,},x={6,},y={3,},Camp={50000,},CampType={20000,},},
   [1539]={name=1539,},
+  [1556]={name=1556,showname={1010412001,},x={7,},y={3,},Camp={50000,},},
 }
 
 -- export table: BattlePos

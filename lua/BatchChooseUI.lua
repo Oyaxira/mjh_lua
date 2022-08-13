@@ -21,10 +21,20 @@ function BatchChooseUI:Init()
     local objCheckBox = self:FindChild(self.Template, "CheckBox")
     self.iMaxColumn = objCheckBox.transform.childCount or 0
     self.Template:SetActive(false)
-    self.objBtnOK = self:FindChild(self.objChoose, "ButtonOK")
+    self.objBtnOK = self:FindChild(self.objChoose, "Btns/ButtonOK")
     self.btnBtnOk = self.objBtnOK:GetComponent(l_DRCSRef_Type.Button)
     self:AddButtonClickListener(self.btnBtnOk, function()
-        self:ComfirmToggleRes()
+        self:ComfirmToggleRes(BATCH_CHOOSE_TYPE.CHOOSE)
+    end)
+    self.objBtnLock = self:FindChild(self.objChoose, "Btns/ButtonLock")
+    self.btnBtnLock = self.objBtnLock:GetComponent(l_DRCSRef_Type.Button)
+    self:AddButtonClickListener(self.btnBtnLock, function()
+        self:ComfirmToggleRes(BATCH_CHOOSE_TYPE.LOCK)
+    end)
+    self.objBtnUnLock = self:FindChild(self.objChoose, "Btns/ButtonUnLock")
+    self.btnBtnUnLock = self.objBtnUnLock:GetComponent(l_DRCSRef_Type.Button)
+    self:AddButtonClickListener(self.btnBtnUnLock, function()
+        self:ComfirmToggleRes(BATCH_CHOOSE_TYPE.UNLOCK)
     end)
     self.btnClose = self:FindChildComponent(self._gameObject, "newFrame/Btn_exit", l_DRCSRef_Type.Button)
     self:AddButtonClickListener(self.btnClose, function()
@@ -133,11 +143,11 @@ function BatchChooseUI:CreateToggleGroup(itemTypeBaseID,objClone)
 end
 
 -- 确认批量选择结果
-function BatchChooseUI:ComfirmToggleRes()
+function BatchChooseUI:ComfirmToggleRes(eBatchType)
     -- 保存选项结果
     SetConfig("BatchChooseRes",self:EncodeRes())
     if self.callback then
-        self.callback(self.toggleRes)
+        self.callback(self.toggleRes, eBatchType)
         self.callback = nil
     end
     self:DoExit()

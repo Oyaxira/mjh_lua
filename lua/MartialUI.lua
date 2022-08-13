@@ -1,7 +1,7 @@
 MartialUI = class("MartialUI",BaseWindow)
 local AIUICom = require 'UI/Role/BattleAIUI'
 
-local EMBATTLE_MARTIAL_MAX = 5
+local EMBATTLE_MARTIAL_MAX = 8
 local l_DRCSRef_Type = DRCSRef_Type
 local rank_enumtostr = { 'White','Green','Blue','Purple','Orange','Gold','DarkGold','JingliangDarkGold', 'YouxiuDarkGold' }
 local depart_type_ets = {

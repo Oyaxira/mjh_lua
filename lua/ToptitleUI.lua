@@ -218,7 +218,9 @@ end
 
 function ToptitleUI:PlayTongbiAnim(before, after)
 	self.comTongBiText.text = before   -- 初始化
-    local tween = Twn_Number(nil, self.comTongBiText, before, after, 1, 0.2)
+    local tween = Twn_Number(nil, self.comTongBiText, before, after, 1, 0.3, function ()
+		self.comTongBiText.text = after  
+	end)
 end
 
 function ToptitleUI:OnPressESCKey()

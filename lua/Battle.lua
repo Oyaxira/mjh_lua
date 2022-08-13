@@ -648,6 +648,7 @@ local Battle= {
   [639]={BaseID=639,Name="暴打策划-3",Layout="btbg_menpaidating",ArrayFargID=1555,LV=50,NoCallfriend=TBoolean.BOOL_YES,NoSurrender=TBoolean.BOOL_YES,OpenTask={5624,},HideGameEndButton=TBoolean.BOOL_YES,HideGameendUI=TBoolean.BOOL_YES,},
   [640]={BaseID=640,Name="轩辕-三手通天",Layout="btbg_xuejing_ye",ArrayID=1430,LV=15,},
   [641]={BaseID=641,Name="轩辕心愿任务_战白衣教高手",ArrayID=1431,LV=30,},
+  [642]={BaseID=642,Name="破天剧本-宇文珂",Layout="btbg_xuejing_ye",ArrayID=1556,LV=50,BossList={1010412001,},BackgroundMusic=2008,},
   [775]={BaseID=775,Name="白衣魔君",Layout="btbg_yuwenzhuang02",ArrayID=189,LV=27,BossList={1220412001,},},
   [776]={BaseID=776,Name="第一次试炼",Layout="btbg_gebikezhan",ArrayID=676,LV=5,},
   [777]={BaseID=777,Name="白衣教营地简单",Layout="btbg_gebihuyanglin",ArrayFargID=188,},

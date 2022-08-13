@@ -1208,7 +1208,7 @@ function Twn_Color(twnAnim, target, fEndValue, fTime, startDelay, IsLoop, onComp
     return twnAnim
 end
 
-function Twn_Number(twnAnim, numberText, fBeginValue, fEndValue, fTime, fDelayTime)
+function Twn_Number(twnAnim, numberText, fBeginValue, fEndValue, fTime, fDelayTime,onComplete)
     if twnAnim ~= nil then
         twnAnim:Restart()
         return twnAnim
@@ -1225,6 +1225,9 @@ function Twn_Number(twnAnim, numberText, fBeginValue, fEndValue, fTime, fDelayTi
     end, fBeginValue, fEndValue, fTime)
     if fDelayTime and fDelayTime > 0 then
         twnAnim:SetDelay(fDelayTime)
+    end
+    if onComplete then
+        twnAnim.onComplete = onComplete
     end
     return twnAnim
 end
@@ -2742,4 +2745,12 @@ function LoadByIo(path)
         end
     end
     return t
+end
+
+function ToTraditionalChinese(text)
+    local str = io.readfile('lang.txt')
+    if str == 'tchinese' then
+        return DRCSRef.Dict.ToTraditionalChinese(text)
+    end
+    return text
 end

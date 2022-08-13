@@ -43,7 +43,7 @@ local ScriptItem= {
   [202]={BaseID=202,ScriptOwner=4,ItemEnum=WeekEndDataEnum.WE_HuiTianMieDi2,Description="破天逆命传剧本胜利40场",Score2=1500,Order=3,MaxValue=1500,},
   [203]={BaseID=203,ScriptOwner=4,ItemEnum=WeekEndDataEnum.WE_HuiTianMieDi3,Description="破天逆命传剧本胜利60场",Score2=1500,Order=4,MaxValue=1500,},
   [204]={BaseID=204,ScriptOwner=4,ItemEnum=WeekEndDataEnum.WE_HuiTianMieDi4,Description="破天逆命传剧本胜利80场",Score2=1500,Order=5,MaxValue=1500,},
-  [205]={BaseID=205,ScriptOwner=4,ItemEnum=WeekEndDataEnum.WE_NULL,Description="破天逆命传剧本胜利100场",Score2=1500,Order=6,MaxValue=1500,},
+  [205]={BaseID=205,ScriptOwner=4,ItemEnum=WeekEndDataEnum.WE_HuiTianMieDi5,Description="破天逆命传剧本胜利100场",Score2=1500,Order=6,MaxValue=1500,},
 }
 for k,v in pairs(ScriptItem) do
     setmetatable(v, {['__index'] = ScriptItemDefault})

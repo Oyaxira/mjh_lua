@@ -2000,7 +2000,7 @@ local TaskEvent= {
   [3238008]={BaseID=3238008,Event=Event.Event_ShowChooseText,EventArg1="1003238004",EventArg2="1210313001",IsCoverSystemFunction=TBoolean.BOOL_NO,},
   [3239001]={BaseID=3239001,Event=Event.Event_RoleInteractive,EventArg1="1103239010",EventArg2="1210314002",EventArg3="801",},
   [3239002]={BaseID=3239002,Event=Event.Event_RoleInteractive,EventArg1="1103239011",EventArg2="1000013007",EventArg3="802",},
-  [3239006]={BaseID=3239006,Event=Event.Event_UI_tijiao_teding_wupin,EventArg1="420309|30551",EventArg3="1|5",EventArg4="True",},
+  [3239006]={BaseID=3239006,Event=Event.Event_UI_tijiao_teding_wupin,EventArg1="420309|30551",EventArg3="1|5",},
   [3239008]={BaseID=3239008,Event=Event.Event_ItemSubmitSucceed,},
   [3239009]={BaseID=3239009,Event=Event.Event_ItemSubmitFailed,},
   [3239010]={BaseID=3239010,Event=Event.Event_RoleInteractive,EventArg1="1103239014",EventArg2="1000013007",EventArg3="132",},

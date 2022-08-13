@@ -87,6 +87,23 @@ local Businessman= {
   [110]={BaseID=110,RoleID=1090325005,UseMoney=801081,},
   [111]={BaseID=111,UseMoney=801074,},
   [112]={BaseID=112,},
+  [113]={BaseID=113,},
+  [114]={BaseID=114,},
+  [115]={BaseID=115,},
+  [116]={BaseID=116,},
+  [117]={BaseID=117,},
+  [118]={BaseID=118,},
+  [119]={BaseID=119,},
+  [120]={BaseID=120,},
+  [121]={BaseID=121,},
+  [122]={BaseID=122,},
+  [123]={BaseID=123,},
+  [124]={BaseID=124,},
+  [125]={BaseID=125,},
+  [126]={BaseID=126,},
+  [127]={BaseID=127,},
+  [128]={BaseID=128,},
+  [129]={BaseID=129,},
 }
 for k,v in pairs(Businessman) do
     setmetatable(v, {['__index'] = BusinessmanDefault})

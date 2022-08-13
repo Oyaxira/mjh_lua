@@ -6,6 +6,8 @@ require("common");
 
 
 local Plot= {
+  [560000002]={BaseID=560000002,Param1="1040113002",Param2="1105600003",NextPlotIDList={560000003,},},
+  [560000003]={BaseID=560000003,Param1="1",Param2="1105600004",},
   [560000004]={BaseID=560000004,Param1="1",Param2="1105600006",NextPlotIDList={560000006,},},
   [560000005]={BaseID=560000005,Param1="",Param2="1105600005",NextPlotIDList={560000004,},},
   [560000006]={BaseID=560000006,PlotType=PlotType.PT_LINSHI_JUESE_DUIHUA,Param1="42",Param2="1105600007",NextPlotIDList={560000007,},Param10="1105600008",},

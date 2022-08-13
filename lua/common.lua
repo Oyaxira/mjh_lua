@@ -11285,7 +11285,7 @@ WeekEndDataEnum = {
   WE_HuiTianMieDi2 = 55; -- 破天逆命传剧本胜利40场
   WE_HuiTianMieDi3 = 56; -- 破天逆命传剧本胜利60场
   WE_HuiTianMieDi4 = 57; -- 破天逆命传剧本胜利80场
-  WE_HuiTianMieDi5 = 58; -- 破天灭地剧本胜利100场
+  WE_HuiTianMieDi5 = 58; -- 破天逆命传剧本胜利100场
   WE_NUM = 59; -- 个数
 }
 
@@ -11348,7 +11348,7 @@ WeekEndDataEnum_Revert = {
   ["破天逆命传剧本胜利40场"] = WeekEndDataEnum.WE_HuiTianMieDi2;
   ["破天逆命传剧本胜利60场"] = WeekEndDataEnum.WE_HuiTianMieDi3;
   ["破天逆命传剧本胜利80场"] = WeekEndDataEnum.WE_HuiTianMieDi4;
-  ["破天灭地剧本胜利100场"] = WeekEndDataEnum.WE_HuiTianMieDi5;
+  ["破天逆命传剧本胜利100场"] = WeekEndDataEnum.WE_HuiTianMieDi5;
   ["个数"] = WeekEndDataEnum.WE_NUM;
 }
 

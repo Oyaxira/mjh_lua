@@ -8161,6 +8161,11 @@ local TaskEdge= {
   [5266002]={BaseID=5266002,StateID=526601,Type=TaskEdgeType.TET_Succeed,ConditionID=5266001,EdgeOrder=2,},
   [5266003]={BaseID=5266003,StateID=526601,Type=TaskEdgeType.TET_Succeed,ConditionID=5266002,EdgeOrder=3,},
   [5266004]={BaseID=5266004,StateID=526601,Type=TaskEdgeType.TET_Succeed,ConditionID=5266004,EdgeOrder=1,},
+  [5267001]={BaseID=5267001,StateID=526705,ConditonSatisfyJumpStateID=526703,EdgeOrder=5,},
+  [5267002]={BaseID=5267002,StateID=526702,ConditonSatisfyJumpStateID=526704,EdgeOrder=1,},
+  [5267003]={BaseID=5267003,StateID=526703,TaskEventID=5267002,ConditonSatisfyJumpStateID=526705,EdgeOrder=3,},
+  [5267004]={BaseID=5267004,StateID=526704,TaskEventID=5267001,ConditonSatisfyJumpStateID=526703,EdgeOrder=2,},
+  [5267005]={BaseID=5267005,StateID=526705,ConditionID=5267001,ConditonSatisfyJumpStateID=526702,EdgeOrder=4,},
   [5268001]={BaseID=5268001,StateID=526801,Type=TaskEdgeType.TET_Succeed,EdgeOrder=4,},
   [5268002]={BaseID=5268002,StateID=526801,Type=TaskEdgeType.TET_Succeed,ConditionID=5268001,EdgeOrder=2,},
   [5268003]={BaseID=5268003,StateID=526801,Type=TaskEdgeType.TET_Succeed,ConditionID=5268002,EdgeOrder=3,},
@@ -10005,11 +10010,6 @@ local TaskEdge= {
   [5420093]={BaseID=5420093,StateID=542027,ConditionID=5420094,ConditonSatisfyJumpStateID=542028,EdgeOrder=63,},
   [5420094]={BaseID=5420094,StateID=542027,ConditionID=5420096,ConditonSatisfyJumpStateID=542028,EdgeOrder=64,},
   [5420095]={BaseID=5420095,StateID=542027,ConditionID=5420098,ConditonSatisfyJumpStateID=542028,EdgeOrder=65,},
-  [5420096]={BaseID=5420096,StateID=542027,ConditionID=5420100,ConditonSatisfyJumpStateID=542028,EdgeOrder=66,},
-  [5420097]={BaseID=5420097,StateID=542027,ConditionID=5420102,ConditonSatisfyJumpStateID=542028,EdgeOrder=67,},
-  [5420098]={BaseID=5420098,StateID=542027,ConditionID=5420104,ConditonSatisfyJumpStateID=542028,EdgeOrder=68,},
-  [5420099]={BaseID=5420099,StateID=542027,ConditionID=5420106,ConditonSatisfyJumpStateID=542028,EdgeOrder=69,},
-  [5420100]={BaseID=5420100,StateID=542027,ConditionID=5420108,ConditonSatisfyJumpStateID=542028,EdgeOrder=70,},
 }
 
 -- export table: TaskEdge

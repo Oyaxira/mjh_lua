@@ -4622,6 +4622,8 @@ local SkillEffect= {
   [304249002]={BaseID=304249002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
   [304250001]={BaseID=304250001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrSegmentation,EventArg1={0,304250002,},EventArg2={47,0,},EventArg3={-1500,0,},},
   [304250002]={BaseID=304250002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
+  [304251001]={BaseID=304251001,Name=SkillEffectDescription.SED_TongYongbuff_ZhiDingBuff,EventArg1={0,304251002,},EventArg2={301,0,},EventArg3={50000,0,},EventArg4={0,0,},EventArg5={100,0,},},
+  [304251002]={BaseID=304251002,},
   [304252001]={BaseID=304252001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrSegmentation,EventArg1={0,304252002,},EventArg2={41,0,},EventArg3={-2000,0,},},
   [304252002]={BaseID=304252002,Name=SkillEffectDescription.SED_System_GetCurrentEffectBuff,},
   [304253001]={BaseID=304253001,Name=SkillEffectDescription.SED_BuffEffect_AddRoleAttrSegmentation,EventArg1={0,304253002,},EventArg2={41,0,},EventArg3={-4000,0,},},
@@ -8529,9 +8531,9 @@ local SkillEffect= {
   [400312007]={BaseID=400312007,Name=SkillEffectDescription.SED_LogicOperation_ConditionalBranch,EventArg1={0,400312008,},EventArg2={0,400312014,},},
   [400312008]={BaseID=400312008,Name=SkillEffectDescription.SED_Null,EventArg1={0,400312009,},},
   [400312009]={BaseID=400312009,Name=SkillEffectDescription.SED_LogicOperation_DataCompare,EventArg1={1,0,},EventArg2={0,400312010,},EventArg3={0,400312012,},},
-  [400312010]={BaseID=400312010,Name=SkillEffectDescription.SED_Role_GetRoleMaxAttr,EventArg1={0,400312011,},EventArg2={4,0,},},
+  [400312010]={BaseID=400312010,Name=SkillEffectDescription.SED_Role_GetRoleMaxAttr,EventArg1={0,400312011,},EventArg2={17,0,},},
   [400312011]={BaseID=400312011,},
-  [400312012]={BaseID=400312012,Name=SkillEffectDescription.SED_Role_GetRoleMaxAttr,EventArg1={0,400312013,},EventArg2={4,0,},},
+  [400312012]={BaseID=400312012,Name=SkillEffectDescription.SED_Role_GetRoleMaxAttr,EventArg1={0,400312013,},EventArg2={17,0,},},
   [400312013]={BaseID=400312013,Name=SkillEffectDescription.SED_GetCurrentTraverseUnit,},
   [400312014]={BaseID=400312014,Name=SkillEffectDescription.SED_Null,EventArg1={0,400312015,},EventArg2={0,400312016,},EventArg3={0,400312018,},},
   [400312015]={BaseID=400312015,Name=SkillEffectDescription.SED_XIDAOZHIDINGWEIZHI_DANGQIANBIANLIDANWEI,},
@@ -10004,8 +10006,6 @@ local SkillEffect= {
   [400506001]={BaseID=400506001,Name=SkillEffectDescription.SED_SkillCondition_CommonInitiativeUseSkill,},
   [400506002]={BaseID=400506002,Name=SkillEffectDescription.SED_SkillLogic_CommonAttackSkill,EventArg1={0,0,},EventArg2={5000,0,},},
   [400506003]={BaseID=400506003,Name=SkillEffectDescription.SED_Logic_Sum,EventArg1={0,400506004,},},
-  [400506004]={BaseID=400506004,Name=SkillEffectDescription.SED_Null,EventArg1={0,400506005,},EventArg2={0,400506006,},},
-  [400506005]={BaseID=400506005,Name=SkillEffectDescription.SED_SkillCondition_SelfSameSkill,},
 }
 
 -- export table: SkillEffect

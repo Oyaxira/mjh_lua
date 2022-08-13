@@ -280,7 +280,7 @@ function TileBigMap:UpdateCity()
 			face_bg:SetActive(false)
 			
 			sp.sprite = GetSprite("TileEvent/"..v.TileImage)
-			textMesh.text = GetLanguageByID(v.NameID)
+			textMesh.text = ToTraditionalChinese(GetLanguageByID(v.NameID))
 		end
 	end
 end
@@ -614,7 +614,7 @@ function TileBigMap:SetEventSprite(sp, pid, role, evType, x, y, tag, ex, task, i
 		local RM = RoleDataManager:GetInstance()
 		local artData = RM:GetRoleArtDataByTypeID(role)
 		face.sprite = GetSprite(artData.Head)		
-		textMesh.text = RM:GetRoleNameByTypeID(role)
+		textMesh.text = ToTraditionalChinese(RM:GetRoleNameByTypeID(role))
 		comMark.gameObject:SetActive(false)
 		if max_weight_info and max_weight_info.state then
 			-- derror(string.format("p:%d,%d role %d task:%d state:%s",x, y, role, task, max_weight_info.state))
@@ -631,7 +631,7 @@ function TileBigMap:SetEventSprite(sp, pid, role, evType, x, y, tag, ex, task, i
 	end
 	sp.sprite = GetSprite("TileEvent/ev"..icon)
 	if textMesh then
-		textMesh.text = GetLanguageByID(tag, task)
+		textMesh.text = ToTraditionalChinese(GetLanguageByID(tag, task))
 	end
 end
 

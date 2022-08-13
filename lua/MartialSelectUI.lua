@@ -115,14 +115,18 @@ function MartialSelectUI:UpdateItem(transform,iIndex)
     end
 
     local dragItem = self:FindChildComponent(transform.gameObject,"Head_Dispositions","DRButton")
+    self:RemoveButtonClickListener(dragItem)
     self:AddButtonClickListener(dragItem,function() 
         OpenWindowImmediately("ObserveUI", {['roleID'] = iRoleID})
     end)
+   
     local WatchItem = self:FindChildComponent(transform.gameObject,"Button_Watch","DRButton")
+    self:RemoveButtonClickListener(WatchItem)
     self:AddButtonClickListener(WatchItem,function() 
         self.choseid = iTypeID
         self.resid = martialID
         self:RefreshChose()
+        objshose:SetActive(true)
     end)
     self.listobj[iTypeID] = transform
     objshose:SetActive(iTypeID == self.choseid)
@@ -132,7 +136,7 @@ function MartialSelectUI:RefreshChose()
     for i,v in pairs(self.listobj) do
         local objshose = self:FindChild(v.gameObject,'Choose_Image')
         if objshose then 
-            objshose:SetActive(self.choseid == i)
+            objshose:SetActive(false)
         end
     end
 end
@@ -145,10 +149,10 @@ function MartialSelectUI:CanStrong(roleID)
 		return false
 	end
     local roleData = RoleDataManager:GetInstance():GetRoleData(roleID)
-    local auiMartials, auiLvs = roleData:GetMartials()
+    local auiMartials, auiLvs = roleData:GetMaxLevelMartials()
     for i=0, #auiMartials do
         local typeData = TableDataManager:GetInstance():GetTableData("Martial",auiMartials[i])
-        if typeData and typeData.Exclusive and auiLvs[i] < 20 then
+        if typeData and typeData.Exclusive and #typeData.Exclusive > 0 and auiLvs[i] < 20 then
             return true
         end
     end

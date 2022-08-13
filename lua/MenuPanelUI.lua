@@ -133,7 +133,7 @@ function MenuPanelUI:Init()
 	if self.comFileBtn then
 		self:AddButtonClickListener(self.comFileBtn,function()
 			OpenWindowImmediately("SaveFileUI")
-			SetTextDefault(self.comCollectionUIAction.gameObject)
+			SetTextDefault(self.comFileUIAction.gameObject)
 			self:Close()
 		end)
 	end

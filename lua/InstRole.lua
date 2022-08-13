@@ -65,6 +65,20 @@ function InstRole:GetMartials()
     return auiTypeIds,auiLvs
 end
 
+function InstRole:GetMaxLevelMartials()
+    local auiRoleMartials = self.auiRoleMartials or {}
+    local auiTypeIds = {}
+    local auiLvs = {}
+    for i=0, getTableSize(auiRoleMartials)-1 do
+        local kRoleMartial = MartialDataManager:GetInstance():GetMartialData(auiRoleMartials[i])
+        if kRoleMartial then
+            auiLvs[i] = kRoleMartial.uiMaxLevel
+            auiTypeIds[i] = kRoleMartial.uiTypeID
+        end
+    end
+    return auiTypeIds,auiLvs
+end
+
 function InstRole:CureIsDemage()
     local auiRoleMartials = self.auiRoleMartials or {}
     local auiTypeIds = {}
