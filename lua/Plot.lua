@@ -918,6 +918,12 @@ local Plot= {
   [70807]={BaseID=70807,PlotType=PlotType.PT_TOAST,Param1="160805",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
   [70808]={BaseID=70808,PlotType=PlotType.PT_TOAST,Param1="160806",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
   [70809]={BaseID=70809,PlotType=PlotType.PT_TOAST,Param1="160807",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
+  [70810]={BaseID=70810,PlotType=PlotType.PT_TOAST,Param1="160808",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
+  [70811]={BaseID=70811,PlotType=PlotType.PT_TOAST,Param1="160809",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
+  [70812]={BaseID=70812,PlotType=PlotType.PT_TOAST,Param1="160810",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
+  [70813]={BaseID=70813,PlotType=PlotType.PT_TOAST,Param1="160811",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
+  [70814]={BaseID=70814,PlotType=PlotType.PT_TOAST,Param1="160812",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
+  [70815]={BaseID=70815,PlotType=PlotType.PT_TOAST,Param1="160813",Param5=nil,Param6=nil,Param7=nil,Param8=nil,Param9=nil,Param10=nil,},
   [100001]={BaseID=100001,Param1="发布角色",Param2="3020004",Param7="1",},
   [102400001]={BaseID=102400001,Param2="1101024003",Param3="震动",},
   [102400002]={BaseID=102400002,Param1="1030412001",Param2="1101024004",NextPlotIDList={102400001,},},
@@ -10002,12 +10008,6 @@ local Plot= {
   [328302601]={BaseID=328302601,Param1="1060114001",Param2="1003283026",NextPlotIDList={328302602,},Param7="0",},
   [328302602]={BaseID=328302602,Param2="1003283027",NextPlotIDList={328302603,},Param7="0",},
   [328302603]={BaseID=328302603,Param1="1060114001",Param2="1003283028",NextPlotIDList={328302604,},Param7="0",},
-  [328302604]={BaseID=328302604,Param1="1060114001",Param2="1003283029",Param7="0",},
-  [328302801]={BaseID=328302801,Param2="1003283030",Param7="0",},
-  [328303001]={BaseID=328303001,Param1="1060114001",Param2="1003283031",NextPlotIDList={328303002,},Param7="0",},
-  [328303002]={BaseID=328303002,Param1="1060114001",Param2="1003283032",NextPlotIDList={328303003,},Param7="0",},
-  [328303003]={BaseID=328303003,Param1="1060114001",Param2="1003283033",Param7="0",},
-  [328303201]={BaseID=328303201,Param2="1003283034",Param7="0",},
 }
 for k,v in pairs(Plot) do
     setmetatable(v, {['__index'] = PlotDefault})

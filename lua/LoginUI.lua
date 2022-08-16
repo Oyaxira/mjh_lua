@@ -437,14 +437,19 @@ function LoginUI:RefreshUI()
     -- 初始化不要在Init里做，放到视频播放完毕后
     --local firstStart = GetConfig("FirstStart")
     --SetConfig("FirstStart",0)
-    if g_isStart == nil then
+    local SkipVideo = GetConfig("confg_Video") == 2
+    if not SkipVideo and g_isStart == nil then
         g_isStart = 1
         xpcall(function()
             self:VideoInit()
         end, function()
             self:VideoReached()
         end)
+        if self.bShowLogin then
+            self.objUIRoot_Node:SetActive(true)
+        end
     else
+        self.bShowLogin = true
         self:ShowLogin()
     end
     self:RefreshBGImage()

@@ -2735,22 +2735,39 @@ function DicToLuaTable(Dic)
     return dic
 end
 
-function LoadByIo(path)
-    local t = nil
-    local gameobject = DRCSRef.FindGameObj("UIBase")
-    if gameobject then 
-        local comTouchUIPos = gameobject:GetComponent("TouchUIPos")
-        if comTouchUIPos then 
-             t = comTouchUIPos:LoadByIo(path)
-        end
-    end
-    return t
-end
-
 function ToTraditionalChinese(text)
     local str = io.readfile('lang.txt')
     if str == 'tchinese' then
         return DRCSRef.Dict.ToTraditionalChinese(text)
     end
     return text
+end
+
+function DicToLuaTable(Dic)
+    local dic = {}
+    if Dic then
+        local iter = Dic:GetEnumerator()
+        while iter:MoveNext() do
+            local k = iter.Current.Key
+            local v = iter.Current.Value
+            dic[k] = v
+        end
+    end
+    return dic
+end
+
+function ListToTable(List)
+    local list = {}
+    if List then
+        local index = 1
+        local iter = List:GetEnumerator()
+        while iter:MoveNext() do
+            local v = iter.Current
+            list[index] = v
+            index = index + 1
+        end
+    else
+        logError("Error,CSharpList is null")
+    end
+    return list
 end

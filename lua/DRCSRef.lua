@@ -109,6 +109,7 @@ DRCSRef.MidasMain = CS.GameApp.MidasMain.Instance
 DRCSRef.LineEffect = CS.GameApp.LineEffect
 DRCSRef.LuaBehaviour = CS.GameApp.LuaBehaviour
 DRCSRef.Dict = CS.GameApp.Dict
+DRCSRef.SaveFile = CS.GameApp.SaveFile
 ------- type类型-------
 
 DRCSRef_Type = 

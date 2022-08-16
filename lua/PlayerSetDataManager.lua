@@ -108,8 +108,6 @@ function PlayerSetDataManager:InitPlayerInfo(kRetData)
             CS.DHTackHelper.login(str_id, "",jsonStr)
         end
     end
-    local bIsSaveShootOn = GetConfig("confg_Save") ~= 2
-    SendSaveFileOpt(SSFRT_OPEN_SAVE_FILE, "", bIsSaveShootOn)
     self:SetPlayerID(2)
     self:SetReNameNum(kRetData["dwReNameNum"])
     self:SetLuckyValue(kRetData["dwLuckyValue"])

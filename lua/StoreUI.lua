@@ -703,6 +703,7 @@ function StoreUI:GenLegalShopItemList(businessid)
     self.shopItemUseCond = {}  -- 物品购买条件数据
     local condRes = true  -- 物品能否购买
     local condDesc = nil  -- 物品购买条件的描述
+    local bNeedSort = true
     -- for int_i = 1, #TB_Shop do
     local TB_Shop = TableDataManager:GetInstance():GetTable("Shop")
     for uiTypeID, shopItemTypeData in pairs(TB_Shop) do
@@ -718,7 +719,16 @@ function StoreUI:GenLegalShopItemList(businessid)
                 bIsLegalType = self:IsItemBelongToLegalType(itemTypeData.BaseID)
             end
             if (bIsLegalType == true) and ((bIsReplenish == true) or (remainCount > 0)) then
-                table.insert(list, shopItemTypeID)
+                local iSortId = shopItemTypeData.ItemSortID
+                if iSortId == 0 then
+                    bNeedSort = false
+                end
+                local tempData = {
+                    ['baseID'] = shopItemTypeID,
+                    ['sortID'] = iSortId,
+                }
+                table.insert(list, tempData)
+                
                 itemIDCheck[shopItemTypeID] = true
                 -- 生成物品的使用条件数据
                 condRes, condDesc = shopMgr:GenShopItemBuyCondition(shopItemTypeID)
@@ -742,7 +752,19 @@ function StoreUI:GenLegalShopItemList(businessid)
             self:UnPickItem(id)
         end
     end
-    return list
+
+    if bNeedSort then
+        table.sort(list, function(a,b)
+            if (a ~= nil and b ~= nil) then
+                return (a.sortID < b.sortID)
+            end
+        end)
+    end
+    local finalList = {}
+    for index, data in ipairs(list) do
+        table.insert(finalList, data.baseID)
+    end
+    return finalList
 end
 
 -- 筛选合法的卖出物品

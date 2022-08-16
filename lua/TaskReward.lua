@@ -1976,6 +1976,8 @@ local TaskReward= {
   [569603]={BaseID=569603,RewardArg1="5696003",},
   [569701]={BaseID=569701,RewardArg1="5697001",},
   [569702]={BaseID=569702,RewardArg1="5697002",},
+  [569703]={BaseID=569703,RewardArg1="5697003",},
+  [569704]={BaseID=569704,RewardArg1="5697004",},
   [569801]={BaseID=569801,RewardArg1="5698001",},
   [569802]={BaseID=569802,RewardArg1="5698002",},
   [569803]={BaseID=569803,RewardArg1="5698003",},

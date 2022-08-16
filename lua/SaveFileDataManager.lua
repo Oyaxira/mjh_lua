@@ -19,29 +19,12 @@ function SaveFileDataManager:UpdateSaveFileInfo()
     local file = {}
     self.akSaveFile = {}
     self.akSaveFile[1] = {"自动", nil}
-    local gameobject = DRCSRef.FindGameObj("UIBase")
-    if gameobject then 
-        local comTouchUIPos = gameobject:GetComponent("TouchUIPos")
-        if comTouchUIPos then 
-            file = self:DicToLuaTable(comTouchUIPos:LoadSaveFileInfoByPath("SaveFile"))
-        end
-    end
+    file = DicToLuaTable(DRCSRef.SaveFile.LoadSaveFileInfoByPath("SaveFile"))
     for key, value in pairs(file) do
-        self.akSaveFile[#self.akSaveFile + 1] = {key, value}
+        local Time = DRCSRef.SaveFile.GetFileWriteTime("SaveFile/"..key)
+        local spirte = DRCSRef.SaveFile.LoadByIo(value)
+        self.akSaveFile[#self.akSaveFile + 1] = {key, spirte,Time}
     end
-end
-
-function SaveFileDataManager:DicToLuaTable(Dic)
-    local dic = {}
-    if Dic then
-        local iter = Dic:GetEnumerator()
-        while iter:MoveNext() do
-            local k = iter.Current.Key
-            local v = iter.Current.Value
-            dic[k] = v
-        end
-    end
-    return dic
 end
 
 function SaveFileDataManager:GetSaveFileInfo()
@@ -126,8 +109,20 @@ end
 --加载存档Start
 function SaveFileDataManager:SendLoadSaveFile(strFileName)
     if GetGameState() ~= -1 then
-        local msg = "请回到标题画面进行加载存档"
-        OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, msg or "", nil,{confirm = true, cancel = false}})
+       -- 如果这个时候临时背包中还有物品, 那么在返回酒馆的时候给个提示
+		local tempItems = ItemDataManager:GetInstance():GetTempBackpackItems() or {}
+		if #tempItems > 0 then
+			local msg = "加载存档需要返回标题界面，临时背包中还有物品, 离开剧本就会消失, 确定要返回标题吗？"
+			local boxCallback = function()
+				SendClickQuitStoryCMD()
+			end
+			OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, msg or "", boxCallback})
+		else
+			local _callback = function()
+				SendClickQuitStoryCMD();
+			end
+			OpenWindowImmediately('GeneralBoxUI', { GeneralBoxType.COMMON_TIP, '加载存档需要返回标题界面，是否要返回标题画面？', _callback });
+		end
         return
     end
     if strFileName == "自动" then
@@ -147,7 +142,7 @@ function SaveFileDataManager:ProecessLoadSaveFile()
             LoginUI:OnclickVisitorLogin()
         end
         globalDataPool:setData("GameMode","ServerMode")
-        local index = GetConfig("index") or 2
+        local index = GetConfig("index") or 1
         index = index + 1
         SetConfig("index", index, true)
         OnGameNetConnected()

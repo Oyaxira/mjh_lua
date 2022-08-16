@@ -867,6 +867,13 @@ local BatlleFunc= {
   [3606]={BaseID=3606,EventArg1={50,51,52,},EventArg2=400000,EventArg3=400000,EventArg4={10000,},EventArg5={19,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210150,},
   [3607]={BaseID=3607,EventArg1={48,},EventArg2=100000,EventArg3=100000,EventArg4={10000,},EventArg5={2,},EventArg6={RankType.RT_Green,},EventArg7=3210153,},
   [3608]={BaseID=3608,EventArg1={86,83,},EventArg3=200000,EventArg4={10000,20000,},EventArg5={2,},EventArg6={RankType.RT_Purple,},EventArg7=3210163,},
+  [3609]={BaseID=3609,EventArg1={30,},EventArg2=250000,EventArg3=250000,EventArg4={10000,},EventArg5={6,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210175,},
+  [3610]={BaseID=3610,EventArg1={9,},EventArg2=250000,EventArg3=250000,EventArg4={20000,},EventArg5={6,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210353,},
+  [3611]={BaseID=3611,EventArg1={47,},EventArg2=250000,EventArg3=250000,EventArg4={20000,},EventArg5={6,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210412,},
+  [3612]={BaseID=3612,EventArg1={36,},EventArg2=250000,EventArg3=250000,EventArg4={10000,},EventArg5={6,},EventArg6={RankType.RT_Golden,},EventArg7=3210446,},
+  [3613]={BaseID=3613,EventArg1={93,},EventArg2=250000,EventArg3=250000,EventArg4={10000,},EventArg5={5,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210447,},
+  [3614]={BaseID=3614,EventArg1={24,},EventArg2=250000,EventArg3=250000,EventArg4={20000,},EventArg5={6,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210448,},
+  [3615]={BaseID=3615,EventArg1={46,13,47,},EventArg3=200000,EventArg4={10000,20000,},EventArg5={4,3,6,1,},EventArg6={RankType.RT_Orange,},EventArg7=3210449,},
 }
 for k,v in pairs(BatlleFunc) do
     setmetatable(v, {['__index'] = BatlleFuncDefault})

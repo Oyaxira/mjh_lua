@@ -2172,6 +2172,16 @@ local MazeCardArtSetting= {
   [2000128007]={BaseID=2000128007,CardBG="BuildingBG/xxcard_high_xxwg",},
   [2000128008]={BaseID=2000128008,CardBG="BuildingBG/xxcard_high_xxwg",},
   [2000128009]={BaseID=2000128009,CardBG="BuildingBG/xxcard_low_juesjy",},
+  [2000129000]={BaseID=2000129000,CardBG="BuildingBG/sc_bg_dong1cheng2men2_jin4lu4",},
+  [2000129001]={BaseID=2000129001,CardBG="BuildingBG/xxcard_high_zhrm",},
+  [2000129002]={BaseID=2000129002,CardBG="BuildingBG/xxcard_high_dwtc",},
+  [2000129003]={BaseID=2000129003,CardBG="BuildingBG/xxcard_high_dwdl",},
+  [2000129004]={BaseID=2000129004,CardBG="BuildingBG/xxcard_high_xlsh",},
+  [2000129005]={BaseID=2000129005,CardBG="BuildingBG/xxcard_low_wxjy",},
+  [2000129006]={BaseID=2000129006,CardBG="BuildingBG/xxcard_low_juesjy",},
+  [2000129007]={BaseID=2000129007,CardBG="BuildingBG/sc_bt_xing1kong1",},
+  [2000129008]={BaseID=2000129008,CardBG="BuildingBG/sc_bg_dong1cheng2men2_jin4lu4",},
+  [2000129009]={BaseID=2000129009,CardBG="BuildingBG/sc_bg_dong1cheng2men2_jin4lu4",},
 }
 for k,v in pairs(MazeCardArtSetting) do
     setmetatable(v, {['__index'] = MazeCardArtSettingDefault})

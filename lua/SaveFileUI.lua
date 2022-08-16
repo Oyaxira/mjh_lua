@@ -173,14 +173,16 @@ end
 function SaveFileUI:RefreshFileScroll(transform, index)
 	local kCurData = self.akSaveFile[index + 1]
 	if kCurData then
-		local comNameText = self:FindChildComponent(transform.gameObject, "TextNode/Text", l_DRCSRef_Type.Text)
+		local comNameText = self:FindChildComponent(transform.gameObject, "TextNode/NameText", l_DRCSRef_Type.Text)
+		local comTimeText = self:FindChildComponent(transform.gameObject, "TextNode/TimeText", l_DRCSRef_Type.Text)
 		local comIconImage = self:FindChildComponent(transform.gameObject, "Icon", l_DRCSRef_Type.Image)
 		local objHight = self:FindChild(transform.gameObject, "HightImage")
 		local comButton = transform.gameObject:GetComponent(l_DRCSRef_Type.Button)
 		objHight:SetActive(self.strCurFileName == kCurData.Name)
 		comNameText.text = kCurData[1]
+		comTimeText.text = kCurData[3]
 		if kCurData[2] then
-			comIconImage.sprite = LoadByIo(kCurData[2])
+			comIconImage.sprite = kCurData[2]
 		else
 			comIconImage.sprite = GetSprite("SaveFile/bg_right_panel")
 		end

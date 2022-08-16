@@ -2145,6 +2145,7 @@ BehaviorType = {
   BET_GET_TABLE_DATA_INT = 1034; -- 获取表格数据_Int
   BET_SET_CREATE_CLANBRANCH = 1035; -- 设置是否演化npc建立小门派
   BET_REFRESH_REFRESH_DISGUISE = 1036; -- 刷新易容界面
+  BET_EXECUTE_PLOT_BY_ID = 1037; -- 执行剧情ID
 }
 
 BehaviorType_Revert = {
@@ -3169,6 +3170,7 @@ BehaviorType_Revert = {
   ["获取表格数据_Int"] = BehaviorType.BET_GET_TABLE_DATA_INT;
   ["设置是否演化npc建立小门派"] = BehaviorType.BET_SET_CREATE_CLANBRANCH;
   ["刷新易容界面"] = BehaviorType.BET_REFRESH_REFRESH_DISGUISE;
+  ["执行剧情ID"] = BehaviorType.BET_EXECUTE_PLOT_BY_ID;
 }
 
 BehaviorType_Lang = {

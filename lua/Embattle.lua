@@ -860,6 +860,11 @@ local Embattle= {
   [1553]={BaseID=1553,RoleData={{ID=1000114009,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114015,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114013,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114016,Type=0,FargID=0,Count=1,MaxCount=2,},{ID=1000114011,Type=0,FargID=0,Count=1,MaxCount=2,},},},
   [1554]={BaseID=1554,RoleData={{ID=1000114010,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114015,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114016,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114011,Type=0,FargID=0,Count=1,MaxCount=2,},},},
   [1555]={BaseID=1555,RoleData={{ID=1000114011,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114014,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114015,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114016,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1000114013,Type=0,FargID=0,Count=1,MaxCount=1,},},},
+  [1557]={BaseID=1557,RoleData={{ID=1210313001,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1000013009,Type=1,FargID=3609,Count=1,MaxCount=1,},},},
+  [1558]={BaseID=1558,RoleData={{ID=1110113001,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1110113001,Type=1,FargID=3610,Count=1,MaxCount=1,},},},
+  [1559]={BaseID=1559,RoleData={{ID=1000012015,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1220412002,Type=1,FargID=3611,Count=1,MaxCount=1,},},},
+  [1560]={BaseID=1560,RoleData={{ID=1020112003,Type=2,FargID=3612,Count=1,MaxCount=1,},{ID=1020112002,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1010412001,Type=1,FargID=3613,Count=1,MaxCount=1,},},},
+  [1561]={BaseID=1561,RoleData={{ID=1140314002,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1140101001,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1140101003,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1140101002,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1000012021,Type=1,FargID=3614,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3615,Count=4,MaxCount=4,},},},
 }
 for k,v in pairs(Embattle) do
     setmetatable(v, {['__index'] = EmbattleDefault})

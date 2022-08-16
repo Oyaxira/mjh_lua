@@ -6,6 +6,12 @@ require("common");
 
 
 local Plot= {
+  [512000003]={BaseID=512000003,Param1="1110301006",Param2="1105120002",},
+  [512000004]={BaseID=512000004,PlotType=PlotType.PT_NULL,Param1="",NextPlotIDList={512000005,},},
+  [512000005]={BaseID=512000005,Param1="",Param2="1105120003",},
+  [512000007]={BaseID=512000007,Param1="1000012021",Param2="1105120004",NextPlotIDList={512000041,},Param6="6156",},
+  [512000008]={BaseID=512000008,PlotType=PlotType.PT_NULL,Param1="",NextPlotIDList={512000009,},},
+  [512000009]={BaseID=512000009,Param1="",Param2="1105120005",},
   [512000010]={BaseID=512000010,Param1="",Param2="1105120006",},
   [512000011]={BaseID=512000011,Param1="",Param2="1105120007",NextPlotIDList={512000016,},},
   [512000012]={BaseID=512000012,Param1="",Param2="1105120008",NextPlotIDList={512000017,},},
@@ -10000,12 +10006,6 @@ local Plot= {
   [559900011]={BaseID=559900011,Param1="",Param2="1105599018",NextPlotIDList={559900012,},},
   [559900012]={BaseID=559900012,Param1="",Param2="1105599019",NextPlotIDList={559900013,},},
   [559900013]={BaseID=559900013,Param1="",Param2="1105599020",NextPlotIDList={559900014,},},
-  [559900014]={BaseID=559900014,Param1="",Param2="1105599021",NextPlotIDList={559900015,},},
-  [559900015]={BaseID=559900015,Param1="",Param2="1105599022",NextPlotIDList={559900016,},},
-  [559900016]={BaseID=559900016,Param1="",Param2="1105599023",NextPlotIDList={559900017,},},
-  [559900017]={BaseID=559900017,Param1="",Param2="1105599024",NextPlotIDList={559900018,},},
-  [559900018]={BaseID=559900018,Param1="",Param2="1105599025",},
-  [560000001]={BaseID=560000001,Param1="1040113002",Param2="1105600002",NextPlotIDList={560000002,},},
 }
 
 -- export table: Plot

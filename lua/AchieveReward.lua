@@ -53,7 +53,7 @@ local AchieveReward= {
   [55]={BaseID=55,NameID=2610045,AchievePointCost=1000,DescID=2620045,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardValueA="267",AutoEffective=TBoolean.BOOL_NO,Sequence=45,},
   [56]={BaseID=56,NameID=2610046,AchievePointCost=1500,DescID=2620046,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardValueA="263",AutoEffective=TBoolean.BOOL_NO,Sequence=46,},
   [57]={BaseID=57,NameID=2610047,AchievePointCost=1000,DescID=2620047,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardValueA="120001",AutoEffective=TBoolean.BOOL_NO,Sequence=47,},
-  [58]={BaseID=58,NameID=2610048,AchievePointCost=500,DescID=2620048,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardValueA="120016",AutoEffective=TBoolean.BOOL_NO,Sequence=48,},
+  [58]={BaseID=58,NameID=2610048,AchievePointCost=500,DescID=2620048,Rank=RankType.RT_Orange,RewardNavType=AchieveRewardNavType.ARNT_OriPrower,RewardValueA="130050",AutoEffective=TBoolean.BOOL_NO,Sequence=48,},
   [59]={BaseID=59,NameID=2610015,DescID=2620015,Rank=RankType.RT_Purple,RewardNavType=AchieveRewardNavType.ARNT_GrowSpeed,RewardValueA="130046",AutoEffective=TBoolean.BOOL_NO,Sequence=15,},
   [60]={BaseID=60,NameID=2610016,DescID=2620016,Rank=RankType.RT_Purple,RewardNavType=AchieveRewardNavType.ARNT_GrowSpeed,RewardValueA="130047",AutoEffective=TBoolean.BOOL_NO,Sequence=16,},
   [61]={BaseID=61,NameID=2610037,AchievePointCost=1500,DescID=2620037,Rank=RankType.RT_Orange,RewardValueA="130048",RewardValueC=1,AutoEffective=TBoolean.BOOL_NO,Sequence=37,},

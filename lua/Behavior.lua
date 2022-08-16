@@ -1890,6 +1890,7 @@ local Behavior= {
   [3154031]={BaseID=3154031,Type=BehaviorType.BET_FINISH_CITY_DELEGATION_TASK,Arg1="委托城市",},
   [3154032]={BaseID=3154032,Type=BehaviorType.BET_FINISH_CLAN_DELEGATION_TASK,Arg1="门派",},
   [3154033]={BaseID=3154033,Type=BehaviorType.BET_SET_TASK_DYNAMIC_REWARD_LIST,Arg1="CurTask",Arg2="712001",},
+  [3154034]={BaseID=3154034,Type=BehaviorType.BET_SET_TASK_DYNAMIC_REWARD_LIST,Arg1="CurTask",Arg2="5697003|5697004",},
   [3155007]={BaseID=3155007,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_xin1mo2_jin4ru4zhan4dou3,Arg1="心魔角色",},
   [3155010]={BaseID=3155010,Type=BehaviorType.BET_auto_ren4wu4_shan1chu2xin1mo2jiao3se4,},
   [3155014]={BaseID=3155014,Type=BehaviorType.BET_GET_TASK_DYNAMIC_CUSTOM_DATA,Arg1="CurTask",Arg2="心魔角色",},
@@ -10007,7 +10008,6 @@ local Behavior= {
   [4040090]={BaseID=4040090,Type=BehaviorType.BET_START_TASK,Arg1="4602",},
   [4042001]={BaseID=4042001,Arg1="1150",Arg2="=",Arg3="1",},
   [4042002]={BaseID=4042002,Arg1="1324",Arg2="=",Arg3="1",},
-  [4042003]={BaseID=4042003,Type=BehaviorType.BET_auto_ren4wu4shu4ju4xiu1gai3_chan2tiao1zhan4dou3,Arg1="任务_峨嵋学艺-孤绝授艺_请教武学_战斗监听函数",Arg2="1170301005",Arg3="True",},
 }
 for k,v in pairs(Behavior) do
     setmetatable(v, {['__index'] = BehaviorDefault})
