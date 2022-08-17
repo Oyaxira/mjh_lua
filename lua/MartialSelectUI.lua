@@ -149,10 +149,10 @@ function MartialSelectUI:CanStrong(roleID)
 		return false
 	end
     local roleData = RoleDataManager:GetInstance():GetRoleData(roleID)
-    local auiMartials, auiLvs = roleData:GetMaxLevelMartials()
+    local auiMartials, auiLvs = roleData:GetMartials()
     for i=0, #auiMartials do
         local typeData = TableDataManager:GetInstance():GetTableData("Martial",auiMartials[i])
-        if typeData and typeData.Exclusive and #typeData.Exclusive > 0 and auiLvs[i] < 20 then
+        if typeData and typeData.Exclusive and auiLvs[i] < 20 then
             return true
         end
     end

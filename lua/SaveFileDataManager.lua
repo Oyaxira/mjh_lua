@@ -21,7 +21,7 @@ function SaveFileDataManager:UpdateSaveFileInfo()
     self.akSaveFile[1] = {"自动", nil}
     file = DicToLuaTable(DRCSRef.SaveFile.LoadSaveFileInfoByPath("SaveFile"))
     for key, value in pairs(file) do
-        local Time = DRCSRef.SaveFile.GetFileWriteTime("SaveFile/"..key)
+        local Time = DRCSRef.SaveFile.GetFileWriteTime(value) or 0
         local spirte = DRCSRef.SaveFile.LoadByIo(value)
         self.akSaveFile[#self.akSaveFile + 1] = {key, spirte,Time}
     end

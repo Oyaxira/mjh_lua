@@ -62,6 +62,11 @@ end
 
 
 function ForgeUI:OnPressESCKey()
+    local objAttrChange = self:FindChild(self._gameObject, "attr_change_box")
+    if objAttrChange.activeSelf then
+        self.ForgeRecastUIInst.ForgeAttrChangeUIInst.comCloseButton.onClick:Invoke()
+        return
+    end
     if self.comCloseButton then
         self.comCloseButton.onClick:Invoke()
     end
@@ -104,7 +109,7 @@ function ForgeUI:Create()
             ['inst'] = self.ForgeRecastUIInst,
             ['tab'] = self.objToggle_Recast,
             ['cond'] = function()
-                return false--MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_RECAST)
+                return true--MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_RECAST)
             end
         }, 
         ['strengthen_box'] = {
@@ -112,7 +117,7 @@ function ForgeUI:Create()
             ['inst'] = self.ForgeStrengthenUIInst,
             ['tab'] = self.objToggle_Strengthen,
             ['cond'] = function()
-                return false --MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_STRENGTHEN)
+                return true --MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_STRENGTHEN)
             end
         },
         ['smelt_box'] = {
@@ -120,7 +125,7 @@ function ForgeUI:Create()
             ['inst'] = self.ForgeSmeltUIInst,
             ['tab'] = self.objToggle_Smelt,
             ['cond'] = function()
-                return false--MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_SMELT)
+                return true--MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_SMELT)
             end
         },
     }

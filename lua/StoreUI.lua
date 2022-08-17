@@ -720,9 +720,9 @@ function StoreUI:GenLegalShopItemList(businessid)
             end
             if (bIsLegalType == true) and ((bIsReplenish == true) or (remainCount > 0)) then
                 local iSortId = shopItemTypeData.ItemSortID
-                if iSortId == 0 then
-                    bNeedSort = false
-                end
+                -- if iSortId == 0 then
+                --     bNeedSort = false
+                -- end
                 local tempData = {
                     ['baseID'] = shopItemTypeID,
                     ['sortID'] = iSortId,
@@ -756,7 +756,12 @@ function StoreUI:GenLegalShopItemList(businessid)
     if bNeedSort then
         table.sort(list, function(a,b)
             if (a ~= nil and b ~= nil) then
-                return (a.sortID < b.sortID)
+                if a.sortID == b.sortID then
+                    return (a.baseID < b.baseID)
+                else
+                    return (a.sortID < b.sortID)
+                end
+               
             end
         end)
     end

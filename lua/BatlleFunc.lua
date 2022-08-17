@@ -874,6 +874,16 @@ local BatlleFunc= {
   [3613]={BaseID=3613,EventArg1={93,},EventArg2=250000,EventArg3=250000,EventArg4={10000,},EventArg5={5,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210447,},
   [3614]={BaseID=3614,EventArg1={24,},EventArg2=250000,EventArg3=250000,EventArg4={20000,},EventArg5={6,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210448,},
   [3615]={BaseID=3615,EventArg1={46,13,47,},EventArg3=200000,EventArg4={10000,20000,},EventArg5={4,3,6,1,},EventArg6={RankType.RT_Orange,},EventArg7=3210449,},
+  [3616]={BaseID=3616,EventArg1={7,},EventArg2=350000,EventArg3=350000,EventArg4={10000,},EventArg5={6,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210450,},
+  [3617]={BaseID=3617,EventArg1={14,},EventArg2=350000,EventArg3=350000,EventArg4={20000,},EventArg5={5,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210451,},
+  [3618]={BaseID=3618,EventArg1={30,},EventArg2=450000,EventArg3=450000,EventArg4={10000,},EventArg5={6,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210452,},
+  [3619]={BaseID=3619,EventArg1={83,},EventArg2=300000,EventArg3=300000,EventArg4={20000,},EventArg5={10,},EventArg6={RankType.RT_DarkGolden,},EventArg7=3210453,},
+  [3620]={BaseID=3620,EventArg1={86,},EventArg2=250000,EventArg3=250000,EventArg4={10000,20000,},EventArg5={4,},EventArg6={RankType.RT_Orange,},EventArg7=3210454,},
+  [3621]={BaseID=3621,EventArg1={15,},EventArg2=300000,EventArg3=300000,EventArg4={10000,},EventArg5={4,},EventArg6={RankType.RT_Golden,},EventArg7=3210455,},
+  [3622]={BaseID=3622,EventArg1={9,},EventArg2=300000,EventArg3=300000,EventArg4={20000,},EventArg5={6,},EventArg6={RankType.RT_Golden,},EventArg7=3210456,},
+  [3623]={BaseID=3623,EventArg1={44,49,53,},EventArg2=300000,EventArg3=300000,EventArg4={10000,},EventArg5={4,9,3,},EventArg6={RankType.RT_Orange,},EventArg7=3210457,},
+  [3624]={BaseID=3624,EventArg1={53,},EventArg2=300000,EventArg3=300000,EventArg4={20000,},EventArg5={9,},EventArg6={RankType.RT_Golden,},EventArg7=3210470,},
+  [3625]={BaseID=3625,FuncName=BattleFunctionType.BFT_Clan_ChangeAttr,EventArg2=0,},
 }
 for k,v in pairs(BatlleFunc) do
     setmetatable(v, {['__index'] = BatlleFuncDefault})

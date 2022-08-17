@@ -865,6 +865,14 @@ local Embattle= {
   [1559]={BaseID=1559,RoleData={{ID=1000012015,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1220412002,Type=1,FargID=3611,Count=1,MaxCount=1,},},},
   [1560]={BaseID=1560,RoleData={{ID=1020112003,Type=2,FargID=3612,Count=1,MaxCount=1,},{ID=1020112002,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1010412001,Type=1,FargID=3613,Count=1,MaxCount=1,},},},
   [1561]={BaseID=1561,RoleData={{ID=1140314002,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1140101001,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1140101003,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1140101002,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1000012021,Type=1,FargID=3614,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3615,Count=4,MaxCount=4,},},},
+  [1562]={BaseID=1562,RoleData={{ID=1,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1000011007,Type=1,FargID=3616,Count=1,MaxCount=1,},{ID=1000011008,Type=1,FargID=3617,Count=1,MaxCount=1,},},},
+  [1563]={BaseID=1563,RoleData={{ID=1170301005,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1000001207,Type=1,FargID=3618,Count=1,MaxCount=1,},},},
+  [1564]={BaseID=1564,RoleData={{ID=1170301004,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1290301012,Type=1,FargID=3619,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3620,Count=2,MaxCount=2,},},},
+  [1565]={BaseID=1565,RoleData={{ID=1000001149,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1230322002,Type=1,FargID=3621,Count=1,MaxCount=1,},},},
+  [1566]={BaseID=1566,RoleData={{ID=1030201002,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1170301005,Type=1,FargID=3622,Count=1,MaxCount=1,},},},
+  [1567]={BaseID=1567,RoleData={{ID=1030301004,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3623,Count=6,MaxCount=6,},},},
+  [1568]={BaseID=1568,RoleData={{ID=1030301003,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1030301004,Type=1,FargID=3624,Count=1,MaxCount=1,},},},
+  [1569]={BaseID=1569,RoleData={{ID=1040301007,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1040201001,Type=1,FargID=3625,Count=1,MaxCount=1,},},},
 }
 for k,v in pairs(Embattle) do
     setmetatable(v, {['__index'] = EmbattleDefault})

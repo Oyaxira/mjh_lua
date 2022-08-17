@@ -713,14 +713,19 @@ function ItemDataManager:CanItemBeSmelted(itemID)
         return false
     end
     
-    if QuerySystemIsOpen(SGLST_SMELT_SPECIAL) then 
-        if itemInst.uiPerfectPower and itemInst.uiPerfectPower > 0 then return true end
-        if itemInst.uiSpendIron and itemInst.uiSpendIron > 0 then return true end
-        -- 熔炼通灵玉打九折且向下取整, 所以通灵玉必须要大于1才能被熔炼
-        if itemInst.uiSpendTongLingYu and itemInst.uiSpendTongLingYu > 1 then return true end
+    -- if QuerySystemIsOpen(SGLST_SMELT_SPECIAL) then 
+    --     if itemInst.uiPerfectPower and itemInst.uiPerfectPower > 0 then return true end
+    --     if itemInst.uiSpendIron and itemInst.uiSpendIron > 0 then return true end
+    --     -- 熔炼通灵玉打九折且向下取整, 所以通灵玉必须要大于1才能被熔炼
+    --     if itemInst.uiSpendTongLingYu and itemInst.uiSpendTongLingYu > 1 then return true end
+    -- end
+    local iRank =  self:GetItemRankByItemInstID(itemID)
+    local ForgeSmeltData = TableDataManager:GetInstance():GetTableData("ForgeSmelt", iRank)
+    if ForgeSmeltData then
+        return ForgeSmeltData.JingTieNum > 0
+    else
+        return false
     end
-
-    return self:GetItemPerfectRecastAttrCount(itemID) > 0
 end
 
 -- 判断一个道具能否被重铸

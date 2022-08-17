@@ -78,12 +78,6 @@ function ForgeStrengthenUI:Init(objParent, instParent)
     self.ObjBtnBuySilverImg = self:FindChild(self.ObjBtnBuy, "Image_yinding")
     self.ObjBtnBuyTongLingYuImg = self:FindChild(self.ObjBtnBuy, "Image_tonglingyu")
     self.TextBtnBuyCoin = self:FindChildComponent(self.ObjBtnBuy, "Number", l_DRCSRef_Type.Text)
-    self.TextCount = self:FindChildComponent(obj, "Text_count", l_DRCSRef_Type.Text)
-
-    self.objItemTongLingYuIcon = self:FindChild(obj, "MatNumBox/TongLingYu")
-    self.textItemTongLingYuNum = self:FindChildComponent(self.objItemTongLingYuIcon, "Num", l_DRCSRef_Type.Text)
-    self:UpdateMatBox()
-
     -- 最大强化等级
     self.MaxStrengthenLevel = TableDataManager:GetInstance():GetTableData("CommonConfig",1).MaxStrengthenLevel or 0
 end
@@ -110,8 +104,6 @@ function ForgeStrengthenUI:RefreshUI(info)
     self.MaxSilverStrengthTimes = self:GetMaxSilverStrengthenTimes()
     -- 刷新物品列表
     self:UpdateStrengthenItemList()
-    -- 刷新金刚玉数量
-    self:UpdateMatBox()
     -- 如果存在选中的物品, 那么刷新到选中的物品信息, 否则, 初始化ui
     if self.curSelectItemID then
         local itemData = ItemDataManager:GetInstance():GetItemData(self.curSelectItemID)
@@ -265,8 +257,6 @@ function ForgeStrengthenUI:OnClickStrengthenItem(itemID)
     self.BackpackNewUICom:PickItemByID(itemID, 1, true)
     -- 更新信息
     self:UpdateStrengthenMsg(itemID)
-    -- 更新银锭强化次数
-    self:UpdateSilverUpdateTimes()
 end
 
 -- 获取物品属性信息
@@ -460,13 +450,6 @@ function ForgeStrengthenUI:GetSilverUpdateTimes()
     return usedTimes
 end
 
--- 更新强化次数
-function ForgeStrengthenUI:UpdateSilverUpdateTimes()
-    local usedTimes  = self:GetSilverUpdateTimes()
-    local maxTimes = self.MaxSilverStrengthTimes
-    self.TextCount.text = string.format("每日金刚玉或银锭强化次数%d/%d", maxTimes - usedTimes, maxTimes)
-end
-
 function ForgeStrengthenUI:GetCanStrength()
     local time = timeDay(os.time(), PlayerSetDataManager:GetInstance():GetServerOpenTime());
     local tbSysOpenData = TableDataManager:GetInstance():GetSystemOpenByType(SystemType.SYST_EquipEnhance);
@@ -552,63 +535,47 @@ function ForgeStrengthenUI:DoEnhance(itemID, itemInstData)
     end
 
     if self.bUseTongLingYu then
-        local usedTimes  = self:GetSilverUpdateTimes()
-        local maxTimes = self.MaxSilverStrengthTimes
-        if usedTimes >= maxTimes then
-            SystemUICall:GetInstance():Toast("银锭或金刚玉强化次数达到每日上限!")
-            return
-        end
-        -- 优先使用金刚玉进行强化, 如果金刚玉不足, 提示使用银锭进行转化
-        local uiTongLingYuNum = PlayerSetDataManager:GetInstance():GetTongLingYuValue() or 0
-        if uiTongLingYuNum >= self.curTongLingYuPrice then
-            doStrengthenUp()
-            return
-        end
-        local uiLess = self.curTongLingYuPrice - uiTongLingYuNum
-        local uiTongLingYuPrice = PlayerSetDataManager:GetInstance():GetSingleFieldConfig(ConfigType.CFG_TONGLINGYU_SILVER_PRICE) or 0
-        local uiNeedSpendSilver = uiLess * uiTongLingYuPrice
-        if self.bTongLingYuNotEnoughWarning ~= false then
-            local strWarning = string.format("本次强化需要消耗%d金刚玉, 金刚玉数量不足, 是否要以每个金刚玉%d银锭的价格, 使用%d银锭补足金刚玉进行强化? (本次强化不再提示)", self.curTongLingYuPrice, uiTongLingYuPrice, uiNeedSpendSilver)
-            local boxCallback = function()
-                PlayerSetDataManager:GetInstance():RequestSpendSilver(uiNeedSpendSilver, doStrengthenUp)
-                self.bTongLingYuNotEnoughWarning = false
-            end
-            OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, strWarning, boxCallback})
-        else
-            PlayerSetDataManager:GetInstance():RequestSpendSilver(uiNeedSpendSilver, doStrengthenUp)
-        end
+        -- local usedTimes  = self:GetSilverUpdateTimes()
+        -- local maxTimes = self.MaxSilverStrengthTimes
+        -- if usedTimes >= maxTimes then
+        --     SystemUICall:GetInstance():Toast("银锭或金刚玉强化次数达到每日上限!")
+        --     return
+        -- end
+        -- -- 优先使用金刚玉进行强化, 如果金刚玉不足, 提示使用银锭进行转化
+        -- local uiTongLingYuNum = PlayerSetDataManager:GetInstance():GetTongLingYuValue() or 0
+        -- if uiTongLingYuNum >= self.curTongLingYuPrice then
+        --     doStrengthenUp()
+        --     return
+        -- end
+        -- local uiLess = self.curTongLingYuPrice - uiTongLingYuNum
+        -- local uiTongLingYuPrice = PlayerSetDataManager:GetInstance():GetSingleFieldConfig(ConfigType.CFG_TONGLINGYU_SILVER_PRICE) or 0
+        -- local uiNeedSpendSilver = uiLess * uiTongLingYuPrice
+        -- if self.bTongLingYuNotEnoughWarning ~= false then
+        --     local strWarning = string.format("本次强化需要消耗%d金刚玉, 金刚玉数量不足, 是否要以每个金刚玉%d银锭的价格, 使用%d银锭补足金刚玉进行强化? (本次强化不再提示)", self.curTongLingYuPrice, uiTongLingYuPrice, uiNeedSpendSilver)
+        --     local boxCallback = function()
+        --         PlayerSetDataManager:GetInstance():RequestSpendSilver(uiNeedSpendSilver, doStrengthenUp)
+        --         self.bTongLingYuNotEnoughWarning = false
+        --     end
+        --     OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, strWarning, boxCallback})
+        -- else
+        --     PlayerSetDataManager:GetInstance():RequestSpendSilver(uiNeedSpendSilver, doStrengthenUp)
+        -- end
     elseif self.curCoinPrice and (self.curCoinPrice > 0) then
-        local iNeedSilver = math.ceil(self.curCoinPrice / 100) -- 铜币与银锭是 100 : 1 的比率
-        if self.bCoinNotEnoughWarning ~= false then
-            local strWarning = string.format("本次强化需要消耗%d铜币, 铜币数量不足, 是否使用%d银锭代替铜币进行强化? (本次强化不再提示)", self.curCoinPrice, iNeedSilver)
-            local boxCallback = function()
-                PlayerSetDataManager:GetInstance():RequestSpendSilver(iNeedSilver, doStrengthenUp)
-                self.bCoinNotEnoughWarning = false
-            end
-            OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, strWarning, boxCallback})
-        else
-            PlayerSetDataManager:GetInstance():RequestSpendSilver(iNeedSilver, doStrengthenUp)
-        end
+        -- local iNeedSilver = math.ceil(self.curCoinPrice / 100) -- 铜币与银锭是 100 : 1 的比率
+        -- if self.bCoinNotEnoughWarning ~= false then
+        --     local strWarning = string.format("本次强化需要消耗%d铜币, 铜币数量不足, 是否使用%d银锭代替铜币进行强化? (本次强化不再提示)", self.curCoinPrice, iNeedSilver)
+        --     local boxCallback = function()
+        --         PlayerSetDataManager:GetInstance():RequestSpendSilver(iNeedSilver, doStrengthenUp)
+        --         self.bCoinNotEnoughWarning = false
+        --     end
+        --     OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, strWarning, boxCallback})
+        -- else
+        --     PlayerSetDataManager:GetInstance():RequestSpendSilver(iNeedSilver, doStrengthenUp)
+        -- end
     else
         -- 铜币强化并且铜币充足的情况
         doStrengthenUp()
     end
-end
-
-function ForgeStrengthenUI:UpdateMatBox()
-    local kItemMgr = ItemDataManager:GetInstance()
-    local kTableMgr = TableDataManager:GetInstance()
-    local kPlayerSetMgr = PlayerSetDataManager:GetInstance()
-    -- 金刚玉
-    if not self.bInitedTongLingYuIcon then
-        self.bInitedTongLingYuIcon = true
-        local uiItemBaseID = kItemMgr:GetPlayerAssetItemBaseIDByName("金刚玉") or 0
-        local kBaseItem = kTableMgr:GetTableData("Item", uiItemBaseID)
-        if kBaseItem then
-            self.ItemIconUI:UpdateUIWithItemTypeData(self.objItemTongLingYuIcon, kBaseItem)
-        end
-    end
-    self.textItemTongLingYuNum.text = kPlayerSetMgr:GetTongLingYuValue() or 0
 end
 
 function ForgeStrengthenUI:OnDestroy()

@@ -78,7 +78,6 @@ function ForgeRecastUI:Init(objParent, instParent)
     self.text_itemName_recast = self:FindChildComponent(self._gameObject, "Image_title/TMP_name",l_DRCSRef_Type.Text)
     self.obj_defaultTip_recast = self:FindChild(self._gameObject, "Text_default")
     self.objImg_default = self:FindChild(self._gameObject, "BG_LuDing") 
-    self.text_count_recast = self:FindChildComponent(self._gameObject,"Text_count",l_DRCSRef_Type.Text)
     self.obj_warning_recast = self:FindChild(self._gameObject, "Text_warning")
     self.obj_sc_info_recast = self:FindChild(self._gameObject, "ItemInfo_box")
     self.obj_content_info_recast = self:FindChild(self.obj_sc_info_recast, "SC_material/Viewport/Content")
@@ -90,10 +89,11 @@ function ForgeRecastUI:Init(objParent, instParent)
     self.obj_jingTieBox = self:FindChild(self.obj_content_info_recast, "JingTie_box")
     self.obj_wanMeiFenBox = self:FindChild(self.obj_content_info_recast, "WanMeiFen_box")
     self.obj_TianGongChui_Box = self:FindChild(self.obj_content_info_recast, "TianGongChui_Box")
-    self.obj_wmfInfo = self:FindChild(self.obj_wanMeiFenBox, "MaterialInfo_box")
+    self.obj_wmfInfo = self:FindChild(self.obj_jingTieBox, "MaterialInfo_box")
+    self.obj_wmfItemInfo = self:FindChild(self.obj_jingTieBox, "MaterialInfo_box/ItemIconUI2")
     self.obj_TingGongChuiItem =  self:FindChild(self.obj_TianGongChui_Box, "MaterialInfo_box/ItemIconUI")
     self.com_TianGongChui = self:FindChildComponent(self.obj_TianGongChui_Box, "MaterialInfo_box/Text_num", l_DRCSRef_Type.Text)
-    self.text_wmfNum = self:FindChildComponent(self.obj_wmfInfo, "Text_num", l_DRCSRef_Type.Text)
+    self.text_wmfNum = self:FindChildComponent(self.obj_wmfInfo, "Text_num2", l_DRCSRef_Type.Text)
     self.obj_text_wmf_choosen = self:FindChild(self.obj_wmfInfo, "Text_choosen")
     self.text_wmf_choosen = self.obj_text_wmf_choosen:GetComponent(l_DRCSRef_Type.Text)
     self.obj_toggle_wmf_choosen = self:FindChild(self.obj_wmfInfo, "Toggle_choosen")
@@ -124,8 +124,10 @@ function ForgeRecastUI:Init(objParent, instParent)
     self.objMatNumBox = self:FindChild(self._gameObject, "MatNumBox")
     self.objWanMeiFenNum = self:FindChild(self.objMatNumBox, "WanMeiFen")
     self.objJingTieNum = self:FindChild(self.objMatNumBox, "JingTie")
+    self.objTianGongChuiNum = self:FindChild(self.objMatNumBox, "TianGongChui")
     self.comWanMeiFenNum = self:FindChildComponent(self.objWanMeiFenNum, "Num", l_DRCSRef_Type.Text)
     self.comJingTieNum = self:FindChildComponent(self.objJingTieNum, "Num", l_DRCSRef_Type.Text)
+    self.comTianGongChuiNum = self:FindChildComponent(self.objTianGongChuiNum, "Num", l_DRCSRef_Type.Text)
 
     -- 其它值
     self.color_no = UI_COLOR.red
@@ -149,25 +151,9 @@ function ForgeRecastUI:Init(objParent, instParent)
     end)
 end
 
--- 获取每日银锭或精铁最大重铸次数
-function ForgeRecastUI:GetMaxSilverRecastTimes()
-    local kCommonConfig =  TableDataManager:GetInstance():GetTableData("CommonConfig",1)
-    if not kCommonConfig then
-        return
-    end
-   local iBaseValue = kCommonConfig.MaxSilverRecastTimes or 0
-   -- 如果开通了百宝书壕侠, 那么加上叠加值
-   if TreasureBookDataManager:GetInstance():GetTreasureBookVIPState() then
-        iBaseValue = iBaseValue + (kCommonConfig.VipExtraRecastTimes or 0)
-   end
-   return iBaseValue
-end
-
 function ForgeRecastUI:RefreshUI(info)
-    -- 每日银锭最大重铸次数
-    self.MaxSilverRecastTimes = self:GetMaxSilverRecastTimes()
     -- 显示熟练度
-    self.forge_level_top:SetActive(true)
+    self.forge_level_top:SetActive(false)
     self:UpdateRecastExp()
     if self.recastBoxShown ~= true then
         self.recastBoxShown = true
@@ -195,7 +181,6 @@ function ForgeRecastUI:RefreshUI(info)
     self:UpdateRecastItemList()
     -- 其它
     self:UpdateMatsNum()
-    self:UpdateSilverUpdateTimes()
 end
 
 function ForgeRecastUI:Update()
@@ -444,9 +429,10 @@ function ForgeRecastUI:UpdateMatsNum()
         local itemTypeDataTGC = TableDataManager:GetInstance():GetTableData("Item",30971)  -- 天工锤
         self.ItemIconUI:UpdateUIWithItemTypeData(self.objWanMeiFenNum, itemTypeDataWMF)
         self.ItemIconUI:UpdateUIWithItemTypeData(self.objJingTieNum, itemTypeDataJT)
+        self.ItemIconUI:UpdateUIWithItemTypeData(self.objTianGongChuiNum, itemTypeDataTGC)
         -- 同时初始化信息栏中的按钮
         local obj_jtInfo = self:FindChild(self.obj_jingTieBox, "MaterialInfo_box")
-        self.ItemIconUI:UpdateUIWithItemTypeData(self.obj_wmfInfo, itemTypeDataWMF)
+        self.ItemIconUI:UpdateUIWithItemTypeData(self.obj_wmfItemInfo, itemTypeDataWMF)
         self.ItemIconUI:UpdateUIWithItemTypeData(obj_jtInfo, itemTypeDataJT)
         self.ItemIconUI:UpdateUIWithItemTypeData(self.obj_TingGongChuiItem, itemTypeDataTGC)
         -- 标记图标初始化完成
@@ -456,8 +442,10 @@ function ForgeRecastUI:UpdateMatsNum()
     local playerData = PlayerSetDataManager:GetInstance()
     local WMFCount = playerData:GetPlayerPerfectPowder() or 0
     local JTCount = playerData:GetPlayerRefinedIron() or 0
+    local TGCCount = playerData:GetPlayerHeavenHammer() or 0
     self.comWanMeiFenNum.text = WMFCount
     self.comJingTieNum.text = JTCount
+    self.comTianGongChuiNum.text = TGCCount
 end
 
 -- 更新重铸左侧列表
@@ -590,8 +578,6 @@ function ForgeRecastUI:ShowAttrChangeWithAttrData(newAttrData)
         self.ForgeAttrChangeUIInst:RefreshUI(info)
         -- 更新重铸熟练度
         self:UpdateRecastExp()
-        -- 更新重铸次数
-        self:UpdateSilverUpdateTimes()
     end
     self.old_recastItem_data = nil
 end
@@ -679,14 +665,6 @@ function ForgeRecastUI:RecastAttrOnClick(attrData)
 
     -- 如果是精铁重铸
     if self.recast_with_jt == true then
-        -- 检查每日重铸次数上限
-        local usedTimes  = self:GetSilverUpdateTimes()
-        local maxTimes = self.MaxSilverRecastTimes
-        if usedTimes>= maxTimes then
-            SystemUICall:GetInstance():Toast("银锭或精铁重铸次数达到每日上限!")
-            return
-        end
-
         -- 精铁或者完美粉不足的情况
         if (self.jt_enough ~= true) or (iTransWmfPaySilverNum > 0) then
             local iSumSilverNum = iTransWmfPaySilverNum
@@ -817,7 +795,6 @@ function ForgeRecastUI:AddRecastInfoToList(attrData)
             self.com_RepairCrack.gameObject:SetActive(false)
             local bNeedCostCoin = self:SetRecastMatInfoShow(bOn, false)
             self.obj_warning_recast:SetActive(not bOn)
-            self.text_count_recast.gameObject:SetActive(true)
             -- 设置按钮状态
             local cost = self:GetRecastCoinCost(self.recastItem_chose_static.Rank)
             self:SetRecastBtnState(bOn, true, bNeedCostCoin, "重铸", cost, function()
@@ -863,7 +840,6 @@ function ForgeRecastUI:AddRecastCrackToList(iCount,uiItemID)
                 
                 self.obj_TianGongChui_Box:SetActive(true)
                 self.obj_warning_recast:SetActive(false)
-                self.text_count_recast.gameObject:SetActive(false)
 
                 -- 设置按钮状态
                 --local cost = self:GetRecastCoinCost(self.recastItem_chose_static.Rank)
@@ -925,12 +901,12 @@ function ForgeRecastUI:SetRecastMatInfoShow(bShow)
     local bNeedCostCoin = false  -- 是否需要花费铜币
     local count = inst_item.uiCoinRemainRecastTimes or 0
     if count > 0 then  -- 如果可以用铜币重铸
-        self.recast_with_jt = false
-        local text_count = self:FindChildComponent(self.obj_coinBox, "Text_num", l_DRCSRef_Type.Text)
-        --设置铜币重铸次数
-        text_count.text = string.format("%d", count)
-        self.obj_coinBox:SetActive(true)
-        bNeedCostCoin = true
+        -- self.recast_with_jt = false
+        -- local text_count = self:FindChildComponent(self.obj_coinBox, "Text_num", l_DRCSRef_Type.Text)
+        -- --设置铜币重铸次数
+        -- text_count.text = string.format("%d", count)
+        -- self.obj_coinBox:SetActive(true)
+        -- bNeedCostCoin = true
     else  -- 否则, 需要材料 精铁
         self.obj_jingTieBox:SetActive(true)
         self.recast_with_jt = true
@@ -938,7 +914,7 @@ function ForgeRecastUI:SetRecastMatInfoShow(bShow)
         self:UpdateJTNumInfo()
     end
     --完美粉是任何时候都要显示的
-    self.obj_wanMeiFenBox:SetActive(true)
+    self.obj_wanMeiFenBox:SetActive(false)
     self.obj_toggle_wmf_choosen:SetActive(true)
     --设置添加材料 完美粉
     local config = TableDataManager:GetInstance():GetTableData("CommonConfig",1)
@@ -971,13 +947,6 @@ function ForgeRecastUI:GetSilverUpdateTimes()
     return usedTimes
 end
 
--- 更新重铸次数
-function ForgeRecastUI:UpdateSilverUpdateTimes()
-    local usedTimes  = self:GetSilverUpdateTimes()
-    local maxTimes = self.MaxSilverRecastTimes
-    self.text_count_recast.text = string.format("每日精铁或银锭重铸次数:%d/%d", maxTimes - usedTimes, maxTimes)
-end
-
 function ForgeRecastUI:OnEnable()
     -- 重置 "本次重铸不再提示的标记"
     self.bSilverTrans2CoinWarn = true  -- 银锭转铜币提示
@@ -990,6 +959,8 @@ function ForgeRecastUI:OnDestroy()
     btnToClear = self.objWanMeiFenNum:GetComponent(l_DRCSRef_Type.Button)
     self.ItemIconUI:RemoveButtonClickListener(btnToClear)
     btnToClear = self.objJingTieNum:GetComponent(l_DRCSRef_Type.Button)
+    self.ItemIconUI:RemoveButtonClickListener(btnToClear)
+    btnToClear = self.objTianGongChuiNum:GetComponent(l_DRCSRef_Type.Button)
     self.ItemIconUI:RemoveButtonClickListener(btnToClear)
     -- 关闭组件
     self.ItemIconUI:Close()

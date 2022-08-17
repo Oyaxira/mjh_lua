@@ -26,8 +26,7 @@ function ForgeAttrChangeUI:Init(objParent, recastUI)
     self.comExp_TMP = self:FindChildComponent(self.forge_level_top, "TMP_exp",l_DRCSRef_Type.Text)    -- 经验值
 
     self._gameObject:SetActive(false)
-    self.text_itemName_attrChange = self:FindChildComponent(self._gameObject, "Image_title/TMP_name", l_DRCSRef_Type.Text)
-    self.text_count_attrChange = self:FindChildComponent(self._gameObject, "Text_count", l_DRCSRef_Type.Text)
+    self.text_itemName_attrChange = self:FindChildComponent(self._gameObject, "newFrame/Title", l_DRCSRef_Type.Text)
     self.obj_sc_attrChage = self:FindChild(self._gameObject, "SC_attr_change")
     self.obj_content_attrChange = self:FindChild(self.obj_sc_attrChage, "Viewport/Content")
     self.rectTransContentAttrChange = self.obj_content_attrChange:GetComponent(l_DRCSRef_Type.RectTransform)
@@ -65,7 +64,7 @@ function ForgeAttrChangeUI:Init(objParent, recastUI)
     self.ItemIconUI:UpdateUIWithItemTypeData(self.obj_jtMatBoxIcon_attrChange, JTItemTypeData)
     
     self.obj_WMFBox = self:FindChild(self.obj_attrChangeBox, "WanMeiFen_box")
-    self.obj_WMFMatBox = self:FindChild(self.obj_WMFBox, "MaterialInfo_box")
+    self.obj_WMFMatBox = self:FindChild(self.obj_jingTieBox_attrChange, "MaterialInfo_box2")
     self.text_wmfNum = self:FindChildComponent(self.obj_WMFMatBox, "Text_num", l_DRCSRef_Type.Text)
     self.obj_text_choosen = self:FindChild(self.obj_WMFMatBox, "Text_choosen")
     self.text_choosen = self.obj_text_choosen:GetComponent(l_DRCSRef_Type.Text)
@@ -117,7 +116,10 @@ function ForgeAttrChangeUI:Init(objParent, recastUI)
     self:AddButtonClickListener(com_btn_green, function()
         self:CloseUI(true)
     end)
-
+	self.comCloseButton = self:FindChildComponent(self._gameObject, "newFrame/Btn_exit", l_DRCSRef_Type.Button)
+    self:AddButtonClickListener(self.comCloseButton, function()
+        self:CloseUI(true)
+    end)
     --其它值
     self.color_no = UI_COLOR.red
     self.color_ok = UI_COLOR.green
@@ -142,8 +144,7 @@ function ForgeAttrChangeUI:RefreshUI(info)
     --ui初始化
     local strItemName = ItemDataManager:GetInstance():GetItemName(inst_item.uiID)
     strItemName = getRankBasedText(type_item.Rank, strItemName)
-    self.text_itemName_attrChange.text = strItemName or ""
-    self:UpdateSilverUpdateTimes()
+    --self.text_itemName_attrChange.text = strItemName or ""
     local vecPos = self.obj_content_attrChange.transform.localPosition
     self.obj_content_attrChange.transform.localPosition = DRCSRef.Vec3(vecPos.x, 0, vecPos.z)
     self.text_old_attr.text = old_desc
@@ -163,13 +164,13 @@ function ForgeAttrChangeUI:RefreshUI(info)
     else
         local count = inst_item.uiCoinRemainRecastTimes or 0
         if count > 0 then  -- 如果可以用铜币重铸
-            self.RecastUI.recast_with_jt = false
-            self.obj_coinBox_attrChange:SetActive(true)
-            self.text_coinBoxNum_attrChange.text = string.format("%d", count)
-            --设置铜币花费数
-            local text_btn = self:FindChildComponent(self.obj_btn_buy_go, "Number", l_DRCSRef_Type.Text)
-            text_btn.text = self.RecastUI:GetRecastCoinCost(type_item.Rank)
-            self.obj_btn_buy_go:SetActive(true)
+            -- self.RecastUI.recast_with_jt = false
+            -- self.obj_coinBox_attrChange:SetActive(true)
+            -- self.text_coinBoxNum_attrChange.text = string.format("%d", count)
+            -- --设置铜币花费数
+            -- local text_btn = self:FindChildComponent(self.obj_btn_buy_go, "Number", l_DRCSRef_Type.Text)
+            -- text_btn.text = self.RecastUI:GetRecastCoinCost(type_item.Rank)
+            -- self.obj_btn_buy_go:SetActive(true)
         else
             self.RecastUI.recast_with_jt = true
             self.obj_jingTieBox_attrChange:SetActive(true)
@@ -275,13 +276,6 @@ end
 function ForgeAttrChangeUI:RecastOnClick()
     if not self.cur_attr_data then return end
     self.RecastUI:RecastAttrOnClick(self.cur_attr_data)
-end
-
--- 更新重铸次数
-function ForgeAttrChangeUI:UpdateSilverUpdateTimes()
-    local usedTimes  = self.RecastUI:GetSilverUpdateTimes()
-    local maxTimes = self.RecastUI.MaxSilverRecastTimes
-    self.text_count_attrChange.text = string.format("每日精铁或银锭重铸次数:%d/%d", maxTimes - usedTimes, maxTimes)
 end
 
 -- 关闭属性展示界面

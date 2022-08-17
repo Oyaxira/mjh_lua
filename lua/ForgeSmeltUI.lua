@@ -101,37 +101,22 @@ function ForgeSmeltUI:Init(objParent, instParent)
     self.textSmeltBtn = self:FindChildComponent(self.objSmeltBtn, "Text", l_DRCSRef_Type.Text)
     self.objItemInfoBox = self:FindChild(obj, "ItemInfo_box")
     self.objWMFBox = self:FindChild(self.objItemInfoBox, "MaterialInfo_box")
-    self.objWMFBoxIcon = self:FindChild(self.objWMFBox, "perfect")
-    self.objWMFBoxNum = self:FindChild(self.objWMFBoxIcon, "Text_num")
-    self.textWMFBoxNum = self.objWMFBoxNum:GetComponent(l_DRCSRef_Type.Text)
 
-    self.objWMFBoxIcon_iron = self:FindChild(self.objWMFBox, "iron")
-    self.objWMFBoxNum_iron = self:FindChild(self.objWMFBoxIcon_iron, "Text_num")
-    self.textWMFBoxNum_iron = self.objWMFBoxNum_iron:GetComponent(l_DRCSRef_Type.Text)
-
-    self.objWMFBoxIcon_tonglingyu = self:FindChild(self.objWMFBox, "tonglingyu")
-    self.objWMFBoxNum_tonglingyu = self:FindChild(self.objWMFBoxIcon_tonglingyu, "Text_num")
-    self.textWMFBoxNum_tonglingyu = self.objWMFBoxNum_tonglingyu:GetComponent(l_DRCSRef_Type.Text)
+    self.objJingTieBoxIcon = self:FindChild(self.objWMFBox, "JingTie")
+    self.objJingTieBoxNum = self:FindChild(self.objJingTieBoxIcon, "Text_num")
+    self.textJingTieBoxNum = self.objJingTieBoxNum:GetComponent(l_DRCSRef_Type.Text)
 
     -- 材料数量
     self.objMatNumBox = self:FindChild(self._gameObject, "MatNumBox")
-    self.objWanMeiFenNum = self:FindChild(self.objMatNumBox, "WanMeiFen")
-    self.comWanMeiFenNum = self:FindChildComponent(self.objWanMeiFenNum, "Num", l_DRCSRef_Type.Text)
-    self.objWanMeiFenNum_iron = self:FindChild(self.objMatNumBox, "Iron")
-    self.comWanMeiFenNum_iron = self:FindChildComponent(self.objWanMeiFenNum_iron, "Num", l_DRCSRef_Type.Text)
-    self.objTongLingYuNum = self:FindChild(self.objMatNumBox, "TongLingYu")
-    self.comTongLingYuNum = self:FindChildComponent(self.objTongLingYuNum, "Num", l_DRCSRef_Type.Text);
-
+    self.objJingTieNum = self:FindChild(self.objMatNumBox, "JingTie")
+    self.comJingTieNum = self:FindChildComponent(self.objJingTieNum, "Num", l_DRCSRef_Type.Text)
     self.kItemMgr = ItemDataManager:GetInstance()
 end
 
 function ForgeSmeltUI:UpdateSmeltSpecialSwitch()
     local bOpen = QuerySystemIsOpen(SGLST_SMELT_SPECIAL)
-    self.objWanMeiFenNum_iron:SetActive(bOpen)
-    self.objWMFBoxIcon_iron:SetActive(bOpen)
-
-    self.objTongLingYuNum:SetActive(bOpen)
-    self.objWMFBoxIcon_tonglingyu:SetActive(bOpen)
+    self.objJingTieNum:SetActive(bOpen)
+    self.objJingTieBoxIcon:SetActive(bOpen)
 end
 
 function ForgeSmeltUI:Update()
@@ -261,19 +246,14 @@ function ForgeSmeltUI:UpdateMsgBoard()
     for index, itemID in ipairs(aiList) do
         itemsToSmelt[index - 1] = itemID
         local instItem = itemManager:GetItemData(itemID)
-        powderCount = powderCount + itemManager:GetITemSmeltPowder(itemID, true, false) + math.floor(instItem.uiPerfectPower * 0.9)
-        powderCountMin = powderCountMin + itemManager:GetITemSmeltPowder(itemID, false, true) + math.floor(instItem.uiPerfectPower * 0.9)
-        ironCount = ironCount  + math.floor(instItem.uiSpendIron* 0.9)
-        tongLingYuCount = tongLingYuCount + math.floor((instItem.uiSpendTongLingYu or 0) * 0.9)
+        local iRank = itemManager:GetItemRankByItemInstID(itemID)
+        local ForgeSmeltData = TableDataManager:GetInstance():GetTableData("ForgeSmelt", iRank)
+        if ForgeSmeltData then
+            ironCount = ironCount + ForgeSmeltData.JingTieNum
+        end
     end
     self.itemsToSmelt = itemsToSmelt
-    if powderCountMin < powderCount then
-        self.textWMFBoxNum.text = string.format("%s~%s", powderCountMin, powderCount)
-    else
-        self.textWMFBoxNum.text = string.format("X %s", powderCount)
-    end
-    self.textWMFBoxNum_iron.text = string.format("X %s", ironCount)
-    self.textWMFBoxNum_tonglingyu.text = string.format("x %s", tongLingYuCount)
+    self.textJingTieBoxNum.text = string.format("X %s", ironCount)
 end
 
 -- 向服务器发送熔炼消息
@@ -332,42 +312,21 @@ function ForgeSmeltUI:UpdateMatsNum()
     if not self.matIconUpdated then
         local kTableMgr = TableDataManager:GetInstance()
         local kItemMgr = ItemDataManager:GetInstance()
-        -- 显示用的模板id
-        local itemTypeData = kTableMgr:GetTableData("Item",30941)  -- 完美粉
-        self.ItemIconUI:UpdateUIWithItemTypeData(self.objWanMeiFenNum, itemTypeData)
+
         -- 同时初始化信息栏中的按钮
-        self.ItemIconUI:UpdateUIWithItemTypeData(self.objWMFBoxIcon, itemTypeData)
-
         local itemTypeData_iron = kTableMgr:GetTableData("Item",30951)  -- 精铁
-        self.ItemIconUI:UpdateUIWithItemTypeData(self.objWMFBoxIcon_iron, itemTypeData_iron)
-        self.ItemIconUI:UpdateUIWithItemTypeData(self.objWanMeiFenNum_iron, itemTypeData_iron)
+        self.ItemIconUI:UpdateUIWithItemTypeData(self.objJingTieBoxIcon, itemTypeData_iron)
+        self.ItemIconUI:UpdateUIWithItemTypeData(self.objJingTieNum, itemTypeData_iron)
        
-        local uiTongLingYuBaseID = kItemMgr:GetPlayerAssetItemBaseIDByName("金刚玉") or 0
-        local kTongLingYuItem = kTableMgr:GetTableData("Item", uiTongLingYuBaseID)
-        if kTongLingYuItem then
-            self.ItemIconUI:UpdateUIWithItemTypeData(self.objTongLingYuNum, kTongLingYuItem)
-            self.ItemIconUI:UpdateUIWithItemTypeData(self.objWMFBoxIcon_tonglingyu, kTongLingYuItem)
-        end
-
         -- 标记图标初始化完成
         self.matIconUpdated = true
     end
     local playerData = PlayerSetDataManager:GetInstance()
-    local WMFCount = playerData:GetPlayerPerfectPowder() or 0
     local IronCount = playerData:GetPlayerRefinedIron() or 0
-    local TongLingYuCount = playerData:GetTongLingYuValue() or 0
-    self.comWanMeiFenNum.text = WMFCount
-    self.comWanMeiFenNum_iron.text = IronCount
-    self.comTongLingYuNum.text = TongLingYuCount
+    self.comJingTieNum.text = IronCount
 end
 
 function ForgeSmeltUI:OnDestroy()
-    -- 清空一些按钮的监听
-    local btnToClear = nil
-    btnToClear = self.objWanMeiFenNum:GetComponent(l_DRCSRef_Type.Button)
-    self.ItemIconUI:RemoveButtonClickListener(btnToClear)
-    btnToClear = self.objWMFBoxIcon:GetComponent(l_DRCSRef_Type.Button)
-    self.ItemIconUI:RemoveButtonClickListener(btnToClear)
     -- 关闭组件
     self.ItemIconUI:Close()
     self.BackpackNewUICom:Close()

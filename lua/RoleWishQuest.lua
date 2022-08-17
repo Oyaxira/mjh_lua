@@ -431,6 +431,7 @@ local RoleWishQuest= {
   [426]={BaseID=426,sortOrder=426,Prefix="许承孝",NameID=1910426,Name="春风容易送韶年",ForbidInheritStoryIDs={1,},ForbidUnlockStoryIDs={1,},RewardID={23,},},
   [427]={BaseID=427,sortOrder=427,Prefix="许承孝",NameID=1910427,Name="山重水复疑无路",ForbidInheritStoryIDs={1,},ForbidUnlockStoryIDs={1,},},
   [428]={BaseID=428,sortOrder=428,Prefix="许承孝",NameID=1910428,Name="拨云见日终有时",ForbidInheritStoryIDs={1,},ForbidUnlockStoryIDs={1,},},
+  [429]={BaseID=429,sortOrder=429,Prefix="通用-潜能突破",NameID=1910429,Name="天下风云出我辈",ForbidInheritStoryIDs={1,},ForbidUnlockStoryIDs={1,},TaskID=5710,},
 }
 for k,v in pairs(RoleWishQuest) do
     setmetatable(v, {['__index'] = RoleWishQuestDefault})

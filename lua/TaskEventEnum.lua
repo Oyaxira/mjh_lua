@@ -286,6 +286,7 @@ local TaskEventEnum= {
   [278]={BaseID=278,EventName=Event.Event_ShowMartialSelect,EventArg1Type="Language",EventArg1Name="0标题",EventArg2Type="Language",EventArg2Name="1内容",EventArg3Type="int",EventArg3Name="3模式",EventArg4Type="string",EventArg4Name="2所选角色",EventArg5Type="string",EventArg5Name="4专属武学",},
   [279]={BaseID=279,EventName=Event.Event_ShowSwornUI,EventArg1Type="Language",EventArg1Name="0标题",EventArg2Type="Language",EventArg2Name="1内容",EventArg3Type="int",EventArg3Name="3模式",EventArg4Type="string",EventArg4Name="2所选角色",},
   [280]={BaseID=280,EventName=Event.Event_TaskCustomize,EventArg1Type="Task",EventArg1Name="0任务ID",EventArg2Type="string",EventArg2Name="1事件名称",},
+  [281]={BaseID=281,EventName=Event.Event_ShowRoleSelect,EventArg1Type="Language",EventArg1Name="0标题",EventArg2Type="Language",EventArg2Name="1内容",EventArg3Type="int",EventArg3Name="3模式",EventArg4Type="int",EventArg4Name="4好感度",EventArg5Type="string",EventArg5Name="5所选角色",},
 }
 for k,v in pairs(TaskEventEnum) do
     setmetatable(v, {['__index'] = TaskEventEnumDefault})

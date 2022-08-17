@@ -5498,6 +5498,7 @@ Event = {
   Event_ShowMartialSelect = 2038; -- 显示专属武学角色选择
   Event_ShowSwornUI = 2039; -- 显示结义角色选择
   Event_TaskCustomize = 2040; -- 任务自定义事件
+  Event_ShowRoleSelect = 2041; -- 显示角色选择
 }
 
 Event_Revert = {
@@ -5891,6 +5892,7 @@ Event_Revert = {
   ["显示专属武学角色选择"] = Event.Event_ShowMartialSelect;
   ["显示结义角色选择"] = Event.Event_ShowSwornUI;
   ["任务自定义事件"] = Event.Event_TaskCustomize;
+  ["显示角色选择"] = Event.Event_ShowRoleSelect;
 }
 
 -- EventTriggerType
