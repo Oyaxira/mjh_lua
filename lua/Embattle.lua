@@ -843,7 +843,7 @@ local Embattle= {
   [1534]={BaseID=1534,RoleData={{ID=1040113005,Type=0,FargID=3590,Count=1,MaxCount=1,},},},
   [1537]={BaseID=1537,RoleData={{ID=1000001400,Type=0,FargID=3591,Count=1,MaxCount=1,},},},
   [1538]={BaseID=1538,RoleData={{ID=1000001180,Type=0,FargID=3592,Count=3,MaxCount=3,},},},
-  [1539]={BaseID=1539,RoleData={{ID=1000001400,Type=0,FargID=3593,Count=1,MaxCount=2,},{ID=1000001180,Type=0,FargID=3594,Count=2,MaxCount=2,},{ID=1060114001,Type=2,FargID=0,Count=1,MaxCount=2,},{ID=1230113002,Type=2,FargID=3595,Count=1,MaxCount=2,},{ID=1050301003,Type=2,FargID=3596,Count=2,MaxCount=2,},{ID=1030213001,Type=2,FargID=0,Count=1,MaxCount=2,},},},
+  [1539]={BaseID=1539,RoleData={{ID=1240325009,Type=1,FargID=0,Count=1,MaxCount=1,},{ID=1240325010,Type=1,FargID=0,Count=1,MaxCount=1,},{ID=1000013053,Type=0,FargID=3633,Count=11,MaxCount=11,},{ID=1220113001,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1170301004,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1100301004,Type=2,FargID=0,Count=1,MaxCount=1,},},},
   [1540]={BaseID=1540,RoleData={{ID=1230113016,Type=0,FargID=3597,Count=1,MaxCount=1,},},},
   [1541]={BaseID=1541,RoleData={{ID=0,Type=0,FargID=3598,Count=3,MaxCount=3,},},},
   [1542]={BaseID=1542,RoleData={{ID=0,Type=0,FargID=3599,Count=3,MaxCount=3,},},},
@@ -873,6 +873,16 @@ local Embattle= {
   [1567]={BaseID=1567,RoleData={{ID=1030301004,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3623,Count=6,MaxCount=6,},},},
   [1568]={BaseID=1568,RoleData={{ID=1030301003,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1030301004,Type=1,FargID=3624,Count=1,MaxCount=1,},},},
   [1569]={BaseID=1569,RoleData={{ID=1040301007,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1040201001,Type=1,FargID=3625,Count=1,MaxCount=1,},},},
+  [1577]={BaseID=1577,RoleData={{ID=1000013053,Type=0,FargID=3626,Count=5,MaxCount=7,},},},
+  [1579]={BaseID=1579,RoleData={{ID=1290301005,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3627,Count=3,MaxCount=3,},},},
+  [1580]={BaseID=1580,RoleData={{ID=1000001149,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1290301004,Type=0,FargID=3628,Count=1,MaxCount=1,},{ID=0,Type=0,FargID=3629,Count=3,MaxCount=3,},},},
+  [1581]={BaseID=1581,RoleData={{ID=1000011019,Type=0,FargID=3630,Count=1,MaxCount=1,},},},
+  [1582]={BaseID=1582,RoleData={{ID=0,Type=0,FargID=3631,Count=6,MaxCount=6,},},},
+  [1583]={BaseID=1583,RoleData={{ID=1160301003,Type=0,FargID=0,Count=1,MaxCount=1,},},},
+  [1584]={BaseID=1584,RoleData={{ID=1160301003,Type=0,FargID=0,Count=1,MaxCount=1,},{ID=1220301001,Type=0,FargID=3632,Count=1,MaxCount=1,},{ID=1,Type=2,FargID=0,Count=1,MaxCount=1,},},},
+  [1585]={BaseID=1585,RoleData={{ID=1250121004,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1090325010,Type=0,FargID=3634,Count=1,MaxCount=1,},},},
+  [1586]={BaseID=1586,RoleData={{ID=1250113018,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1250113017,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1090314001,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1000012014,Type=1,FargID=0,Count=1,MaxCount=1,},},},
+  [1587]={BaseID=1587,RoleData={{ID=1090325010,Type=2,FargID=0,Count=1,MaxCount=1,},{ID=1080314003,Type=1,FargID=3635,Count=1,MaxCount=1,},},},
 }
 for k,v in pairs(Embattle) do
     setmetatable(v, {['__index'] = EmbattleDefault})

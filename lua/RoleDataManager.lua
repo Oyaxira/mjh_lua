@@ -827,15 +827,14 @@ end
 
 function RoleDataManager:CheckCreateRoleHaveBaby()
 
-    local info = globalDataPool:getData("StartCreateMainRole")
-
-    if not info then
-       return false
+    local info = globalDataPool:getData("MainRoleInfo")
+    if not (info and info["MainRole"] and info["MainRole"][MRIT_CREATR_ROLE_ID]) then
+        return true
     end
-    for key, value in pairs(info['akRoles']) do
-        if value.uiChild == 1 then
-            return true
-        end
+    local iRoleCreateID = info["MainRole"][MRIT_CREATR_ROLE_ID]
+    local RoleTemplateData = TableDataManager:GetInstance():GetTableData("RoleTemplate", iRoleCreateID) 
+    if RoleTemplateData and RoleTemplateData.Status == StatusType.STT_Haitong then
+        return true
     end
     return false
 end

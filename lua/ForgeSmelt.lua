@@ -10,11 +10,11 @@ local ForgeSmelt= {
   [2]={BaseID=2,Rank=RankType.RT_Green,JingTieNum=0,},
   [3]={BaseID=3,Rank=RankType.RT_Blue,JingTieNum=0,},
   [4]={BaseID=4,Rank=RankType.RT_Purple,JingTieNum=0,},
-  [5]={BaseID=5,Rank=RankType.RT_Orange,JingTieNum=9,},
-  [6]={BaseID=6,Rank=RankType.RT_Golden,JingTieNum=15,},
-  [7]={BaseID=7,Rank=RankType.RT_DarkGolden,JingTieNum=25,},
-  [8]={BaseID=8,Rank=RankType.RT_MultiColor,JingTieNum=25,},
-  [9]={BaseID=9,Rank=RankType.RT_ThirdGearDarkGolden,JingTieNum=25,},
+  [5]={BaseID=5,Rank=RankType.RT_Orange,JingTieNum=0,},
+  [6]={BaseID=6,Rank=RankType.RT_Golden,JingTieNum=1,},
+  [7]={BaseID=7,Rank=RankType.RT_DarkGolden,JingTieNum=2,},
+  [8]={BaseID=8,Rank=RankType.RT_MultiColor,JingTieNum=2,},
+  [9]={BaseID=9,Rank=RankType.RT_ThirdGearDarkGolden,JingTieNum=2,},
 }
 
 -- export table: ForgeSmelt

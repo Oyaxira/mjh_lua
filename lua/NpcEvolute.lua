@@ -113,7 +113,7 @@ local NpcEvolute= {
   [105]={BaseID=105,RoleID=1210301009,CityID=15,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,},
   [106]={BaseID=106,RoleID=1210301010,CityID=15,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,},
   [107]={BaseID=107,RoleID=1210314001,CityID=15,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,IsAllowKilled=TBoolean.BOOL_NO,},
-  [108]={BaseID=108,RoleID=1220113001,CityID=17,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,IsAllowKilled=TBoolean.BOOL_NO,},
+  [108]={BaseID=108,RoleID=1220113001,CityID=35,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,IsAllowKilled=TBoolean.BOOL_NO,},
   [109]={BaseID=109,RoleID=1220314002,CityID=17,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,IsAllowKilled=TBoolean.BOOL_NO,},
   [110]={BaseID=110,RoleID=1220221001,CityID=17,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,IsAllowKilled=TBoolean.BOOL_NO,},
   [111]={BaseID=111,RoleID=1220221002,CityID=17,IsMove=TBoolean.BOOL_NO,IsEvolute=TBoolean.BOOL_YES,IsAllowKilled=TBoolean.BOOL_NO,},

@@ -72,6 +72,202 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
+	[0xc3a1] = {
+		["id"] = 0xc3a1,
+		["skillEffect"] = {
+			{
+				["actionInfo"] = {
+					["oldActionName"] = "attack_g_002",
+					["delay"] = 0x0,
+					["action"] = "attack",
+					["type"] = 0x5,
+					["num"] = 0x1,
+				},
+				["castEffect"] = {
+					{
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_yuwen/ef_ywz_tui0",
+						["prefabAnim"] = nil,
+						["depth"] = 0x5,
+						["offsetX"] = -0.500000,
+						["offsetY"] = 0.000000,
+						["noOnRole"] = false,
+						["mount1Name"] = 0x0,
+						["mount2Name"] = nil,
+						["delay"] = 0x0,
+						["fullScreen"] = false,
+						["scale"] = 1.200000,
+						["onHurt"] = true,
+						["onlyOnce"] = false,
+						["noFlipX"] = false,
+						["audio"] = 0x0,
+						["onFloor"] = false,
+						["layerValue"] = 0x0,
+					},
+					{
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_zhujian/ef_zj_gun06",
+						["prefabAnim"] = nil,
+						["depth"] = 0x5,
+						["offsetX"] = 0.500000,
+						["offsetY"] = 0.000000,
+						["noOnRole"] = false,
+						["mount1Name"] = 0x0,
+						["mount2Name"] = nil,
+						["delay"] = 0x0,
+						["fullScreen"] = false,
+						["scale"] = 1.200000,
+						["onHurt"] = true,
+						["onlyOnce"] = false,
+						["noFlipX"] = false,
+						["audio"] = 0x0,
+						["onFloor"] = false,
+						["layerValue"] = 0x0,
+					},
+					{
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_yuwen/ef_ywz_tuiheng",
+						["prefabAnim"] = nil,
+						["depth"] = 0x1,
+						["offsetX"] = -0.500000,
+						["offsetY"] = 0.000000,
+						["noOnRole"] = false,
+						["mount1Name"] = 0x0,
+						["mount2Name"] = nil,
+						["delay"] = 0x0,
+						["fullScreen"] = false,
+						["scale"] = 1.200000,
+						["onHurt"] = true,
+						["onlyOnce"] = false,
+						["noFlipX"] = false,
+						["audio"] = 0x0,
+						["onFloor"] = true,
+						["layerValue"] = 0x0,
+					},
+					{
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_zhujian/ef_zj_gun07",
+						["prefabAnim"] = nil,
+						["depth"] = 0x1,
+						["offsetX"] = 0.500000,
+						["offsetY"] = 0.000000,
+						["noOnRole"] = false,
+						["mount1Name"] = 0x0,
+						["mount2Name"] = nil,
+						["delay"] = 0x0,
+						["fullScreen"] = false,
+						["scale"] = 1.200000,
+						["onHurt"] = true,
+						["onlyOnce"] = false,
+						["noFlipX"] = false,
+						["audio"] = 0x0,
+						["onFloor"] = true,
+						["layerValue"] = 0x0,
+					},
+					{
+						["prefabPath"] = "Effect/Eff/yanwu/fz_ksyan01",
+						["prefabAnim"] = nil,
+						["depth"] = 0x1,
+						["offsetX"] = 0.000000,
+						["offsetY"] = 0.300000,
+						["noOnRole"] = false,
+						["mount1Name"] = 0x0,
+						["mount2Name"] = nil,
+						["delay"] = 0x12c,
+						["fullScreen"] = false,
+						["scale"] = 3.000000,
+						["onHurt"] = false,
+						["onlyOnce"] = false,
+						["noFlipX"] = false,
+						["audio"] = 0x0,
+						["onFloor"] = true,
+						["layerValue"] = 0x0,
+					},
+					{
+						["prefabPath"] = "Effect/Eff/yanwu/fz_yqyan08",
+						["prefabAnim"] = nil,
+						["depth"] = 0x2,
+						["offsetX"] = nil,
+						["offsetY"] = nil,
+						["noOnRole"] = false,
+						["mount1Name"] = 0x0,
+						["mount2Name"] = nil,
+						["delay"] = 0x64,
+						["fullScreen"] = false,
+						["scale"] = 1.000000,
+						["onHurt"] = false,
+						["onlyOnce"] = false,
+						["noFlipX"] = false,
+						["audio"] = 0x0,
+						["onFloor"] = true,
+						["layerValue"] = 0x0,
+					},
+				},
+				["hurtEffect"] = {
+					{
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_yuwen/ef_ywz_bd2",
+						["prefabAnim"] = "animation2",
+						["depth"] = 0x5,
+						["offsetX"] = nil,
+						["offsetY"] = nil,
+						["noOnRole"] = nil,
+						["mount1Name"] = nil,
+						["mount2Name"] = nil,
+						["delay"] = nil,
+						["fullScreen"] = nil,
+						["scale"] = 1.000000,
+						["onHurt"] = nil,
+						["onlyOnce"] = nil,
+						["noFlipX"] = nil,
+						["audio"] = 0x0,
+						["onFloor"] = nil,
+						["layerValue"] = 0x0,
+					},
+				},
+				["sceneEffect"] = {
+					{
+						["effect"] = {
+							1,
+							0xa,
+							0xc8,
+							nil,
+							0.100000,
+							0.020000,
+							nil,
+							nil,
+						},
+						["onHurt"] = true,
+					},
+					{
+						["effect"] = {
+							6,
+							0xa82f79,
+							nil,
+						},
+						["onHurt"] = false,
+					},
+					{
+						["effect"] = {
+							6,
+							0xaa0052,
+							nil,
+						},
+						["onHurt"] = true,
+					},
+				},
+				["hurtEffectDelayTime"] = nil,
+				["hurtAnimation"] = nil,
+				["hurtAnimationDelayTime"] = nil,
+			},
+		},
+		["feidanType"] = nil,
+		["feidanPrefabPath"] = nil,
+		["feidanPrefabAnim"] = nil,
+		["effectType"] = nil,
+		["feixianjian"] = nil,
+		["feidanEase"] = 0x0,
+		["canying"] = nil,
+		["liumai"] = nil,
+		["speed"] = 1.000000,
+		["attackerAcce"] = nil,
+		["feidanTrackInfo"] = nil,
+	},
 	[0xfc] = {
 		["id"] = 0xfc,
 		["skillEffect"] = {
@@ -319,50 +515,12 @@ local t = {
 			{
 				["actionInfo"] = {
 					["oldActionName"] = "attack_g_004",
-					["delay"] = 0x3e8,
+					["delay"] = 0x0,
 					["action"] = "spell",
 					["type"] = nil,
 					["num"] = nil,
 				},
 				["castEffect"] = {
-					{
-						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_yunyinggu/ef_honbao",
-						["prefabAnim"] = nil,
-						["depth"] = 0x1,
-						["offsetX"] = 0.350000,
-						["offsetY"] = 1.500000,
-						["noOnRole"] = false,
-						["mount1Name"] = 0x0,
-						["mount2Name"] = nil,
-						["delay"] = 0x0,
-						["fullScreen"] = false,
-						["scale"] = 0.100000,
-						["onHurt"] = false,
-						["onlyOnce"] = false,
-						["noFlipX"] = false,
-						["audio"] = 0x0,
-						["onFloor"] = false,
-						["layerValue"] = 0x0,
-					},
-					{
-						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_yunyinggu/ef_honbao",
-						["prefabAnim"] = nil,
-						["depth"] = 0x1,
-						["offsetX"] = -0.500000,
-						["offsetY"] = nil,
-						["noOnRole"] = false,
-						["mount1Name"] = 0x0,
-						["mount2Name"] = nil,
-						["delay"] = 0x0,
-						["fullScreen"] = false,
-						["scale"] = nil,
-						["onHurt"] = false,
-						["onlyOnce"] = false,
-						["noFlipX"] = false,
-						["audio"] = 0x0,
-						["onFloor"] = false,
-						["layerValue"] = 0x0,
-					},
 				},
 				["hurtEffect"] = {
 					{
@@ -420,8 +578,8 @@ local t = {
 		["feixianjian"] = {
 			["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_yunyinggu/ef_hongbao",
 			["playTime"] = 0x64,
-			["delayTimeDown"] = 0x3e8,
-			["delayTimeUp"] = 0x7d0,
+			["delayTimeDown"] = 0x0,
+			["delayTimeUp"] = 0x3e8,
 			["scaleDown"] = 0x64,
 			["scaleUp"] = 0x64,
 			["offsetY"] = 6.000000,
@@ -20700,8 +20858,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x6e2] = {
-		["id"] = 0x6e2,
+	[0x64a] = {
+		["id"] = 0x64a,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -27994,8 +28152,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x66b] = {
-		["id"] = 0x66b,
+	[0x651] = {
+		["id"] = 0x651,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -28230,8 +28388,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x66c] = {
-		["id"] = 0x66c,
+	[0x652] = {
+		["id"] = 0x652,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -28509,8 +28667,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x67e] = {
-		["id"] = 0x67e,
+	[0x64f] = {
+		["id"] = 0x64f,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -28648,8 +28806,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x66a] = {
-		["id"] = 0x66a,
+	[0x653] = {
+		["id"] = 0x653,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -28898,8 +29056,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x67f] = {
-		["id"] = 0x67f,
+	[0x650] = {
+		["id"] = 0x650,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -29177,8 +29335,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x67d] = {
-		["id"] = 0x67d,
+	[0x64e] = {
+		["id"] = 0x64e,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -29316,8 +29474,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x67c] = {
-		["id"] = 0x67c,
+	[0x64d] = {
+		["id"] = 0x64d,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -29404,8 +29562,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x67b] = {
-		["id"] = 0x67b,
+	[0x64c] = {
+		["id"] = 0x64c,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -29562,8 +29720,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x67a] = {
-		["id"] = 0x67a,
+	[0x64b] = {
+		["id"] = 0x64b,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -115766,7 +115924,7 @@ local t = {
 				},
 				["castEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_mizhuan/1zha",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun03",
 						["prefabAnim"] = nil,
 						["depth"] = 0x1,
 						["offsetX"] = 1.000000,
@@ -115787,7 +115945,7 @@ local t = {
 				},
 				["hurtEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_options/ef_renwuwancheng",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_bd4",
 						["prefabAnim"] = "animation5",
 						["depth"] = 0x5,
 						["offsetX"] = nil,
@@ -115867,7 +116025,7 @@ local t = {
 				},
 				["castEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_mizhuan/10zha",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun02",
 						["prefabAnim"] = nil,
 						["depth"] = 0x1,
 						["offsetX"] = 1.000000,
@@ -115888,7 +116046,7 @@ local t = {
 				},
 				["hurtEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_options/ef_renwuwancheng",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_bd4",
 						["prefabAnim"] = "animation5",
 						["depth"] = 0x5,
 						["offsetX"] = nil,
@@ -115968,7 +116126,7 @@ local t = {
 				},
 				["castEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_mizhuan/xuanhuan",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun04",
 						["prefabAnim"] = nil,
 						["depth"] = 0x5,
 						["offsetX"] = 1.000000,
@@ -116808,8 +116966,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x62c] = {
-		["id"] = 0x62c,
+	[0x4e7] = {
+		["id"] = 0x4e7,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -116821,7 +116979,7 @@ local t = {
 				},
 				["castEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_options/ef_TipsGlow07",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun01",
 						["prefabAnim"] = nil,
 						["depth"] = 0x1,
 						["offsetX"] = 1.000000,
@@ -116840,7 +116998,7 @@ local t = {
 						["layerValue"] = 0x0,
 					},
 					{
-						["prefabPath"] = "Effect/Eff/yanwu/fz_quanpiny05",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun05",
 						["prefabAnim"] = nil,
 						["depth"] = 0x0,
 						["offsetX"] = 1.000000,
@@ -116859,7 +117017,7 @@ local t = {
 						["layerValue"] = 0x0,
 					},
 					{
-						["prefabPath"] = "Effect/Eff/yanwu/fz_quanpiny04",
+						["prefabPath"] = "Effect/Eff/yanwu/fz_yqyan08",
 						["prefabAnim"] = nil,
 						["depth"] = 0x4,
 						["offsetX"] = 1.000000,
@@ -116880,7 +117038,7 @@ local t = {
 				},
 				["hurtEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_options/ef_renwuwancheng",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_bd4",
 						["prefabAnim"] = "animation5",
 						["depth"] = 0x5,
 						["offsetX"] = nil,
@@ -116947,8 +117105,8 @@ local t = {
 		["attackerAcce"] = nil,
 		["feidanTrackInfo"] = nil,
 	},
-	[0x62e] = {
-		["id"] = 0x62e,
+	[0x552] = {
+		["id"] = 0x552,
 		["skillEffect"] = {
 			{
 				["actionInfo"] = {
@@ -116960,7 +117118,7 @@ local t = {
 				},
 				["castEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_mizhuan/10zha",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun02",
 						["prefabAnim"] = nil,
 						["depth"] = 0x1,
 						["offsetX"] = 1.000000,
@@ -116979,7 +117137,7 @@ local t = {
 						["layerValue"] = 0x0,
 					},
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_mizhuan/xuanhuan",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun04",
 						["prefabAnim"] = nil,
 						["depth"] = 0x0,
 						["offsetX"] = 1.000000,
@@ -116998,7 +117156,7 @@ local t = {
 						["layerValue"] = 0x0,
 					},
 					{
-						["prefabPath"] = "Effect/Eff/yanwu/fz_quanpiny04",
+						["prefabPath"] = "Effect/Eff/yanwu/fz_yqyan08",
 						["prefabAnim"] = nil,
 						["depth"] = 0x4,
 						["offsetX"] = 1.000000,
@@ -117038,7 +117196,7 @@ local t = {
 				},
 				["hurtEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_options/ef_renwuwancheng",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_bd4",
 						["prefabAnim"] = "animation5",
 						["depth"] = 0x5,
 						["offsetX"] = nil,
@@ -119397,7 +119555,7 @@ local t = {
 				},
 				["castEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_mizhuan/10zha",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_gun02",
 						["prefabAnim"] = nil,
 						["depth"] = 0x1,
 						["offsetX"] = 0.500000,
@@ -119418,7 +119576,7 @@ local t = {
 				},
 				["hurtEffect"] = {
 					{
-						["prefabPath"] = "Effect/Ui_eff/eff_options/ef_renwuwancheng",
+						["prefabPath"] = "Effect/Eff/ef_zmenpai_all/ef_wudu/ef_wdu_bd4",
 						["prefabAnim"] = nil,
 						["depth"] = 0x5,
 						["offsetX"] = nil,

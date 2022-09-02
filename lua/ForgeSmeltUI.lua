@@ -87,7 +87,7 @@ function ForgeSmeltUI:Init(objParent, instParent)
             },
         }
     })
-
+    self.BackpackNewUICom:SetSortButton(true)
     -- 熟练度ui
     self.forge_level_top = self:FindChild(self._gameObject_parent, "forge_level_top")
 
@@ -99,6 +99,7 @@ function ForgeSmeltUI:Init(objParent, instParent)
         self:SendCmdDoSmelt()
     end)
     self.textSmeltBtn = self:FindChildComponent(self.objSmeltBtn, "Text", l_DRCSRef_Type.Text)
+    self.ImageSmeltBtn =  self.objSmeltBtn:GetComponent(l_DRCSRef_Type.Image)
     self.objItemInfoBox = self:FindChild(obj, "ItemInfo_box")
     self.objWMFBox = self:FindChild(self.objItemInfoBox, "MaterialInfo_box")
 
@@ -167,6 +168,13 @@ function ForgeSmeltUI:UpdateSmeltItemList()
     end
     -- 更新左下角完美粉数量
     self:UpdateMatsNum()
+     -- 更新熔炼信息
+    local aiList, aiCount = self.BackpackNewUICom:GetPickedItemIDArray()
+    if (not aiList) or (not aiCount)
+    or (#aiList == 0) or (#aiCount == 0) then
+        self:SetMsgBoardState(false)
+        return
+    end
 end
 
 -- 重置导航栏
@@ -224,6 +232,7 @@ function ForgeSmeltUI:SetMsgBoardState(bIsActive)
     self.objWMFBox:SetActive(bIsActive)
     self.btnSmeltBtn.interactable = bIsActive
     self.textSmeltBtn.text = bIsActive and "熔炼" or "待选择"
+    setUIGray(self.ImageSmeltBtn, not bIsActive)
 end
 
 -- 刷新右边详细信息面板

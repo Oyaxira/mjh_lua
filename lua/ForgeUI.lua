@@ -109,7 +109,7 @@ function ForgeUI:Create()
             ['inst'] = self.ForgeRecastUIInst,
             ['tab'] = self.objToggle_Recast,
             ['cond'] = function()
-                return true--MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_RECAST)
+                return RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_RECAST)
             end
         }, 
         ['strengthen_box'] = {
@@ -117,7 +117,7 @@ function ForgeUI:Create()
             ['inst'] = self.ForgeStrengthenUIInst,
             ['tab'] = self.objToggle_Strengthen,
             ['cond'] = function()
-                return true --MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_STRENGTHEN)
+                return RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_STRENGTHEN)
             end
         },
         ['smelt_box'] = {
@@ -125,7 +125,7 @@ function ForgeUI:Create()
             ['inst'] = self.ForgeSmeltUIInst,
             ['tab'] = self.objToggle_Smelt,
             ['cond'] = function()
-                return true--MeridiansDataManager:GetInstance():GetSumLevel() >= UNLOCK_FORGE_MERIDIANS_LEVEL or RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_SMELT)
+                return RoleDataManager:GetInstance():IsInteractUnlock(PlayerBehaviorType.PBT_SMELT)
             end
         },
     }

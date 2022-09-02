@@ -883,7 +883,17 @@ local BatlleFunc= {
   [3622]={BaseID=3622,EventArg1={9,},EventArg2=300000,EventArg3=300000,EventArg4={20000,},EventArg5={6,},EventArg6={RankType.RT_Golden,},EventArg7=3210456,},
   [3623]={BaseID=3623,EventArg1={44,49,53,},EventArg2=300000,EventArg3=300000,EventArg4={10000,},EventArg5={4,9,3,},EventArg6={RankType.RT_Orange,},EventArg7=3210457,},
   [3624]={BaseID=3624,EventArg1={53,},EventArg2=300000,EventArg3=300000,EventArg4={20000,},EventArg5={9,},EventArg6={RankType.RT_Golden,},EventArg7=3210470,},
-  [3625]={BaseID=3625,FuncName=BattleFunctionType.BFT_Clan_ChangeAttr,EventArg2=0,},
+  [3625]={BaseID=3625,EventArg1={89,},EventArg2=500000,EventArg3=500000,EventArg4={40000,},EventArg5={10,},EventArg6={RankType.RT_MultiColor,},EventArg7=3210472,},
+  [3626]={BaseID=3626,EventArg1={55,15,46,86,},EventArg2=250000,EventArg3=280000,EventArg4={10000,},EventArg5={15,16,14,},EventArg6={RankType.RT_Golden,RankType.RT_Orange,},EventArg7=3210500,},
+  [3627]={BaseID=3627,EventArg1={83,},EventArg3=200000,EventArg4={10000,20000,},EventArg5={4,10,},EventArg6={RankType.RT_Purple,},EventArg7=3210502,},
+  [3628]={BaseID=3628,FuncName=BattleFunctionType.BFT_Battle_ChangeRoleAttr,EventArg2=86,EventArg3=250000,EventArg4={20000,},EventArg5={4,},EventArg6={RankType.RT_Golden,},},
+  [3629]={BaseID=3629,EventArg1={83,},EventArg3=200000,EventArg4={20000,10000,},EventArg5={10,},EventArg6={RankType.RT_Orange,},EventArg7=3210503,},
+  [3630]={BaseID=3630,FuncName=BattleFunctionType.BFT_Battle_ChangeRoleAttr,EventArg2=56,EventArg3=400000,EventArg5={5,},EventArg6={RankType.RT_MultiColor,},},
+  [3631]={BaseID=3631,EventArg1={44,49,53,},EventArg2=300000,EventArg3=300000,EventArg4={10000,20000,},EventArg5={1,},EventArg6={RankType.RT_Golden,},EventArg7=3210504,},
+  [3632]={BaseID=3632,FuncName=BattleFunctionType.BFT_Battle_ChangeRoleAttr,EventArg2=78,EventArg3=250000,EventArg4={10000,},EventArg5={9,},EventArg6={RankType.RT_DarkGolden,},},
+  [3633]={BaseID=3633,EventArg1={55,86,15,46,},EventArg2=300000,EventArg3=300000,EventArg4={10000,},EventArg5={17,18,19,},EventArg6={RankType.RT_Orange,},EventArg7=3210517,},
+  [3634]={BaseID=3634,FuncName=BattleFunctionType.BFT_Battle_ChangeRoleAttr,EventArg2=0,EventArg3=500000,},
+  [3635]={BaseID=3635,FuncName=BattleFunctionType.BFT_Battle_ChangeRoleAttr,EventArg1={100,},EventArg2=17,EventArg3=500000,EventArg4={30000,},EventArg5={17,},EventArg6={RankType.RT_DarkGolden,},},
 }
 for k,v in pairs(BatlleFunc) do
     setmetatable(v, {['__index'] = BatlleFuncDefault})

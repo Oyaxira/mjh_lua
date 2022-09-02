@@ -1761,6 +1761,7 @@ local l_NeedESCWindowX={
     "DisguiseUI",
     "IncompleteBoxUI",
     "SaveFileUI",
+    "RoleSelectUI",
 }
 function LogicMain:CheckESCKey()
     self.isGeneralBoxUICurFrameOpen = false

@@ -547,39 +547,42 @@ function RoleShowUI:SetGift()
         local comTMP_value = self:FindChildComponent(objGiftText, 'TMP_value', 'Text')
         local excObj = self:FindChild(objGiftText, 'exc')
         local giftTypeData = GiftDataManager:GetInstance():GetGiftTypeData(gift_list[i])
-        local exc = GiftDataManager:GetInstance():IfExclusiveGift(giftTypeData.BaseID)
-        if giftTypeData and giftTypeData.BaseID ~= 794 then
-            comTMP_label.text = getRankBasedText(giftTypeData.Rank, GetLanguageByID(giftTypeData.NameID))
-            comTMP_value.text = ""
-            excObj:SetActive(exc)
-        end
-        if giftTypeData and giftTypeData.BaseID == 794 then
-            objGiftText:SetActive(false)
-        end
-        local comReturnUIAction = objGiftText:GetComponent("LuaUIAction")
-        if comReturnUIAction then
-            local fun = function()
-                local name = exc == true and getRankBasedText(giftTypeData.Rank, GetLanguageByID(giftTypeData.NameID)).."<color=#ff0000>[专属]</color>"
-                    or getRankBasedText(giftTypeData.Rank, GetLanguageByID(giftTypeData.NameID))
-                local tips={
-                    title = name,
-                    content = GiftDataManager:GetInstance():GetDes(self.curRole_dynData, giftTypeData),
-                    -- movePositions = {
-                    -- 	x = 0,
-                    -- 	y = 120
-                    -- },
-                    isSkew = true
-                }
-                    OpenWindowImmediately("TipsPopUI",tips)
+        if giftTypeData then
+            local exc = GiftDataManager:GetInstance():IfExclusiveGift(giftTypeData.BaseID)
+            if giftTypeData and giftTypeData.BaseID ~= 794 then
+                comTMP_label.text = getRankBasedText(giftTypeData.Rank, GetLanguageByID(giftTypeData.NameID))
+                comTMP_value.text = ""
+                excObj:SetActive(exc)
             end
-            comReturnUIAction:SetPointerEnterAction(function()
-                fun()
-            end)
-    
-            comReturnUIAction:SetPointerExitAction(function()
-                RemoveWindowImmediately("TipsPopUI")
-            end)
+            if giftTypeData and giftTypeData.BaseID == 794 then
+                objGiftText:SetActive(false)
+            end
+            local comReturnUIAction = objGiftText:GetComponent("LuaUIAction")
+            if comReturnUIAction then
+                local fun = function()
+                    local name = exc == true and getRankBasedText(giftTypeData.Rank, GetLanguageByID(giftTypeData.NameID)).."<color=#ff0000>[专属]</color>"
+                        or getRankBasedText(giftTypeData.Rank, GetLanguageByID(giftTypeData.NameID))
+                    local tips={
+                        title = name,
+                        content = GiftDataManager:GetInstance():GetDes(self.curRole_dynData, giftTypeData),
+                        -- movePositions = {
+                        -- 	x = 0,
+                        -- 	y = 120
+                        -- },
+                        isSkew = true
+                    }
+                        OpenWindowImmediately("TipsPopUI",tips)
+                end
+                comReturnUIAction:SetPointerEnterAction(function()
+                    fun()
+                end)
+        
+                comReturnUIAction:SetPointerExitAction(function()
+                    RemoveWindowImmediately("TipsPopUI")
+                end)
+            end
         end
+      
     end
 end
 

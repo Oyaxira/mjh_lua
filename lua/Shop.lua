@@ -1967,6 +1967,21 @@ local Shop= {
   [11578]={BaseID=11578,BusinessManID=130,ItemID=512141,IsReplenish=TBoolean.BOOL_YES,BuyPrice=30,ShowMoney=9618,ItemSortID=1,},
   [11579]={BaseID=11579,BusinessManID=130,ItemID=512142,IsReplenish=TBoolean.BOOL_YES,BuyPrice=30,ShowMoney=9618,ItemSortID=1,},
   [11580]={BaseID=11580,BusinessManID=130,ItemID=512011,IsReplenish=TBoolean.BOOL_YES,BuyPrice=30,ShowMoney=9618,ItemSortID=1,},
+  [11581]={BaseID=11581,BusinessManID=130,ItemID=512017,IsReplenish=TBoolean.BOOL_YES,BuyPrice=5,ShowMoney=9618,ItemSortID=5,},
+  [11582]={BaseID=11582,BusinessManID=130,ItemID=512018,IsReplenish=TBoolean.BOOL_YES,BuyPrice=8,ShowMoney=9618,ItemSortID=4,},
+  [11583]={BaseID=11583,BusinessManID=130,ItemID=512019,IsReplenish=TBoolean.BOOL_YES,BuyPrice=12,ShowMoney=9618,ItemSortID=3,},
+  [11584]={BaseID=11584,BusinessManID=130,ItemID=512020,IsReplenish=TBoolean.BOOL_YES,BuyPrice=15,ShowMoney=9618,ItemSortID=2,},
+  [11585]={BaseID=11585,BusinessManID=130,ItemID=512021,IsReplenish=TBoolean.BOOL_YES,BuyPrice=30,ShowMoney=9618,ItemSortID=1,},
+  [11586]={BaseID=11586,BusinessManID=130,ItemID=512024,IsReplenish=TBoolean.BOOL_YES,BuyPrice=8,ShowMoney=9618,ItemSortID=4,},
+  [11587]={BaseID=11587,BusinessManID=130,ItemID=512025,IsReplenish=TBoolean.BOOL_YES,BuyPrice=30,ShowMoney=9618,ItemSortID=1,},
+  [11588]={BaseID=11588,BusinessManID=133,ItemID=511403,IsReplenish=TBoolean.BOOL_YES,BuyPrice=12,ShowMoney=9618,ItemSortID=3,},
+  [11589]={BaseID=11589,BusinessManID=133,ItemID=511408,IsReplenish=TBoolean.BOOL_YES,BuyPrice=30,ShowMoney=9618,ItemSortID=1,},
+  [11590]={BaseID=11590,BusinessManID=133,ItemID=511410,IsReplenish=TBoolean.BOOL_YES,BuyPrice=8,ShowMoney=9618,ItemSortID=4,},
+  [11591]={BaseID=11591,BusinessManID=133,ItemID=511501,IsReplenish=TBoolean.BOOL_YES,BuyPrice=30,ShowMoney=9618,ItemSortID=1,},
+  [11592]={BaseID=11592,BusinessManID=133,ItemID=511506,IsReplenish=TBoolean.BOOL_YES,BuyPrice=12,ShowMoney=9618,ItemSortID=3,},
+  [11593]={BaseID=11593,BusinessManID=133,ItemID=511507,IsReplenish=TBoolean.BOOL_YES,BuyPrice=8,ShowMoney=9618,ItemSortID=4,},
+  [11594]={BaseID=11594,BusinessManID=133,ItemID=511514,IsReplenish=TBoolean.BOOL_YES,BuyPrice=15,ShowMoney=9618,ItemSortID=2,},
+  [11595]={BaseID=11595,BusinessManID=133,ItemID=511515,IsReplenish=TBoolean.BOOL_YES,BuyPrice=8,ShowMoney=9618,ItemSortID=4,},
 }
 for k,v in pairs(Shop) do
     setmetatable(v, {['__index'] = ShopDefault})

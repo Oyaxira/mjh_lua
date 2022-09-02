@@ -3966,6 +3966,8 @@ function ShowDialog(kRetData)
         OpenWindowImmediately("MartialSelectUI",{iType = type, iTask = task, iRet = ret, iRet2 = ret2})
     elseif type == 6 then -- 结义
         OpenWindowImmediately("SwornUI",{iType = type, iTask = task, iRet = ret})
+    elseif type == 7 then -- 结义
+        OpenWindowImmediately("RoleSelectUI",{ititle = title, icontent = content, iType = type, iTask = task, iRet = ret, iFavor = ret2})
     end
 end
 

@@ -285,6 +285,12 @@ local EvoluteRecord= {
   [1097]={BaseID=1097,LanguageID=231097,IsImportant=TBoolean.BOOL_NO,FixTeamBar=TBoolean.BOOL_YES,RecordArg1Type=EvoluteRecordType.ERT_Role,},
   [1098]={BaseID=1098,LanguageID=231098,IsImportant=TBoolean.BOOL_NO,FixTeamBar=TBoolean.BOOL_YES,RecordArg1Type=EvoluteRecordType.ERT_Role,},
   [1099]={BaseID=1099,LanguageID=231099,IsImportant=TBoolean.BOOL_NO,FixTeamBar=TBoolean.BOOL_YES,RecordArg1Type=EvoluteRecordType.ERT_Role,},
+  [1100]={BaseID=1100,LanguageID=231100,TeamBarParam={1,},RecordArg1Type=EvoluteRecordType.ERT_Role,RecordArg2Type=EvoluteRecordType.ERT_Role,},
+  [1101]={BaseID=1101,LanguageID=231101,},
+  [1102]={BaseID=1102,LanguageID=231102,},
+  [1103]={BaseID=1103,LanguageID=231103,},
+  [1104]={BaseID=1104,LanguageID=231104,},
+  [1105]={BaseID=1105,LanguageID=231105,},
 }
 for k,v in pairs(EvoluteRecord) do
     setmetatable(v, {['__index'] = EvoluteRecordDefault})

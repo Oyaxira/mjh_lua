@@ -272,6 +272,8 @@ local RoleTitle= {
   [264]={BaseID=264,TitleID=130261,Name="纷至沓来",RankListID=1260,},
   [265]={BaseID=265,TitleID=130262,Name="静修者",RankListID=1261,},
   [266]={BaseID=266,TitleID=130263,Name="策划杀手",RankListID=1262,},
+  [267]={BaseID=267,TitleID=130264,Name="金角大王",RankListID=1263,},
+  [268]={BaseID=268,TitleID=130265,Name="银角大王",RankListID=1264,},
 }
 for k,v in pairs(RoleTitle) do
     setmetatable(v, {['__index'] = RoleTitleDefault})

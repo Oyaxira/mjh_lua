@@ -252,6 +252,15 @@ local Achieve= {
   [827]={BaseID=827,NameID=1810059,DesID=1820059,Order=59,Rank=RankType.RT_Green,AchieveType="剧情",AchievePoint=5,ScriptOwner={2,6,7,},},
   [1000]={BaseID=1000,NameID=1810241,DesID=1820241,Order=241,Rank=RankType.RT_Golden,AchieveType="探索",AchievePoint=80,ScriptOwner={2,6,7,},},
   [1001]={BaseID=1001,NameID=1810242,DesID=1820242,Order=242,Rank=RankType.RT_DarkGolden,AchieveType="探索",AchievePoint=200,ScriptOwner={2,6,7,},},
+  [1002]={BaseID=1002,NameID=1810243,DesID=1820243,Order=243,Rank=RankType.RT_Purple,AchieveType="探索",AchievePoint=20,ScriptOwner={2,6,7,},},
+  [1003]={BaseID=1003,NameID=1810244,DesID=1820244,Order=244,Rank=RankType.RT_Purple,AchieveType="探索",AchievePoint=20,ScriptOwner={2,6,7,},},
+  [1004]={BaseID=1004,NameID=1810245,DesID=1820245,Order=245,Rank=RankType.RT_Purple,AchieveType="探索",AchievePoint=20,ScriptOwner={2,6,7,},},
+  [1005]={BaseID=1005,NameID=1810246,DesID=1820246,Order=246,Rank=RankType.RT_Purple,AchieveType="探索",AchievePoint=20,ScriptOwner={2,6,7,},},
+  [1006]={BaseID=1006,NameID=1810247,DesID=1820247,Order=247,Rank=RankType.RT_Purple,AchieveType="探索",AchievePoint=20,ScriptOwner={2,6,7,},},
+  [1007]={BaseID=1007,NameID=1810248,DesID=1820248,Order=248,Rank=RankType.RT_Purple,AchieveType="探索",AchievePoint=20,ScriptOwner={2,6,7,},},
+  [1008]={BaseID=1008,NameID=1810249,DesID=1820249,Order=249,Rank=RankType.RT_Purple,AchieveType="探索",AchievePoint=20,ScriptOwner={2,6,7,},},
+  [1009]={BaseID=1009,NameID=1810250,DesID=1820250,Order=250,Rank=RankType.RT_DarkGolden,AchieveType="探索",AchievePoint=200,ScriptOwner={2,6,7,},},
+  [1010]={BaseID=1010,NameID=1810251,DesID=1820251,Order=251,Rank=RankType.RT_White,AchievePoint=2,ScriptOwner={2,6,7,},},
 }
 for k,v in pairs(Achieve) do
     setmetatable(v, {['__index'] = AchieveDefault})

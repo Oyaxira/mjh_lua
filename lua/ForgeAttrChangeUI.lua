@@ -68,11 +68,12 @@ function ForgeAttrChangeUI:Init(objParent, recastUI)
     self.text_wmfNum = self:FindChildComponent(self.obj_WMFMatBox, "Text_num", l_DRCSRef_Type.Text)
     self.obj_text_choosen = self:FindChild(self.obj_WMFMatBox, "Text_choosen")
     self.text_choosen = self.obj_text_choosen:GetComponent(l_DRCSRef_Type.Text)
+    self.obj_text_choosen:SetActive(false)
     self.obj_toggle_choosen = self:FindChild(self.obj_WMFMatBox, "Toggle_choosen")
     self.toggle_choosen = self.obj_toggle_choosen:GetComponent(l_DRCSRef_Type.Toggle)
     self:AddToggleClickListener(self.toggle_choosen, function(bOn)
         bOn = (bOn == true)
-        self.text_choosen.text = bOn and "<color=#688A2D>使用</color>" or "不使用"
+        self.text_choosen.text = ""
         self.RecastUI.toggle_wmf_choosen.isOn = bOn
         self.RecastUI.useWmfToRecast = bOn
         -- 完美粉影响需要的精铁数量

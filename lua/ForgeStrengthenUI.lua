@@ -48,7 +48,7 @@ function ForgeStrengthenUI:Init(objParent, instParent)
             OpenWindowImmediately("TipsPopUI", tips)
         end,
     })
-
+    self.BackpackNewUICom:SetSortButton(true)
     -- 隐藏熟练度ui
     self.forge_level_top = self:FindChild(self._gameObject_parent, "forge_level_top")
 
@@ -70,6 +70,7 @@ function ForgeStrengthenUI:Init(objParent, instParent)
     self.TextBtnDefault.text = "待选择"
     self.ObjBtnBuy = self:FindChild(obj, "Button_buy")
     self.BtnBuy = self.ObjBtnBuy:GetComponent(l_DRCSRef_Type.Button)
+    self.objBtnByImage = self.ObjBtnBuy:GetComponent(l_DRCSRef_Type.Image)
     self:AddButtonClickListener(self.BtnBuy, function()
         self:OnClickStrengthenBtn()
     end)
@@ -157,7 +158,7 @@ function ForgeStrengthenUI:UpdateStrengthenItemList()
     end
     -- 筛选出可强化的 背包中 装备中 物品
     local mainRoleID = RoleDataManager:GetInstance():GetMainRoleID()
-    local roleItems = itemManager:GetPackageItems(mainRoleID, mainRoleID, true, checkItemStrengthenable, false)
+    local roleItems = itemManager:GetPackageItems(mainRoleID, mainRoleID, false, checkItemStrengthenable, false)
     -- 丢进 BackpackNewUICom
     if self.BackpackNewUICom:HasItemPicked() then
         self.BackpackNewUICom:ShowRefreshAndResetPackByInstIDArray(roleItems)
@@ -231,6 +232,7 @@ function ForgeStrengthenUI:SetMsgBoardState(bIsActive, iTargetLevel, itemRank)
     local roleInfo = globalDataPool:getData("MainRoleInfo")
     if not (roleInfo and roleInfo["MainRole"]) then return end
     local mainRoleInfo = roleInfo["MainRole"]
+    setUIGray(self.objBtnByImage, false)
     if self.bUseTongLingYu then
         -- 强化时优先使用金刚玉, 
         -- 金刚玉不足时, 依然可以点击, 提示使用银锭与金刚玉的兑换比例补足
@@ -246,6 +248,7 @@ function ForgeStrengthenUI:SetMsgBoardState(bIsActive, iTargetLevel, itemRank)
             self.TextBtnBuy.text = "铜币不足"
             -- 铜币不足依然可以点击, 会提示用银锭转换
             self.curCoinPrice = price
+            setUIGray(self.objBtnByImage, true)
             -- self.BtnBuy.interactable = false
         end
     end
@@ -451,26 +454,7 @@ function ForgeStrengthenUI:GetSilverUpdateTimes()
 end
 
 function ForgeStrengthenUI:GetCanStrength()
-    local time = timeDay(os.time(), PlayerSetDataManager:GetInstance():GetServerOpenTime());
-    local tbSysOpenData = TableDataManager:GetInstance():GetSystemOpenByType(SystemType.SYST_EquipEnhance);
-
-    local tempTable = {};
-    for i = 1, #(tbSysOpenData) do
-        if tbSysOpenData[i].OpenTime <= time then
-            table.insert(tempTable, tbSysOpenData[i]);
-        end
-    end
-
-    if #(tempTable) == 0 then
-        return 20;    
-    end
-
-    local tempLevel = 5;
-    for i = 1, #(tempTable) do
-        tempLevel = tempTable[i].Param1;
-    end
-
-    return tempLevel;
+    return self.MaxStrengthenLevel;
 end
 
 -- 点击强化按钮
@@ -508,8 +492,6 @@ function ForgeStrengthenUI:OnClickStrengthenBtn()
     local bWillRaiseLevel = (itemInstData.uiEnhanceGrade >= self.uiItemUseLevelWillRaiseLevel)  -- 这次强化会不会提升使用等级
     if bEquiped and bWillRaiseLevel and (itemNextLevelCond == uiRoleLevel + 1) then
         warningContent = "该物品正在装备中，强化后装备使用等级将会大于角色等级， 是否继续？"
-    elseif itemInstData.uiEnhanceGrade == self.uiItemUseLevelWillRaiseLevel then
-        warningContent = string.format("强化+%d以后的每次强化都会导致物品使用等级要求上升， 是否继续？", self.uiItemUseLevelWillRaiseLevel or 0)
     end
     if warningContent and (warningContent ~= "") then
         OpenWindowImmediately('GeneralBoxUI', {GeneralBoxType.COMMON_TIP, warningContent, function()
@@ -572,6 +554,7 @@ function ForgeStrengthenUI:DoEnhance(itemID, itemInstData)
         -- else
         --     PlayerSetDataManager:GetInstance():RequestSpendSilver(iNeedSilver, doStrengthenUp)
         -- end
+        SystemUICall:GetInstance():Toast("铜币不足")
     else
         -- 铜币强化并且铜币充足的情况
         doStrengthenUp()

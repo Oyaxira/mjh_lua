@@ -113,6 +113,8 @@ local MazeArtSetting= {
   [127]={BaseID=127,BGImg="MapBG/sc_bg_heng2shan1mi4lin2",TeamGroundImg="",},
   [128]={BaseID=128,BGImg="MapBG/sc_bg_da4li3",},
   [129]={BaseID=129,TeamGroundImg="",},
+  [130]={BaseID=130,BGImg="MapBG/sc_bg_bai2tuo2shan1",},
+  [131]={BaseID=131,BGImg="MapBG/sc_bg_jian1yu4",TeamGroundImg="MapBG/sc_bg_huang1he2an4_zhan4tai2",},
 }
 for k,v in pairs(MazeArtSetting) do
     setmetatable(v, {['__index'] = MazeArtSettingDefault})

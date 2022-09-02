@@ -113,6 +113,8 @@ local MazeSoundSetting= {
   [127]={BaseID=127,},
   [128]={BaseID=128,},
   [129]={BaseID=129,},
+  [130]={BaseID=130,},
+  [131]={BaseID=131,},
 }
 for k,v in pairs(MazeSoundSetting) do
     setmetatable(v, {['__index'] = MazeSoundSettingDefault})

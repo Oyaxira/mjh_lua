@@ -5,16 +5,17 @@
 require("common");
 
 
-local AttrTransDefault = {Value=10000,ConvertAttr1=AttrType.ATTR_MARTIAL_ATK,ConvertValue1=20000,ConvertValue2=15000,ConvertAttr3=AttrType.ATTR_NULL,ConvertValue3=0,ConvertAttr4=AttrType.ATTR_NULL,ConvertValue4=0,ConvertAttr5=AttrType.ATTR_NULL,ConvertValue5=0,}
+local AttrTransDefault = {Value=5000,ConvertAttr1=AttrType.ATTR_MARTIAL_ATK,ConvertValue1=10000,ConvertAttr5=AttrType.ATTR_NULL,ConvertValue5=0,}
 local AttrTrans= {
-  [1]={BaseID=1,OriAttr=AttrType.ATTR_QUANZHANGJINGTONG,ConvertAttr2=AttrType.ATTR_FANJIZHI,},
-  [2]={BaseID=2,OriAttr=AttrType.ATTR_DAOFAJINGTONG,ConvertAttr2=AttrType.ATTR_NULL,},
-  [3]={BaseID=3,OriAttr=AttrType.ATTR_TUIFAJINGTONG,ConvertAttr2=AttrType.ATTR_HITATK,},
-  [4]={BaseID=4,OriAttr=AttrType.ATTR_JIANFAJINGTONG,ConvertAttr2=AttrType.ATTR_POZHAOVALUE,},
-  [5]={BaseID=5,OriAttr=AttrType.ATTR_NEIGONGJINGTONG,ConvertAttr2=AttrType.ATTR_ROUNDMP,ConvertValue2=20000,},
-  [6]={BaseID=6,OriAttr=AttrType.ATTR_YISHUJINGTONG,ConvertAttr2=AttrType.ATTR_ROUNDHP,ConvertValue2=20000,},
-  [7]={BaseID=7,OriAttr=AttrType.ATTR_QIMENJINGTONG,ConvertAttr2=AttrType.ATTR_CONTINUATK,},
-  [8]={BaseID=8,OriAttr=AttrType.ATTR_ANQIJINGTONG,ConvertAttr2=AttrType.ATTR_CRITATK,},
+  [1]={BaseID=1,OriAttr=AttrType.ATTR_QUANZHANGJINGTONG,ConvertAttr2=AttrType.ATTR_IGNOREDEFPER,ConvertValue2=2500,ConvertAttr3=AttrType.ATTR_FANJILV,ConvertValue3=2500,ConvertAttr4=AttrType.ATTR_LIANZHAOLV,ConvertValue4=2500,},
+  [2]={BaseID=2,OriAttr=AttrType.ATTR_DAOFAJINGTONG,ConvertAttr2=AttrType.ATTR_SUCKHP,ConvertValue2=5000,ConvertAttr3=AttrType.ATTR_FANTANBEISHU,ConvertValue3=5000,ConvertAttr4=AttrType.ATTR_IGNOREDEFPER,ConvertValue4=2500,},
+  [3]={BaseID=3,OriAttr=AttrType.ATTR_TUIFAJINGTONG,ConvertAttr2=AttrType.ATTR_SHANBILV,ConvertValue2=1250,ConvertAttr3=AttrType.ATTR_SUDUZHI,ConvertValue3=2500,ConvertAttr4=AttrType.ATTR_CONTINUATKPER,ConvertValue4=1750,},
+  [4]={BaseID=4,OriAttr=AttrType.ATTR_JIANFAJINGTONG,ConvertAttr2=AttrType.ATTR_CRITATKPER,ConvertValue2=2500,ConvertAttr3=AttrType.ATTR_HEJILV,ConvertValue3=5000,ConvertAttr4=AttrType.ATTR_POZHAOLV,ConvertValue4=2500,},
+  [5]={BaseID=5,OriAttr=AttrType.ATTR_NEIGONGJINGTONG,ConvertAttr2=AttrType.ATTR_BAOJIDIKANGLV,ConvertValue2=1500,ConvertAttr3=AttrType.ATTR_KANGLIANJILV,ConvertValue3=1500,ConvertAttr4=AttrType.ATTR_MAXMP,ConvertValue4=100000,},
+  [6]={BaseID=6,OriAttr=AttrType.ATTR_YISHUJINGTONG,ConvertAttr2=AttrType.ATTR_ROUNDHP,ConvertValue2=25000,ConvertAttr3=AttrType.ATTR_ROUNDMP,ConvertValue3=15000,ConvertAttr4=AttrType.ATTR_MAXHP,ConvertValue4=200000,},
+  [7]={BaseID=7,OriAttr=AttrType.ATTR_QIMENJINGTONG,ConvertAttr2=AttrType.ATTR_FANTANLV,ConvertValue2=5000,ConvertAttr3=AttrType.ATTR_HITATKPER,ConvertValue3=5000,ConvertAttr4=AttrType.ATTR_LIANZHAOLV,ConvertValue4=2500,},
+  [8]={BaseID=8,OriAttr=AttrType.ATTR_ANQIJINGTONG,ConvertAttr2=AttrType.ATTR_CONTINUATKPER,ConvertValue2=1750,ConvertAttr3=AttrType.ATTR_CRITATKTIME,ConvertValue3=5000,ConvertAttr4=AttrType.ATTR_SHANBILV,ConvertValue4=1250,},
+  [9]={BaseID=9,OriAttr=AttrType.ATTR_MAXHP,Value=100,ConvertAttr1=AttrType.ATTR_DEF,ConvertValue1=5,ConvertAttr2=AttrType.ATTR_NULL,ConvertValue2=0,ConvertAttr3=AttrType.ATTR_NULL,ConvertValue3=0,ConvertAttr4=AttrType.ATTR_NULL,ConvertValue4=0,},
 }
 for k,v in pairs(AttrTrans) do
     setmetatable(v, {['__index'] = AttrTransDefault})

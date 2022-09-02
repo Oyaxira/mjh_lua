@@ -3,6 +3,8 @@
 
 local Language= {
   [1005006001]="主角家生产系统",
+  [1005006002]="强化装备",
+  [1005006003]="强化装备",
   [1005007002]="<IF-门派-SHOW-【{门派(Language)[Clan.NameID]}】><IF-委托城市-SHOW-【{委托城市(Language)[City.NameID]}】>{发布角色(Language)[Role.NameID]}拜托你去寻找{需求品质ID(RankType)}品质以上的{需求物品礼物类型(FavorType)}类型物品",
   [1005007003]="你帮助{发布角色(Language)[Role.NameID]}找到了他所需要的东西，皆大欢喜",
 }

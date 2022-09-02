@@ -131,6 +131,7 @@ function RegisterUIWindows()
 	WindowsManager:GetInstance():RegisterWindowCreate("MarryUI",require "UI/Role/MarryUI")	
 	WindowsManager:GetInstance():RegisterWindowCreate("MartialSelectUI", require"UI/Role/MartialSelectUI")
 	WindowsManager:GetInstance():RegisterWindowCreate("SwornUI",require "UI/Role/SwornUI")
+	WindowsManager:GetInstance():RegisterWindowCreate("RoleSelectUI", require"UI/Role/RoleSelectUI")
 	WindowsManager:GetInstance():RegisterWindowCreate("SetNicknameUI",require "UI/Role/SetNicknameUI")
 	WindowsManager:GetInstance():RegisterWindowCreate("SetNicknameTip",require "UI/Role/SetNicknameTip")
 	

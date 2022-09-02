@@ -879,7 +879,7 @@ end
 function KeyboardManager:InitCondition()
     --TODO 将分散于各个UI update中快捷键的if逻辑统一至此维护
     self.OpenOrCloseQuestUIInvalidCondition = function()
-        return IsAnyWindowOpen({"PlayerSetUI","DialogChoiceUI","GeneralBoxUI","MarryUI","SelectUI","MazeEntryUI","TitleSelectUI","RandomRollUI","SaveFileUI"})
+        return IsAnyWindowOpen({"PlayerSetUI","DialogChoiceUI","GeneralBoxUI","MarryUI","SelectUI","MazeEntryUI","TitleSelectUI","RandomRollUI","SaveFileUI", "ForgeUI"})
     end
     --暂时都和任务面板的条件相同
     self.OpenOrCloseTeamUIInvalidCondition = function()
@@ -900,7 +900,7 @@ function KeyboardManager:InitCondition()
 
     self.MoveUpInvalidCondition = function()
         return IsAnyWindowOpen({"PlayerSetUI","DialogChoiceUI","TaskUI","CharacterUI","StorageUI","DialogRecordUI","CollectionUI","EvolutionUI","GeneralBoxUI",
-        "MarryUI","SelectUI","MapUnfoldUI","MazeEntryUI","TitleSelectUI","MartialSelectUI", "SwornUI", "SetNicknameUI","RandomRollUI","SaveFileUI"})
+        "MarryUI","SelectUI","MapUnfoldUI","MazeEntryUI","TitleSelectUI","MartialSelectUI", "SwornUI", "SetNicknameUI","RandomRollUI","SaveFileUI", "RoleSelectUI"})
     end
     self.MoveDownInvalidCondition = function()
         return self.MoveUpInvalidCondition()

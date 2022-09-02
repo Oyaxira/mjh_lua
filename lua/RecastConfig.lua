@@ -6,15 +6,15 @@ require("common");
 
 
 local RecastConfig= {
-  [1]={BaseID=1,Rank=RankType.RT_White,RecastNeedPerfectPowderCount=1,RecastNeedIronCount=2,RecastNeedCoinCount=2000,PerfectIronTotalCount=3,},
-  [2]={BaseID=2,Rank=RankType.RT_Green,RecastNeedPerfectPowderCount=2,RecastNeedIronCount=4,RecastNeedCoinCount=4000,PerfectIronTotalCount=8,},
-  [3]={BaseID=3,Rank=RankType.RT_Blue,RecastNeedPerfectPowderCount=3,RecastNeedIronCount=6,RecastNeedCoinCount=6000,PerfectIronTotalCount=15,},
-  [4]={BaseID=4,Rank=RankType.RT_Purple,RecastNeedPerfectPowderCount=5,RecastNeedIronCount=8,RecastNeedCoinCount=8000,PerfectIronTotalCount=24,},
-  [5]={BaseID=5,Rank=RankType.RT_Orange,RecastNeedPerfectPowderCount=9,RecastNeedIronCount=10,RecastNeedCoinCount=10000,PerfectIronTotalCount=35,},
-  [6]={BaseID=6,Rank=RankType.RT_Golden,RecastNeedPerfectPowderCount=15,RecastNeedIronCount=12,RecastNeedCoinCount=12000,PerfectIronTotalCount=48,},
-  [7]={BaseID=7,Rank=RankType.RT_DarkGolden,RecastNeedPerfectPowderCount=25,RecastNeedIronCount=15,RecastNeedCoinCount=15000,PerfectIronTotalCount=65,},
-  [8]={BaseID=8,Rank=RankType.RT_MultiColor,RecastNeedPerfectPowderCount=25,RecastNeedIronCount=15,RecastNeedCoinCount=15000,PerfectIronTotalCount=65,},
-  [9]={BaseID=9,Rank=RankType.RT_ThirdGearDarkGolden,RecastNeedPerfectPowderCount=25,RecastNeedIronCount=15,RecastNeedCoinCount=15000,PerfectIronTotalCount=65,},
+  [1]={BaseID=1,Rank=RankType.RT_White,RecastNeedPerfectPowderCount=1,RecastNeedIronCount=2,RecastNeedCoinCount=0,PerfectIronTotalCount=6,},
+  [2]={BaseID=2,Rank=RankType.RT_Green,RecastNeedPerfectPowderCount=2,RecastNeedIronCount=4,RecastNeedCoinCount=0,PerfectIronTotalCount=12,},
+  [3]={BaseID=3,Rank=RankType.RT_Blue,RecastNeedPerfectPowderCount=3,RecastNeedIronCount=6,RecastNeedCoinCount=0,PerfectIronTotalCount=18,},
+  [4]={BaseID=4,Rank=RankType.RT_Purple,RecastNeedPerfectPowderCount=4,RecastNeedIronCount=8,RecastNeedCoinCount=0,PerfectIronTotalCount=24,},
+  [5]={BaseID=5,Rank=RankType.RT_Orange,RecastNeedPerfectPowderCount=6,RecastNeedIronCount=12,RecastNeedCoinCount=0,PerfectIronTotalCount=36,},
+  [6]={BaseID=6,Rank=RankType.RT_Golden,RecastNeedPerfectPowderCount=8,RecastNeedIronCount=16,RecastNeedCoinCount=0,PerfectIronTotalCount=48,},
+  [7]={BaseID=7,Rank=RankType.RT_DarkGolden,RecastNeedPerfectPowderCount=10,RecastNeedIronCount=20,RecastNeedCoinCount=0,PerfectIronTotalCount=60,},
+  [8]={BaseID=8,Rank=RankType.RT_MultiColor,RecastNeedPerfectPowderCount=10,RecastNeedIronCount=20,RecastNeedCoinCount=0,PerfectIronTotalCount=60,},
+  [9]={BaseID=9,Rank=RankType.RT_ThirdGearDarkGolden,RecastNeedPerfectPowderCount=10,RecastNeedIronCount=20,RecastNeedCoinCount=0,PerfectIronTotalCount=60,},
 }
 
 -- export table: RecastConfig

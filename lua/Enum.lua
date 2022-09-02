@@ -723,7 +723,7 @@ WINDOW_ORDER_INFO =
     ["SetNicknameUI"] = { order = 140 },
     ["MartialSelectUI"] = { order = 140 },
     ["SetNicknameTip"] = { order = 140 },
-
+    ["RoleSelectUI"] = { order = 140 },
     -- 迷宫进入提示
     ["MazeEntryUI"] = { order = 140 },
 

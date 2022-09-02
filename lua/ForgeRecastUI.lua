@@ -62,7 +62,7 @@ function ForgeRecastUI:Init(objParent, instParent)
             OpenWindowImmediately("TipsPopUI", tips)
         end,
     })
-
+    self.BackpackNewUICom:SetSortButton(true)
     -- 同时初始化属性改变界面
     self.ForgeAttrChangeUIInst:Init(objParent, self)
 
@@ -96,6 +96,7 @@ function ForgeRecastUI:Init(objParent, instParent)
     self.text_wmfNum = self:FindChildComponent(self.obj_wmfInfo, "Text_num2", l_DRCSRef_Type.Text)
     self.obj_text_wmf_choosen = self:FindChild(self.obj_wmfInfo, "Text_choosen")
     self.text_wmf_choosen = self.obj_text_wmf_choosen:GetComponent(l_DRCSRef_Type.Text)
+    self.obj_text_wmf_choosen:SetActive(false)
     self.obj_toggle_wmf_choosen = self:FindChild(self.obj_wmfInfo, "Toggle_choosen")
     self.toggle_wmf_choosen = self.obj_toggle_wmf_choosen:GetComponent(l_DRCSRef_Type.Toggle)
     self:AddToggleClickListener(self.toggle_wmf_choosen, function(bOn)
@@ -667,30 +668,31 @@ function ForgeRecastUI:RecastAttrOnClick(attrData)
     if self.recast_with_jt == true then
         -- 精铁或者完美粉不足的情况
         if (self.jt_enough ~= true) or (iTransWmfPaySilverNum > 0) then
-            local iSumSilverNum = iTransWmfPaySilverNum
-            local iTransIronSinglePrice = TableDataManager:GetInstance():GetTableData("CommonConfig",1).Iron2SilverPrice or 0  -- 转换精铁的单价
-            if self.jt_enough ~= true then
-                local iTransIronPaySilverNum = iTransIronSinglePrice * (self.jt_need2Trans or 0)  -- 转换精铁需要的银锭
-                iSumSilverNum = iSumSilverNum + iTransIronPaySilverNum
-            end
-            if ((self.jt_enough ~= true) and (self.bSilverTans2IronWarn ~= false)) 
-            or ((iTransWmfPaySilverNum > 0) and (self.bSilverTrans2WmfWarn ~= false)) then
-                local strTitle = "精铁或完美粉不足"
-                local strWarning = "精铁或完美粉数量不足，继续重铸将以每个精铁%d银锭，每个完美粉%d银锭的价格消耗银锭（本次重铸不再提示）"
-                local strPayFor = "继续重铸"
-                local callback = function()
-                    sendForgeFunc()
-                    if self.jt_enough ~= true then
-                        self.bSilverTans2IronWarn = false
-                    end
-                    if iTransWmfPaySilverNum > 0 then
-                        self.bSilverTrans2WmfWarn = false
-                    end
-                end
-                self:WarningBox(strTitle, string.format(strWarning, iTransIronSinglePrice, iTransWmfSinglePrice), iSumSilverNum, strPayFor, callback)
-            else
-                PlayerSetDataManager:GetInstance():RequestSpendSilver(iSumSilverNum, sendForgeFunc)
-            end
+            SystemUICall:GetInstance():Toast("精铁或完美粉不足")
+            -- local iSumSilverNum = iTransWmfPaySilverNum
+            -- local iTransIronSinglePrice = TableDataManager:GetInstance():GetTableData("CommonConfig",1).Iron2SilverPrice or 0  -- 转换精铁的单价
+            -- if self.jt_enough ~= true then
+            --     local iTransIronPaySilverNum = iTransIronSinglePrice * (self.jt_need2Trans or 0)  -- 转换精铁需要的银锭
+            --     iSumSilverNum = iSumSilverNum + iTransIronPaySilverNum
+            -- end
+            -- if ((self.jt_enough ~= true) and (self.bSilverTans2IronWarn ~= false)) 
+            -- or ((iTransWmfPaySilverNum > 0) and (self.bSilverTrans2WmfWarn ~= false)) then
+            --     local strTitle = ""
+            --     local strWarning = "精铁或完美粉数量不足，继续重铸将以每个精铁%d银锭，每个完美粉%d银锭的价格消耗银锭（本次重铸不再提示）"
+            --     local strPayFor = "继续重铸"
+            --     local callback = function()
+            --         sendForgeFunc()
+            --         if self.jt_enough ~= true then
+            --             self.bSilverTans2IronWarn = false
+            --         end
+            --         if iTransWmfPaySilverNum > 0 then
+            --             self.bSilverTrans2WmfWarn = false
+            --         end
+            --     end
+            --     self:WarningBox(strTitle, string.format(strWarning, iTransIronSinglePrice, iTransWmfSinglePrice), iSumSilverNum, strPayFor, callback)
+            -- else
+            --     PlayerSetDataManager:GetInstance():RequestSpendSilver(iSumSilverNum, sendForgeFunc)
+            -- end
         else
             -- 银锭与完美粉充足的时候直接重铸
             sendForgeFunc()
@@ -713,26 +715,27 @@ function ForgeRecastUI:RecastAttrOnClick(attrData)
         local iPaySilverSumNum = iTransCoinPaySilverNum + iTransWmfPaySilverNum
         if (bCoinLack and (self.bSilverTrans2CoinWarn ~= false)) 
         or ((iTransWmfPaySilverNum > 0) and (self.bSilverTrans2WmfWarn ~= false)) then
-            local strTitle = "铜币或完美粉不足"
-            local strWarning = ""
-            if bCoinLack then
-                strWarning = string.format("本次重铸需要消耗%d铜币, 铜币数量不足, 是否使用%d银锭代替铜币进行重铸?\n", coinCost, iTransCoinPaySilverNum)
-            end
-            if iTransWmfPaySilverNum > 0 then
-                strWarning = strWarning .. string.format("您选择了使用完美粉重铸, 完美粉不足, 将以每个完美粉%d银锭的价格消耗银锭\n", iTransWmfSinglePrice)
-            end
-            strWarning = strWarning .. "(本次重铸不再提示)"
-            local strPayFor = "重铸"
-            local callback = function()
-                sendForgeFunc()
-                if bCoinLack then
-                    self.bSilverTrans2CoinWarn = false
-                end
-                if iTransWmfPaySilverNum > 0 then
-                    self.bSilverTrans2WmfWarn = false
-                end
-            end
-            self:WarningBox(strTitle, strWarning, iPaySilverSumNum, strPayFor, callback)
+            SystemUICall:GetInstance():Toast("铜币或完美粉不足")
+            -- local strTitle = "铜币或完美粉不足"
+            -- local strWarning = ""
+            -- if bCoinLack then
+            --     strWarning = string.format("本次重铸需要消耗%d铜币, 铜币数量不足, 是否使用%d银锭代替铜币进行重铸?\n", coinCost, iTransCoinPaySilverNum)
+            -- end
+            -- if iTransWmfPaySilverNum > 0 then
+            --     strWarning = strWarning .. string.format("您选择了使用完美粉重铸, 完美粉不足, 将以每个完美粉%d银锭的价格消耗银锭\n", iTransWmfSinglePrice)
+            -- end
+            -- strWarning = strWarning .. "(本次重铸不再提示)"
+            -- local strPayFor = "重铸"
+            -- local callback = function()
+            --     sendForgeFunc()
+            --     if bCoinLack then
+            --         self.bSilverTrans2CoinWarn = false
+            --     end
+            --     if iTransWmfPaySilverNum > 0 then
+            --         self.bSilverTrans2WmfWarn = false
+            --     end
+            -- end
+            -- self:WarningBox(strTitle, strWarning, iPaySilverSumNum, strPayFor, callback)
         else
             -- 这里是铜币重铸但是不需要任何提示
             PlayerSetDataManager:GetInstance():RequestSpendSilver(iPaySilverSumNum, sendForgeFunc)
@@ -907,12 +910,11 @@ function ForgeRecastUI:SetRecastMatInfoShow(bShow)
         -- text_count.text = string.format("%d", count)
         -- self.obj_coinBox:SetActive(true)
         -- bNeedCostCoin = true
-    else  -- 否则, 需要材料 精铁
-        self.obj_jingTieBox:SetActive(true)
-        self.recast_with_jt = true
-        --设置必须材料 精铁数量
-        self:UpdateJTNumInfo()
     end
+    self.obj_jingTieBox:SetActive(true)
+    self.recast_with_jt = true
+    --设置必须材料 精铁数量
+    self:UpdateJTNumInfo()
     --完美粉是任何时候都要显示的
     self.obj_wanMeiFenBox:SetActive(false)
     self.obj_toggle_wmf_choosen:SetActive(true)
@@ -931,7 +933,7 @@ end
 -- 点击是否使用完美粉的toggle
 function ForgeRecastUI:OnClickToggleUseWMF(bOn)
     bOn = (bOn == true)
-    self.text_wmf_choosen.text = bOn and "<color=#688A2D>使用</color>" or "不使用"
+    self.text_wmf_choosen.text = ""
     self.useWmfToRecast = bOn
     -- 完美粉影响需要的精铁数量
     self:UpdateJTNumInfo()

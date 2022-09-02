@@ -191,15 +191,9 @@ end
 -- 这里是创角时的一些数据
 function DisplayCreateMainRole(kRetData)
     local info = globalDataPool:getData("CreateMainRole")
-    local startRoleInfo = globalDataPool:getData("StartCreateMainRole")
     if info == nil then
         SetDataToGlobalPool("CreateMainRole",{})
-        SetDataToGlobalPool("StartCreateMainRole",{})
         info = globalDataPool:getData("CreateMainRole")
-        startRoleInfo = globalDataPool:getData("StartCreateMainRole")
-    end
-    if kRetData["bIsBabyRole"] == nil then
-        startRoleInfo["akRoles"] = kRetData["akRoles"]  
     end
     info["iNum"] = kRetData["iNum"]                 -- 创角可用角色个数
     info["akRoles"] = kRetData["akRoles"]           -- 角色是否解锁/孩子，角色属性等

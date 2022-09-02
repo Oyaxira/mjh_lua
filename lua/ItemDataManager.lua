@@ -1256,7 +1256,7 @@ function ItemDataManager:GetItemAttrDesc(attrData, itemInstData, bIsItemPerfect,
         else
             sPerfectExtraValue = string.format("%.1f", addition)
         end
-        sAttrName = sAttrName .. ' <color=#F8DF60>+' .. sPerfectExtraValue .. "</color>"
+        sAttrName = sAttrName .. ' <color=#E1BB00>+' .. sPerfectExtraValue .. "</color>"
     end
     string_ret = sAttrName
     return string_ret
