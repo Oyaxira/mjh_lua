@@ -81,9 +81,14 @@ csv_str = "道具id;道具名称;描述;稀有度"
 for key,value in pairs(item) do
   name = value.ItemName
   id = value.BaseID
-  rank = value.Rank
+  rank_text = ""
+  if value.Rank then
+    if wenben[RankType_Lang[value.Rank]] then
+      rank_text = wenben[RankType_Lang[value.Rank]]
+    end
+  end
   desc = string.gsub(value.ItemDesc, "\n", "")
-  name2 = "\n" .. id .. ";" .. name .. ";" .. desc .. ";" .. wenben[RankType_Lang[rank]]
+  name2 = "\n" .. id .. ";" .. name .. ";" .. desc .. ";" .. rank_text
   csv_str = csv_str .. name2
 end
 
